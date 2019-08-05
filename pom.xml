@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.iutil</groupId>
+    <artifactId>api-result</artifactId>
+    <version>1.0.1</version>
+    <packaging>jar</packaging>
+    <name>api-result</name>
+    <description>对API接口返回结果规范封装解决方案</description>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <jackson-annotations.version>2.9.8</jackson-annotations.version>
+    </properties>
+
+    <dependencies>
+        <!--
+         过滤json数据中，字段为null的
+         不打包：如果使用 spring boot构建的项目，默认支持
+         -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <issueManagement>
+        <system>Github Issue</system>
+        <url>https://github.com/iutil/api-result/issues</url>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/iutil/api-result</url>
+        <connection>git@github.com/iutil/api-result.git</connection>
+        <developerConnection>https://github.com/iutil/api-result</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Erwin Feng</name>
+            <email>xfsy_2015@163.com</email>
+            <url>https://fengwenyi.com</url>
+        </developer>
+    </developers>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <!-- 要将源码放上去，需要加入这个插件 -->
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
