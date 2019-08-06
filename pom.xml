@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.iutil</groupId>
+    <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
     <version>1.0.1</version>
     <packaging>jar</packaging>
@@ -39,7 +39,7 @@
 
     <issueManagement>
         <system>Github Issue</system>
-        <url>https://github.com/iutil/api-result/issues</url>
+        <url>https://github.com/fengwenyi/api-result/issues</url>
     </issueManagement>
 
     <licenses>
@@ -51,9 +51,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/iutil/api-result</url>
-        <connection>git@github.com/iutil/api-result.git</connection>
-        <developerConnection>https://github.com/iutil/api-result</developerConnection>
+        <url>https://github.com/fengwenyi/api-result</url>
+        <connection>git@github.com/fengwenyi/api-result.git</connection>
+        <developerConnection>https://github.com/fengwenyi/api-result</developerConnection>
     </scm>
 
     <developers>
