@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  *     <li>current: 当前页</li>
  * </ul>
  *
- * @author Erwin Feng<xfsy_2015@163.com>
+ * @author Erwin Feng[xfsy_2015@163.com]
  * @since 2019/11/20 11:37
  * @see com.fengwenyi.api_result.model.ResultModel
  */

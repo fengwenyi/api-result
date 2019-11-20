@@ -37,6 +37,7 @@ public class ResultHelper {
 
     /**
      * 成功，无数据返回
+     * @param message 描述信息
      * @param <T> 数据类型
      * @return 返回结果封装 {@link com.fengwenyi.api_result.model.ResultModel}
      */

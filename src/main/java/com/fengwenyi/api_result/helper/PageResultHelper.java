@@ -4,7 +4,22 @@ import com.fengwenyi.api_result.model.ApiResultModel;
 import com.fengwenyi.api_result.model.PageResultModel;
 
 /**
- * @author Erwin Feng<xfsy_2015@163.com>
+ * 分页结果返回封装帮助工具类
+ *
+ * <p>
+ *     该工具类操作的实体类是：{@link com.fengwenyi.api_result.model.PageResultModel}
+ * </p>
+ *
+ * <p>
+ *     我们提供了如下三个方法：
+ * </p>
+ *
+ * <ul>
+ *     <li>success(String message, T data, long total, int size, long pages, int current)：成功，并返回分页数据</li>
+ *     <li>error(String message)：失败</li>
+ * </ul>
+ *
+ * @author Erwin Feng[xfsy_2015@163.com]
  * @since 2019/11/20 12:13
  */
 public class PageResultHelper {
