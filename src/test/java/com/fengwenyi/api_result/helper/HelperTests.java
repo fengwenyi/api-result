@@ -1,6 +1,7 @@
 package com.fengwenyi.api_result.helper;
 
 import com.fengwenyi.api_result.model.ApiResultModel;
+import com.fengwenyi.api_result.model.PageResultModel;
 import com.fengwenyi.api_result.model.ResultModel;
 import org.junit.Test;
 
@@ -41,6 +42,19 @@ public class HelperTests {
         // 失败
         ApiResultModel apiResultModel3 = ApiResultHelper.success(1000000, "This is error info");
         System.out.println(apiResultModel3); // resultModel {"code":1000000, "success":true, "message":"true"}
+    }
+
+    @Test
+    public void testPageResultHelper() {
+        // 成功，返回分页数据
+        String [] data = {"user1", "user2", "user3", "user4", "user5", "user6"};
+        PageResultModel<Object> pageResultModel1 = PageResultHelper.success("Success", data, 60, 6, 10, 1);
+        System.out.println(pageResultModel1);
+        // PageResultModel {"success":true, "message":"true", "data":"[Ljava.lang.String;@6aa8ceb6", "total":60, "size":6, "pages":10, "current":1}
+
+        // 出错
+        PageResultModel error = PageResultHelper.error("网络异常，数据获取失败");
+        System.out.println(error); //PageResultModel {"success":false, "message":"false"}
     }
 
 }

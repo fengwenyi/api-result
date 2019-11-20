@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * 接口结果实体封装模型
  *
  * <p>
- *     该实体模型继承了ResultModel，所以具备它的全部属性
+ *     该实体模型继承了{@link com.fengwenyi.api_result.model.ResultModel}，所以具备它的全部属性
  * </p>
  *
  * <p>
@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  *
  * @author Erwin Feng
  * @since 2019-07-23 15:03
+ * @see com.fengwenyi.api_result.model.ResultModel
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResultModel<S, T> extends ResultModel<T> {
@@ -73,7 +74,7 @@ public class ApiResultModel<S, T> extends ResultModel<T> {
      */
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("resultModel {");
+        StringBuilder stringBuilder = new StringBuilder("ApiResultModel {");
         // code
         if (code != null)
         stringBuilder.append("\"code\"").append(":").append(code)
