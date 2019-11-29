@@ -35,17 +35,39 @@ public class PageResultHelper {
      * @param <T>      数据类型
      * @return 返回结果封装 {@link ApiResultModel}
      */
-    public static <T> PageResultModel<T> success(String message, T data, long total, int size, long pages, int current) {
+    public static <T> PageResultModel<T> success(String message, T data, long total, int size, long pages, long current) {
         return new PageResultModel<>(message, data, total, size, pages, current);
     }
 
     /**
-     * 失败
+     * 成功，并返回数据
+     * @param message  信息
+     * @param data     数据
+     * @param <T>      数据类型
+     * @return 返回结果封装 {@link ApiResultModel}
+     * @since 2.0.2
+     */
+    public static <T> PageResultModel<T> success(String message, T data) {
+        return new PageResultModel<>(message, data);
+    }
+
+    /**
+     * 成功，提示信息
+     * @param message  信息
+     * @return 返回结果封装 {@link ApiResultModel}
+     * @since 2.0.2
+     */
+    public static <T> PageResultModel<T> success(String message) {
+        return new PageResultModel<>(message, null);
+    }
+
+    /**
+     * 错误，提示信息
      * @param message 错误信息
      * @return 返回结果封装 {@link ApiResultModel}
      */
-    public static PageResultModel error(String message) {
-        return new PageResultModel(message);
+    public static <T> PageResultModel<T> error(String message) {
+        return new PageResultModel<>(message);
     }
 
 }

@@ -47,8 +47,13 @@ public class PageResultModel<T> extends ResultModel<T> {
 
     /**
      * 当前页
+     * <p>
+     *     将Integer改为Long的原因：假如你的总页数远远大于整数的最大数，
+     *     那么这样就很难处理了。但修改之后，并不会影响我们现有的业务
+     * </p>
+     * @since 2.0.2
      */
-    private Integer current;
+    private Long current;
 
     /**
      * 无参数构造方法
@@ -65,12 +70,21 @@ public class PageResultModel<T> extends ResultModel<T> {
      * @param pages   总页数
      * @param current 当前页
      */
-    public PageResultModel(String message, T data, long total, int size, long pages, int current) {
+    public PageResultModel(String message, T data, long total, int size, long pages, long current) {
         super(message, data);
         this.total = total;
         this.size = size;
         this.pages = pages;
         this.current = current;
+    }
+
+    /**
+     * 带参数构造方法
+     * @param message 信息
+     * @param data    数据
+     */
+    public PageResultModel(String message, T data) {
+        super(message, data);
     }
 
     /**
