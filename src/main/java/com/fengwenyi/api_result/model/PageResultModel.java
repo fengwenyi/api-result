@@ -127,4 +127,36 @@ public class PageResultModel<T> extends ResultModel<T> {
         stringBuilder.append("}");
         return stringBuilder.toString();
     }
+
+    /**
+     * 参数total的Get方法
+     * @return 数据总条数
+     */
+    public Long getTotal() {
+        return total;
+    }
+
+    /**
+     * 参数size的Get方法
+     * @return 每页条数
+     */
+    public Integer getSize() {
+        return size;
+    }
+
+    /**
+     * 参数pages的Get方法
+     * @return 总页数
+     */
+    public Long getPages() {
+        return pages;
+    }
+
+    /**
+     * 参数current的Get方法
+     * @return 当前页
+     */
+    public Long getCurrent() {
+        return current;
+    }
 }

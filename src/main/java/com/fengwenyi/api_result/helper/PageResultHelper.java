@@ -25,7 +25,29 @@ import com.fengwenyi.api_result.model.PageResultModel;
 public class PageResultHelper {
 
     /**
-     * 成功，并返回数据
+     * 成功，携带描述信息
+     * @param message  信息
+     * @return 返回结果封装 {@link ApiResultModel}
+     * @since 2.0.2
+     */
+    public static <T> PageResultModel<T> success(String message) {
+        return new PageResultModel<>(message, null);
+    }
+
+    /**
+     * 成功，携带描述信息和数据
+     * @param message  信息
+     * @param data     数据
+     * @param <T>      数据类型
+     * @return 返回结果封装 {@link ApiResultModel}
+     * @since 2.0.2
+     */
+    public static <T> PageResultModel<T> success(String message, T data) {
+        return new PageResultModel<>(message, data);
+    }
+
+    /**
+     * 成功，携带描述信息、数据、总数、每页条数、总页数、当前页
      * @param message  信息
      * @param data     数据
      * @param total    数据总条数
@@ -39,30 +61,9 @@ public class PageResultHelper {
         return new PageResultModel<>(message, data, total, size, pages, current);
     }
 
-    /**
-     * 成功，并返回数据
-     * @param message  信息
-     * @param data     数据
-     * @param <T>      数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
-     * @since 2.0.2
-     */
-    public static <T> PageResultModel<T> success(String message, T data) {
-        return new PageResultModel<>(message, data);
-    }
 
     /**
-     * 成功，提示信息
-     * @param message  信息
-     * @return 返回结果封装 {@link ApiResultModel}
-     * @since 2.0.2
-     */
-    public static <T> PageResultModel<T> success(String message) {
-        return new PageResultModel<>(message, null);
-    }
-
-    /**
-     * 错误，提示信息
+     * 错误，携带详细的描述信息
      * @param message 错误信息
      * @return 返回结果封装 {@link ApiResultModel}
      */

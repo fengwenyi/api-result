@@ -25,7 +25,17 @@ import com.fengwenyi.api_result.model.ResultModel;
 public class ResultHelper {
 
     /**
-     * 成功，并返回数据
+     * 成功，携带描述信息
+     * @param message 描述信息
+     * @param <T> 数据类型
+     * @return 返回结果封装 {@link com.fengwenyi.api_result.model.ResultModel}
+     */
+    public static <T> ResultModel<T> success(String message) {
+        return new ResultModel<>(message, null);
+    }
+
+    /**
+     * 成功，携带描述信息和数据
      * @param message 描述信息
      * @param data 数据
      * @param <T> 数据类型
@@ -36,17 +46,7 @@ public class ResultHelper {
     }
 
     /**
-     * 成功，无数据返回
-     * @param message 描述信息
-     * @param <T> 数据类型
-     * @return 返回结果封装 {@link com.fengwenyi.api_result.model.ResultModel}
-     */
-    public static <T> ResultModel<T> success(String message) {
-        return new ResultModel<>(message, null);
-    }
-
-    /**
-     * 失败，无数据返回
+     * 错误，携带详细的描述信息
      * @param message 描述信息
      * @param <T> 数据类型
      * @return 返回结果封装 {@link com.fengwenyi.api_result.model.ResultModel}

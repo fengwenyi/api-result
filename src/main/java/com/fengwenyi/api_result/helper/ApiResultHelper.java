@@ -25,7 +25,19 @@ import com.fengwenyi.api_result.model.ApiResultModel;
 public class ApiResultHelper {
 
     /**
-     * 成功，并返回数据
+     * 成功，携带返回码和描述信息
+     * @param code 返回码
+     * @param message 描述信息
+     * @param <S> 返回码类型
+     * @param <T> 数据类型
+     * @return 返回结果封装 {@link ApiResultModel}
+     */
+    public static <S, T> ApiResultModel<S, T> success(S code, String message) {
+        return new ApiResultModel<>(code, message, null);
+    }
+
+    /**
+     * 成功，携带返回码、描述信息和数据
      * @param code 返回码
      * @param message 描述信息
      * @param data 数据
@@ -38,19 +50,7 @@ public class ApiResultHelper {
     }
 
     /**
-     * 成功，无数据返回
-     * @param code 返回码
-     * @param message 描述信息
-     * @param <S> 返回码类型
-     * @param <T> 数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
-     */
-    public static <S, T> ApiResultModel<S, T> success(S code, String message) {
-        return new ApiResultModel<>(code, message, null);
-    }
-
-    /**
-     * 失败，无数据返回
+     * 错误，携带错误码和详细描述信息
      * @param code 返回码
      * @param message 描述信息
      * @param <S> 返回码类型
