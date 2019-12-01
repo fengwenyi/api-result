@@ -9,7 +9,7 @@
     <version>2.0.3</version>
     <packaging>jar</packaging>
     <name>api-result</name>
-    <description>对API接口返回结果规范封装解决方案</description>
+    <description>API接口返回结果规范化解决方案</description>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
