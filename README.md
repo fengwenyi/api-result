@@ -590,3 +590,87 @@ public class PageResultUtils {
 
 }
 ```
+
+
+## 解析返回结果示例
+
+这里补充一下，关于如何解析返回的json字符串，谈谈我的看法吧。返回的是一个json格式的字符串，这里我用fastjson来写解析示例。我们通常会将请求数据封装为一个通用方法或者工具类，只需要返回数据，当然，如果失败，或者出现异常，都在这里处理。
+
+### 常用返回结果解析示例
+
+```java
+/**
+ * 解析常用返回结果示例
+ * @return 数据
+ */
+public Object parseResult() {
+    String result = "";
+    ResultModel<?> resultModel = JSON.parseObject(result, ResultModel.class);
+    Boolean success = resultModel.getSuccess();
+    if (success != null && success) {
+        return resultModel.getData();
+    } else {
+        // 异常信息
+        String message = resultModel.getMessage();
+        // 异常处理
+        throw new DataParseException(message);
+    }
+}
+```
+
+### 接口返回结果解析示例
+
+```java
+/**
+ * 解析接口返回结果示例
+ * @return 数据
+ */
+public Object parseApiResult() {
+    String apiResult = "";
+    ApiResultModel<?, ?> apiResultModel = JSON.parseObject(apiResult, ApiResultModel.class);
+    Boolean success = apiResultModel.getSuccess();
+    if (success != null && success) {
+        return apiResultModel.getData();
+    } else {
+        Object code = apiResultModel.getCode();
+        String message = apiResultModel.getMessage();
+        // 根据接口错误码分别进行处理
+        // ...
+        return null;
+    }
+}
+```
+
+### 分页返回结果解析示例
+
+这里与上面略有不同，因为，增加了一些字段，所以，我们可以借助bean来返回。
+
+```java
+/**
+ * 解析分页返回结果示例
+ * @return {@link PageResultDataBean}
+ */
+public PageResultDataBean parsePageResult() {
+    String pageResult = "";
+    PageResultModel<List<?>> pageResultModel = JSON.parseObject(pageResult, PageResultModel.class);
+    Boolean success = pageResultModel.getSuccess();
+    if (success != null && success) {
+        List<?> data = pageResultModel.getData();
+        Long total = pageResultModel.getTotal();
+        Integer size = pageResultModel.getSize();
+        Long pages = pageResultModel.getPages();
+        Long current = pageResultModel.getCurrent();
+        return new PageResultDataBean()
+                .setTotal(total)
+                .setSize(size)
+                .setPages(pages)
+                .setCurrent(current)
+                .setData(data);
+    } else {
+        // 异常信息
+        String message = pageResultModel.getMessage();
+        // 异常处理
+        throw new DataParseException(message);
+    }
+}
+```
