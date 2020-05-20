@@ -26,7 +26,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author Erwin Feng
- * @since 2019-07-23 15:01
+ * @since 2019-07-23
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultModel<T> implements Serializable {
