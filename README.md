@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-    <strong>API接口返回结果规范化解决方案</strong>
+    <strong>RESTful风格API接口结果返回规范化解决方案</strong>
 </p>
 
 `api-result`，是API接口返回结果规范化解决方案，是在实际应用环境下产生了，并不断更新和完善。
