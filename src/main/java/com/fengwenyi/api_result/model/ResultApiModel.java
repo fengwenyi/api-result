@@ -20,11 +20,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * </p>
  *
  * @author Erwin Feng
- * @since 2019-07-23 15:03
+ * @since 2019-07-23
  * @see com.fengwenyi.api_result.model.ResultModel
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResultModel<S, T> extends ResultModel<T> {
+public class ResultApiModel<S, T> extends ResultModel<T> {
 
     private static final long serialVersionUID = 1777994529493739156L;
 
@@ -36,7 +36,7 @@ public class ApiResultModel<S, T> extends ResultModel<T> {
     /**
      * 无参数构造方法
      */
-    public ApiResultModel() {
+    public ResultApiModel() {
     }
 
     /**
@@ -44,7 +44,7 @@ public class ApiResultModel<S, T> extends ResultModel<T> {
      * @param code 返回码
      * @param message 描述信息
      */
-    public ApiResultModel(S code, String message) {
+    public ResultApiModel(S code, String message) {
         super(message);
         this.code = code;
     }
@@ -55,7 +55,7 @@ public class ApiResultModel<S, T> extends ResultModel<T> {
      * @param message 描述信息
      * @param data 数据
      */
-    public ApiResultModel(S code, String message, T data) {
+    public ResultApiModel(S code, String message, T data) {
         super(message, data);
         this.code = code;
     }
