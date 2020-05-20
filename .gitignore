@@ -26,6 +26,6 @@ hs_err_pid*
 
 target
 
-.iml
+*.iml
 
 .DS_Store
