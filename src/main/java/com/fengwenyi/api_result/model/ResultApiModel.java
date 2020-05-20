@@ -18,20 +18,26 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * <p>
  *     参数code的类型，我们允许是泛型，可以根据自己的系统进行合理规划
  * </p>
- *
+ * <p>
+ *     关于类型的说明：
+ * </p>
+ * <ul>
+ *     <li>{@code C}：表示返回码的类型</li>
+ *     <li>{@code T}：表示返回的数据类型</li>
+ * </ul>
  * @author Erwin Feng
  * @since 2019-07-23
  * @see com.fengwenyi.api_result.model.ResultModel
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ResultApiModel<S, T> extends ResultModel<T> {
+public class ResultApiModel<C, T> extends ResultModel<T> {
 
     private static final long serialVersionUID = 1777994529493739156L;
 
     /**
      * 返回码
      */
-    private S code;
+    private C code;
 
     /**
      * 无参数构造方法
@@ -44,7 +50,7 @@ public class ResultApiModel<S, T> extends ResultModel<T> {
      * @param code 返回码
      * @param message 描述信息
      */
-    public ResultApiModel(S code, String message) {
+    public ResultApiModel(C code, String message) {
         super(message);
         this.code = code;
     }
@@ -55,7 +61,7 @@ public class ResultApiModel<S, T> extends ResultModel<T> {
      * @param message 描述信息
      * @param data 数据
      */
-    public ResultApiModel(S code, String message, T data) {
+    public ResultApiModel(C code, String message, T data) {
         super(message, data);
         this.code = code;
     }
@@ -64,7 +70,7 @@ public class ResultApiModel<S, T> extends ResultModel<T> {
      * 参数code的Get方法
      * @return 返回码
      */
-    public S getCode() {
+    public C getCode() {
         return code;
     }
 

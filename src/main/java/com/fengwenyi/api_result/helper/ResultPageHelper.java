@@ -48,17 +48,17 @@ public class ResultPageHelper {
 
     /**
      * 成功，携带描述信息、数据、总数、每页条数、总页数、当前页
-     * @param message  信息
-     * @param data     数据
-     * @param total    数据总条数
-     * @param size     每页显示条数
-     * @param pages    总页数
-     * @param current  当前页数
-     * @param <T>      数据类型
+     * @param message           信息
+     * @param data              数据
+     * @param totalElements     总条数
+     * @param totalPages        总页数
+     * @param pageSize          每页显示条数
+     * @param currentPage       当前页数
+     * @param <T>               数据类型
      * @return 返回结果封装 {@link ResultApiModel}
      */
-    public static <T> ResultPageModel<T> success(String message, T data, long total, int size, long pages, long current) {
-        return new ResultPageModel<>(message, data, total, size, pages, current);
+    public static <T> ResultPageModel<T> success(String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
+        return new ResultPageModel<>(message, data, totalElements, totalPages, pageSize, currentPage);
     }
 
 

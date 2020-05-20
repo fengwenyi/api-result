@@ -3,17 +3,15 @@ package com.fengwenyi.api_result.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- *
  * 分页结果实体封装模型
  *
  * <p>
- *     该实体模型继承了{@link com.fengwenyi.api_result.model.ResultModel}，所以具备它的全部属性
+ * 该实体模型继承了{@link com.fengwenyi.api_result.model.ResultModel}，所以具备它的全部属性
  * </p>
  *
  * <p>
- *     在这里，我们增加有关分页的一些属性，比如：数据总条数，总页数，每页显示大小，当前页。如下：
+ * 在这里，我们增加有关分页的一些属性，比如：数据总条数，总页数，每页显示大小，当前页。如下：
  * </p>
- *
  * <ul>
  *     <li>total  : 数据总条数</li>
  *     <li>size   : 每页显示条数</li>
@@ -22,15 +20,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * </ul>
  *
  * @author Erwin Feng
- * @since 2019/11/20
  * @see com.fengwenyi.api_result.model.ResultModel
+ * @since 2019/11/20
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultPageModel<T> extends ResultModel<T> {
 
     private static final long serialVersionUID = 5001896963554548570L;
 
-    /** 分页信息 */
+    /**
+     * 分页信息
+     */
     private PageModel page;
 
     /**
@@ -41,9 +41,9 @@ public class ResultPageModel<T> extends ResultModel<T> {
 
     /**
      * 带参数构造方法
+     *
      * @param message 信息
      * @param data    数据
-
      */
     public ResultPageModel(String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
         super(message, data);
@@ -52,6 +52,7 @@ public class ResultPageModel<T> extends ResultModel<T> {
 
     /**
      * 带参数构造方法
+     *
      * @param message 信息
      * @param data    数据
      */
@@ -61,6 +62,7 @@ public class ResultPageModel<T> extends ResultModel<T> {
 
     /**
      * 带参数构造方法
+     *
      * @param message 信息
      */
     public ResultPageModel(String message) {
@@ -69,6 +71,7 @@ public class ResultPageModel<T> extends ResultModel<T> {
 
     /**
      * 重写 toString()
+     *
      * @return 有值的参数拼接成的一个字符串
      */
     @Override
