@@ -1,13 +1,13 @@
 package com.fengwenyi.api_result.helper;
 
-import com.fengwenyi.api_result.model.ApiResultModel;
-import com.fengwenyi.api_result.model.PageResultModel;
+import com.fengwenyi.api_result.model.ResultApiModel;
+import com.fengwenyi.api_result.model.ResultPageModel;
 
 /**
  * 分页结果返回封装帮助工具类
  *
  * <p>
- *     该工具类操作的实体类是：{@link com.fengwenyi.api_result.model.PageResultModel}
+ *     该工具类操作的实体类是：{@link ResultPageModel}
  * </p>
  *
  * <p>
@@ -22,16 +22,16 @@ import com.fengwenyi.api_result.model.PageResultModel;
  * @author Erwin Feng[xfsy_2015@163.com]
  * @since 2019/11/20 12:13
  */
-public class PageResultHelper {
+public class ResultPageHelper {
 
     /**
      * 成功，携带描述信息
      * @param message  信息
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      * @since 2.0.2
      */
-    public static <T> PageResultModel<T> success(String message) {
-        return new PageResultModel<>(message, null);
+    public static <T> ResultPageModel<T> success(String message) {
+        return new ResultPageModel<>(message, null);
     }
 
     /**
@@ -39,11 +39,11 @@ public class PageResultHelper {
      * @param message  信息
      * @param data     数据
      * @param <T>      数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      * @since 2.0.2
      */
-    public static <T> PageResultModel<T> success(String message, T data) {
-        return new PageResultModel<>(message, data);
+    public static <T> ResultPageModel<T> success(String message, T data) {
+        return new ResultPageModel<>(message, data);
     }
 
     /**
@@ -55,20 +55,20 @@ public class PageResultHelper {
      * @param pages    总页数
      * @param current  当前页数
      * @param <T>      数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      */
-    public static <T> PageResultModel<T> success(String message, T data, long total, int size, long pages, long current) {
-        return new PageResultModel<>(message, data, total, size, pages, current);
+    public static <T> ResultPageModel<T> success(String message, T data, long total, int size, long pages, long current) {
+        return new ResultPageModel<>(message, data, total, size, pages, current);
     }
 
 
     /**
      * 错误，携带详细的描述信息
      * @param message 错误信息
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      */
-    public static <T> PageResultModel<T> error(String message) {
-        return new PageResultModel<>(message);
+    public static <T> ResultPageModel<T> error(String message) {
+        return new ResultPageModel<>(message);
     }
 
 }

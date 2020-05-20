@@ -1,12 +1,12 @@
 package com.fengwenyi.api_result.helper;
 
-import com.fengwenyi.api_result.model.ApiResultModel;
+import com.fengwenyi.api_result.model.ResultApiModel;
 
 /**
  * 接口结果返回封装帮助工具类
  *
  * <p>
- *     该工具类操作的实体类是：{@link com.fengwenyi.api_result.model.ApiResultModel}
+ *     该工具类操作的实体类是：{@link ResultApiModel}
  * </p>
  *
  * <p>
@@ -22,7 +22,7 @@ import com.fengwenyi.api_result.model.ApiResultModel;
  * @author Erwin Feng
  * @since 2019-08-21 10:47
  */
-public class ApiResultHelper {
+public class ResultApiHelper {
 
     /**
      * 成功，携带返回码和描述信息
@@ -30,10 +30,10 @@ public class ApiResultHelper {
      * @param message 描述信息
      * @param <S> 返回码类型
      * @param <T> 数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      */
-    public static <S, T> ApiResultModel<S, T> success(S code, String message) {
-        return new ApiResultModel<>(code, message, null);
+    public static <S, T> ResultApiModel<S, T> success(S code, String message) {
+        return new ResultApiModel<>(code, message, null);
     }
 
     /**
@@ -43,10 +43,10 @@ public class ApiResultHelper {
      * @param data 数据
      * @param <S> 返回码类型
      * @param <T> 数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      */
-    public static <S, T> ApiResultModel<S, T> success(S code, String message, T data) {
-        return new ApiResultModel<>(code, message, data);
+    public static <S, T> ResultApiModel<S, T> success(S code, String message, T data) {
+        return new ResultApiModel<>(code, message, data);
     }
 
     /**
@@ -55,10 +55,10 @@ public class ApiResultHelper {
      * @param message 描述信息
      * @param <S> 返回码类型
      * @param <T> 数据类型
-     * @return 返回结果封装 {@link ApiResultModel}
+     * @return 返回结果封装 {@link ResultApiModel}
      */
-    public static <S, T> ApiResultModel<S, T> error(S code, String message) {
-        return new ApiResultModel<>(code, message);
+    public static <S, T> ResultApiModel<S, T> error(S code, String message) {
+        return new ResultApiModel<>(code, message);
     }
 
 }
