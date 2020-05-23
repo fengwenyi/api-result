@@ -12,6 +12,9 @@
 
 [中央仓库](https://search.maven.org/search?q=g:com.fengwenyi%20AND%20a:api-result&core=gav)
 
+
+[api-result结合Spring Boot使用实例](https://github.com/fengwenyi/APIExample/tree/api-result-simple)
+
 ## API讲解
 
 ### 实体类
