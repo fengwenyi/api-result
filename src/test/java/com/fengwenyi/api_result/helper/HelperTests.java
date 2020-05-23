@@ -1,6 +1,7 @@
 package com.fengwenyi.api_result.helper;
 
 import com.fengwenyi.api_result.model.ResultApiModel;
+import com.fengwenyi.api_result.model.ResultPageApiModel;
 import com.fengwenyi.api_result.model.ResultPageModel;
 import com.fengwenyi.api_result.model.ResultModel;
 import org.junit.Test;
@@ -48,13 +49,23 @@ public class HelperTests {
     public void testPageResultHelper() {
         // 成功，返回分页数据
         String [] data = {"user1", "user2", "user3", "user4", "user5", "user6"};
-        ResultPageModel<Object> resultPageModel1 = ResultPageHelper.success("Success", data, 60, 6, 10, 1);
+        ResultPageModel<Object> resultPageModel1 = ResultPageHelper.success("Success", data, 60L, 6L, 10, 1L);
         System.out.println(resultPageModel1);
         // PageResultModel {"success":true, "message":"true", "data":"[Ljava.lang.String;@6aa8ceb6", "total":60, "size":6, "pages":10, "current":1}
 
         // 出错
         ResultPageModel error = ResultPageHelper.error("网络异常，数据获取失败");
         System.out.println(error); //PageResultModel {"success":false, "message":"false"}
+    }
+
+    /**
+     * @since 2.0.4
+     */
+    @Test
+    public void testResultPageApiHelper() {
+        String [] data = {"user1", "user2", "user3", "user4", "user5", "user6"};
+        ResultPageApiModel<Integer, String[]> resultPageApiModel = ResultPageApiHelper.success(0, "Success", data, 60L, 6L, 10, 1L);
+        System.out.println(resultPageApiModel);
     }
 
 }

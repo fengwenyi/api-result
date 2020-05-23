@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * </ul>
  *
  * @author Erwin Feng
- * @since 2020/5/21
+ * @since 2.0.4
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
@@ -32,6 +32,7 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
 
     /**
      * 构造方法
+     *
      * @param code    返回码
      * @param message 提示信息
      */
@@ -42,6 +43,7 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
 
     /**
      * 构造方法
+     *
      * @param code          返回码
      * @param message       提示信息
      * @param data          数据
@@ -57,12 +59,46 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
 
     /**
      * 构造方法
-     * @param code      返回码
+     *
+     * @param code    返回码
      * @param message 提示信息
-     * @param data      数据
+     * @param data    数据
      */
     public ResultPageApiModel(C code, String message, T data) {
         super(message, data);
         this.code = code;
     }
+
+    /**
+     * 重写 toString()
+     *
+     * @return 有值的参数拼接成的一个字符串
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder("PageResultModel {");
+        // code
+        stringBuilder.append("\"code\"").append(":").append(code).append(", ");
+        // success
+        stringBuilder.append("\"success\"").append(":").append(super.getSuccess()).append(", ");
+        // message
+        stringBuilder.append("\"message\"").append(":")
+                .append("\"").append(super.getMessage()).append("\"");
+        // data
+        stringBuilder.append(", ").append("\"data\"").append(":").append(super.getData());
+        // page
+        stringBuilder.append(", page {");
+        // totalElements
+        stringBuilder.append("\"totalElements\"").append(":").append(super.getPage().getTotalElements());
+        // totalPages
+        stringBuilder.append(", ").append("\"totalPages\"").append(":").append(super.getPage().getTotalPages());
+        // pageSize
+        stringBuilder.append(", ").append("\"pageSize\"").append(":").append(super.getPage().getPageSize());
+        // currentPage
+        stringBuilder.append(", ").append("\"currentPage\"").append(":").append(super.getPage().getCurrentPage());
+        stringBuilder.append("}");
+        stringBuilder.append("}");
+        return stringBuilder.toString();
+    }
+
 }

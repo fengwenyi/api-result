@@ -70,6 +70,14 @@ public class ResultPageModel<T> extends ResultModel<T> {
     }
 
     /**
+     * 参数 {@code page} get方法
+     * @return 分页对象
+     */
+    public PageModel getPage() {
+        return page;
+    }
+
+    /**
      * 重写 toString()
      *
      * @return 有值的参数拼接成的一个字符串
@@ -82,14 +90,14 @@ public class ResultPageModel<T> extends ResultModel<T> {
                 .append(", ");
         // message
         stringBuilder.append("\"message\"").append(":")
-                .append("\"").append(super.getSuccess()).append("\"");
+                .append("\"").append(super.getMessage()).append("\"");
         // data
         if (super.getData() != null)
             stringBuilder.append(", ").append("\"data\"").append(":")
                     .append("\"").append(super.getData()).append("\"");
         // page
         if (page != null) {
-            stringBuilder.append("page {");
+            stringBuilder.append(", page {");
             // totalElements
             if (page.getTotalElements() != null)
                 stringBuilder.append(", ").append("\"totalElements\"").append(":").append(page.getTotalElements());
