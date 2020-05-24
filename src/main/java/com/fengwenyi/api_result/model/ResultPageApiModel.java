@@ -3,10 +3,14 @@ package com.fengwenyi.api_result.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * 接口数据分页实体类
+ * 接口数据分页封装模型类
  *
  * <p>
- * 关于类型的说明：
+ * 你可以使用该模型类在接口中进行数据分页返回结果
+ * </p>
+ *
+ * <p>
+ * 关于泛型的说明：
  * </p>
  * <ul>
  *     <li>{@code C}：表示返回码的类型</li>
@@ -18,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
+
+    private static final long serialVersionUID = -4889932150977741960L;
 
     /**
      * 返回码
@@ -78,11 +84,11 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("PageResultModel {");
         // code
-        stringBuilder.append("\"code\"").append(":").append(code).append(", ");
+        stringBuilder.append("\"code\"").append(":").append(code);
         // success
-        stringBuilder.append("\"success\"").append(":").append(super.getSuccess()).append(", ");
+        stringBuilder.append(", ").append("\"success\"").append(":").append(super.getSuccess());
         // message
-        stringBuilder.append("\"message\"").append(":")
+        stringBuilder.append(", ").append("\"message\"").append(":")
                 .append("\"").append(super.getMessage()).append("\"");
         // data
         stringBuilder.append(", ").append("\"data\"").append(":").append(super.getData());
