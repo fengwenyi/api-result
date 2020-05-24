@@ -82,7 +82,7 @@ public class ResultApiPageModel<C, T> extends ResultPageModel<T> {
      */
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("PageResultModel {");
+        StringBuilder stringBuilder = new StringBuilder("ResultApiPageModel {");
         // code
         stringBuilder.append("\"code\"").append(":").append(code);
         // success
