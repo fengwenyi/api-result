@@ -1,23 +1,23 @@
 package com.fengwenyi.api_result.helper;
 
-import com.fengwenyi.api_result.model.ResultPageApiModel;
+import com.fengwenyi.api_result.model.ResultApiPageModel;
 
 /**
  * 接口数据分页工具类
  * @author Erwin Feng
  * @since 2.0.4
  */
-public class ResultPageApiHelper {
+public class ResultApiPageHelper {
 
     /**
      * 错误，请填写详细的错误描述
      * @param code      返回码
      * @param message   详细的错误描述信息
      * @param <C>       返回码类型
-     * @return 返回结果封装 {@link ResultPageApiModel}
+     * @return 返回结果封装 {@link ResultApiPageModel}
      */
-    public static <C> ResultPageApiModel<C, Void> error(C code, String message) {
-        return new ResultPageApiModel<>(code, message);
+    public static <C> ResultApiPageModel<C, Void> error(C code, String message) {
+        return new ResultApiPageModel<>(code, message);
     }
 
     /**
@@ -25,10 +25,10 @@ public class ResultPageApiHelper {
      * @param code      返回码
      * @param message   提示信息
      * @param <C>       返回码类型
-     * @return 返回结果封装 {@link ResultPageApiModel}
+     * @return 返回结果封装 {@link ResultApiPageModel}
      */
-    public static <C> ResultPageApiModel<C, Void> success(C code, String message) {
-        return new ResultPageApiModel<>(code, message, null);
+    public static <C> ResultApiPageModel<C, Void> success(C code, String message) {
+        return new ResultApiPageModel<>(code, message, null);
     }
 
     /**
@@ -42,10 +42,10 @@ public class ResultPageApiHelper {
      * @param currentPage       当前页
      * @param <C>               返回码类型
      * @param <T>               数据类型
-     * @return 返回结果封装 {@link ResultPageApiModel}
+     * @return 返回结果封装 {@link ResultApiPageModel}
      */
-    public static <C, T> ResultPageApiModel<C, T> success(C code, String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
-        return new ResultPageApiModel<>(code, message, data, totalElements, totalPages, pageSize, currentPage);
+    public static <C, T> ResultApiPageModel<C, T> success(C code, String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
+        return new ResultApiPageModel<>(code, message, data, totalElements, totalPages, pageSize, currentPage);
     }
 
 }

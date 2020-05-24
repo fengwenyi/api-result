@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @since 2.0.4
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
+public class ResultApiPageModel<C, T> extends ResultPageModel<T> {
 
     private static final long serialVersionUID = -4889932150977741960L;
 
@@ -33,7 +33,7 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
     /**
      * 无参数构造方法
      */
-    public ResultPageApiModel() {
+    public ResultApiPageModel() {
     }
 
     /**
@@ -42,7 +42,7 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
      * @param code    返回码
      * @param message 提示信息
      */
-    public ResultPageApiModel(C code, String message) {
+    public ResultApiPageModel(C code, String message) {
         super(message);
         this.code = code;
     }
@@ -58,7 +58,7 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
      * @param pageSize      分页大小
      * @param currentPage   当前页
      */
-    public ResultPageApiModel(C code, String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
+    public ResultApiPageModel(C code, String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
         super(message, data, totalElements, totalPages, pageSize, currentPage);
         this.code = code;
     }
@@ -70,7 +70,7 @@ public class ResultPageApiModel<C, T> extends ResultPageModel<T> {
      * @param message 提示信息
      * @param data    数据
      */
-    public ResultPageApiModel(C code, String message, T data) {
+    public ResultApiPageModel(C code, String message, T data) {
         super(message, data);
         this.code = code;
     }

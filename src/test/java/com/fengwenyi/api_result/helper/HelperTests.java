@@ -1,7 +1,7 @@
 package com.fengwenyi.api_result.helper;
 
 import com.fengwenyi.api_result.model.ResultApiModel;
-import com.fengwenyi.api_result.model.ResultPageApiModel;
+import com.fengwenyi.api_result.model.ResultApiPageModel;
 import com.fengwenyi.api_result.model.ResultPageModel;
 import com.fengwenyi.api_result.model.ResultModel;
 import org.junit.Test;
@@ -62,10 +62,10 @@ public class HelperTests {
      * @since 2.0.4
      */
     @Test
-    public void testResultPageApiHelper() {
+    public void testResultApiPageHelper() {
         String [] data = {"user1", "user2", "user3", "user4", "user5", "user6"};
-        ResultPageApiModel<Integer, String[]> resultPageApiModel = ResultPageApiHelper.success(0, "Success", data, 60L, 6L, 10, 1L);
-        System.out.println(resultPageApiModel);
+        ResultApiPageModel<Integer, String[]> resultApiPageModel = ResultApiPageHelper.success(0, "Success", data, 60L, 6L, 10, 1L);
+        System.out.println(resultApiPageModel);
     }
 
 }
