@@ -201,7 +201,7 @@ public class UserResponseVo {
 
 ## Wiki
 
-[Api Result Wiki](./wiki)
+[Api Result Wiki](https://github.com/fengwenyi/api-result/wiki)
 
 
 ## 版本标识说明
