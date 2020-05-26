@@ -170,6 +170,33 @@ public class UserResponseVo {
 }
 ```
 
+### 响应
+
+```json
+{
+    "success":true,
+    "message":"Success",
+    "data":[
+        {
+            "uid":"e84e4f8a-741e-48dd-b874-99eb4bcf9a6d",
+            "realName":"关羽",
+            "nickname":"云长"
+        },
+        {
+            "uid":"8e5a8980-92cd-48d6-922a-a39f11f0a8c3",
+            "realName":"张飞",
+            "nickname":"翼德"
+        },
+        {
+            "uid":"0c273883-a7cc-408b-8a35-aff62394fd62",
+            "realName":"赵云",
+            "nickname":"子龙"
+        }
+    ],
+    "code":0
+}
+```
+
 > [Spring Boot结合api-result使用示例](https://github.com/fengwenyi/APIExample/tree/api-result-sample)
 
 ## Wiki
