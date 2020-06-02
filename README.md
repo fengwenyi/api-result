@@ -28,7 +28,7 @@ implementation 'com.fengwenyi:api-result:2.0.4.RELEASE'
 ### ResultUtils
 
 ```java
-package siample.api_result.result;
+package sample.api_result.result;
 
 import com.fengwenyi.api_result.helper.ResultApiHelper;
 import com.fengwenyi.api_result.model.ResultApiModel;
@@ -72,7 +72,7 @@ public class ResultUtils {
 
 ### ResultCodeEnum
 ```java
-package siample.api_result.result;
+package sample.api_result.result;
 
 import lombok.Getter;
 
@@ -102,14 +102,14 @@ public enum ResultCodeEnum {
 ### ApiController
 
 ```java
-package siample.api_result.controller;
+package sample.api_result.controller;
 
 import com.fengwenyi.api_result.model.ResultApiModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import siample.api_result.result.ResultUtils;
-import siample.api_result.vo.response.UserResponseVo;
+import sample.api_result.result.ResultUtils;
+import sample.api_result.vo.response.UserResponseVo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -144,7 +144,7 @@ public class ApiController {
 ### UserResponseVo
 
 ```java
-package siample.api_result.vo.response;
+package sample.api_result.vo.response;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
