@@ -1,13 +1,15 @@
 # Api Result
 
-Api Result，是一套API接口返回结果规范化解决方案。它是在实际应用环境下产生了，并不断更新和完善。
-结合Spring Boot进行开发，让接口响应结果变得更加规范。
+Api Result，是一套API接口响应参数规范化解决方案。
+
+## 中央仓库
+
+去 [maven.org](https://search.maven.org/search?q=g:com.fengwenyi%20AND%20a:api-result&core=gav) 查看
+
+去 [mvnrepository.com](https://mvnrepository.com/artifact/com.fengwenyi/api-result) 查看
 
 
-[中央仓库](https://search.maven.org/search?q=g:com.fengwenyi%20AND%20a:api-result&core=gav)
-
-
-## Maven
+## Maven依赖
 
 ```xml
 <dependency>
@@ -17,127 +19,76 @@ Api Result，是一套API接口返回结果规范化解决方案。它是在实�
 </dependency>
 ```
 
-## Gradle
+## 简单示例
 
-```gradle
-implementation 'com.fengwenyi:api-result:2.0.4.RELEASE'
-```
-
-## Sample
-
-### ResultUtils
+### ResponseUtils
 
 ```java
-package sample.api_result.result;
+package sample.api_result.util;
 
-import com.fengwenyi.api_result.helper.ResultApiHelper;
-import com.fengwenyi.api_result.model.ResultApiModel;
-
-/**
- * 接口响应结果封装工具类
- * @author Erwin Feng
- * @since 2020/5/26
- */
-public class ResultUtils {
-
-    /**
-     * 成功，无数据
-     * @return {@link ResultApiModel}
-     */
-    public static ResultApiModel<Integer, Void> success() {
-        return ResultApiHelper.success(ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMessage());
-    }
-
-    /**
-     * 成功，携带数据
-     * @param data 响应数据
-     * @param <T>  响应数据类型
-     * @return {@link ResultApiModel}
-     */
-    public static <T> ResultApiModel<Integer, T> success(T data) {
-        return ResultApiHelper.success(ResultCodeEnum.SUCCESS.getCode(), ResultCodeEnum.SUCCESS.getMessage(), data);
-    }
-
-    /**
-     * 失败，返回具体的错误码和详细的错误信息
-     * @param resultCodeEnum 返回码枚举类，{@link ResultCodeEnum}
-     * @return {@link ResultApiModel}
-     */
-    public static ResultApiModel<Integer, Void> error(ResultCodeEnum resultCodeEnum) {
-        return ResultApiHelper.error(resultCodeEnum.getCode(), resultCodeEnum.getMessage());
-    }
-
-}
-```
-
-### ResultCodeEnum
-```java
-package sample.api_result.result;
-
-import lombok.Getter;
+import com.fengwenyi.api_result.helper.ResultHelper;
+import com.fengwenyi.api_result.model.ResultModel;
 
 /**
- * 返回结果码枚举
+ * 响应工具类
  * @author Erwin Feng
- * @since 2020/5/24
+ * @since 2020/6/13
  */
-@Getter
-public enum ResultCodeEnum {
+public class ResponseUtils {
 
-    SUCCESS(0, "Success");
+    /** 成功信息提示 */
+    private static final String SUCCESS_MESSAGE = "Success";
 
-    /** 返回码 */
-    private Integer code;
-
-    /** 描述信息 */
-    private String message;
-
-    ResultCodeEnum(Integer code, String message) {
-        this.code = code;
-        this.message = message;
+    /**
+     * 成功，并返回数据
+     * @param data  数据
+     * @param <T>   数据类型
+     * @return  接口响应成功，并返回数据
+     * @see com.fengwenyi.api_result.model.ResultModel
+     */
+    public static <T>ResultModel<T> success(T data) {
+        return ResultHelper.success(SUCCESS_MESSAGE, data);
     }
 }
 ```
 
-### ApiController
+### UserController
 
 ```java
 package sample.api_result.controller;
 
-import com.fengwenyi.api_result.model.ResultApiModel;
+import com.fengwenyi.api_result.model.ResultModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sample.api_result.result.ResultUtils;
+import sample.api_result.util.ResponseUtils;
 import sample.api_result.vo.response.UserResponseVo;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 /**
- * API
+ * 用户接口示例
  * @author Erwin Feng
- * @since 2020/5/26
+ * @since 2020/6/13
  */
 @RestController
-@RequestMapping("/api")
-public class ApiController {
+@RequestMapping("/user")
+public class UserController {
 
     /**
-     * 查询所有用户，返回所有用户列表
-     * @return {@link ResultApiModel}
+     * 查询所有用户
+     * @return 返回数据：包含用户信息的列表
      */
-    @GetMapping("/users")
-    public ResultApiModel<Integer, List<UserResponseVo>> users() {
-        List<UserResponseVo> userResponseVos = Arrays.asList(
-                new UserResponseVo().setUid(UUID.randomUUID().toString()).setRealName("关羽").setNickname("云长"),
-                new UserResponseVo().setUid(UUID.randomUUID().toString()).setRealName("张飞").setNickname("翼德"),
-                new UserResponseVo().setUid(UUID.randomUUID().toString()).setRealName("赵云").setNickname("子龙")
+    @GetMapping
+    public ResultModel<List<UserResponseVo>> users() {
+        List<UserResponseVo> responseVos = Arrays.asList(
+                new UserResponseVo().setUid("x001").setRealName("关羽").setNickname("云长"),
+                new UserResponseVo().setUid("x002").setRealName("张飞").setNickname("翼德"),
+                new UserResponseVo().setUid("x003").setRealName("赵云").setNickname("子龙")
         );
-        return ResultUtils.success(userResponseVos);
+        return ResponseUtils.success(responseVos);
     }
-
 }
 ```
 
@@ -170,7 +121,22 @@ public class UserResponseVo {
 }
 ```
 
+### 测试
+
+### 请求
+
+```
+GET http://localhost:8080/user
+Accept: application/json
+```
+
 ### 响应
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 210
+```
 
 ```json
 {
@@ -178,30 +144,29 @@ public class UserResponseVo {
     "message":"Success",
     "data":[
         {
-            "uid":"e84e4f8a-741e-48dd-b874-99eb4bcf9a6d",
+            "uid":"x001",
             "realName":"关羽",
             "nickname":"云长"
         },
         {
-            "uid":"8e5a8980-92cd-48d6-922a-a39f11f0a8c3",
+            "uid":"x002",
             "realName":"张飞",
             "nickname":"翼德"
         },
         {
-            "uid":"0c273883-a7cc-408b-8a35-aff62394fd62",
+            "uid":"x003",
             "realName":"赵云",
             "nickname":"子龙"
         }
-    ],
-    "code":0
+    ]
 }
 ```
 
-> [Spring Boot结合api-result使用示例](https://github.com/fengwenyi/APIExample/tree/api-result-sample)
+> 点击这里 [Spring Boot结合api-result使用示例](https://github.com/fengwenyi/APIExample/tree/api-result-sample) 查看完整版示例
 
 ## Wiki
 
-[Api Result Wiki](https://github.com/fengwenyi/api-result/wiki)
+如果你想了解更多 `api-result`，点击这里 [Wiki](https://github.com/fengwenyi/api-result/wiki) 
 
 
 ## 版本标识说明

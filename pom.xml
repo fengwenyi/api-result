@@ -9,7 +9,7 @@
     <version>2.0.5.BUILD</version>
     <packaging>jar</packaging>
     <name>api-result</name>
-    <description>API接口返回结果规范化解决方案</description>
+    <description>一套API接口响应参数规范化解决方案</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
