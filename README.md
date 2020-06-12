@@ -1,6 +1,6 @@
 # Api Result
 
-Api Result，是一套API接口响应参数规范化解决方案。
+`api-result` ，是一套API接口响应参数规范化解决方案。
 
 ## 中央仓库
 
@@ -46,7 +46,7 @@ public class ResponseUtils {
      * @return  接口响应成功，并返回数据
      * @see com.fengwenyi.api_result.model.ResultModel
      */
-    public static <T>ResultModel<T> success(T data) {
+    public static <T> ResultModel<T> success(T data) {
         return ResultHelper.success(SUCCESS_MESSAGE, data);
     }
 }
@@ -166,7 +166,7 @@ Content-Length: 210
 
 ## Wiki
 
-如果你想了解更多 `api-result`，点击这里 [Wiki](https://github.com/fengwenyi/api-result/wiki) 
+如果你想了解更多，点击这里 [Wiki](https://github.com/fengwenyi/api-result/wiki) 
 
 
 ## 版本标识说明
