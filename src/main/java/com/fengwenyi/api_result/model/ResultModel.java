@@ -27,6 +27,7 @@ import java.io.Serializable;
  *
  * @author Erwin Feng
  * @since 2019-07-23
+ * @deprecated {@link com.fengwenyi.api_result.entity.ResponseEntity}
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultModel<T> implements Serializable {

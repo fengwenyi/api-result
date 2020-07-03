@@ -6,6 +6,7 @@ import com.fengwenyi.api_result.model.ResultApiPageModel;
  * 接口数据分页工具类
  * @author Erwin Feng
  * @since 2.0.4
+ * @deprecated {@link com.fengwenyi.api_result.util.ResponseUtils}
  */
 public class ResultApiPageHelper {
 

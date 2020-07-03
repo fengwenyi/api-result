@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Erwin Feng
  * @since 2019-07-23
  * @see com.fengwenyi.api_result.model.ResultModel
+ * @deprecated {@link com.fengwenyi.api_result.entity.ResponseEntity}
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultApiModel<C, T> extends ResultModel<T> {

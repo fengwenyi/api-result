@@ -1,0 +1,184 @@
+package com.fengwenyi.api_result.util;
+
+import com.fengwenyi.api_result.entity.ResponseEntity;
+import com.fengwenyi.api_result.entity.ResponsePageEntity;
+
+import static com.fengwenyi.api_result.constant.ApiResultConstant.DEFAULT_FAILURE_MESSAGE;
+import static com.fengwenyi.api_result.constant.ApiResultConstant.DEFAULT_SUCCESS_MESSAGE;
+
+/**
+ * 响应工具类
+ * @author Erwin Feng
+ * @since 2.1.0
+ */
+public class ResponseUtils {
+
+    /**
+     * 成功
+     * @return
+     */
+    public static ResponseEntity<Void, Void> success() {
+        return new ResponseEntity<Void, Void>()
+                .setSuccess(true)
+                .setMessage(DEFAULT_SUCCESS_MESSAGE);
+    }
+
+    /**
+     * 成功，携带数据
+     * @param data 响应数据
+     * @param <T>  响应数据类型
+     * @return
+     */
+    public static <T> ResponseEntity<Void, T> success(T data) {
+        return new ResponseEntity<Void, T>()
+                .setSuccess(true)
+                .setMessage(DEFAULT_SUCCESS_MESSAGE)
+                .setData(data);
+    }
+
+    /**
+     * 成功
+     * @param message   响应码描述
+     * @param data      响应数据
+     * @param <T>       响应数据类型
+     * @return
+     */
+    public static <T> ResponseEntity<Void, T> success(String message, T data) {
+        return new ResponseEntity<Void, T>()
+                .setSuccess(true)
+                .setMessage(message)
+                .setData(data);
+    }
+
+    /**
+     * 成功
+     * @param code      响应码
+     * @param message   响应码描述
+     * @param data      响应数据
+     * @param <C>       响应码类型
+     * @param <T>       响应数据类型
+     * @return
+     */
+    public static <C, T> ResponseEntity<C, T> success(C code, String message, T data) {
+        return new ResponseEntity<C, T>()
+                .setSuccess(true)
+                .setCode(code)
+                .setMessage(message)
+                .setData(data);
+    }
+
+    /**
+     * 成功
+     * @param code          响应码
+     * @param message       响应码描述
+     * @param data          响应数据
+     * @param totalElements 总条数
+     * @param totalPages    总页数
+     * @param pageSize      分页大小
+     * @param currentPage   当前页
+     * @param <C>           响应码类型
+     * @param <T>           响应数据类型
+     * @return
+     */
+    public static <C, T> ResponseEntity<C, T> success(C code, String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
+
+        return new ResponseEntity<C, T>()
+                .setSuccess(true)
+                .setCode(code)
+                .setMessage(message)
+                .setData(data)
+                .setPage(
+                        new ResponsePageEntity()
+                                .setTotalElements(totalElements)
+                                .setTotalPages(totalPages)
+                                .setPageSize(pageSize)
+                                .setCurrentPage(currentPage));
+    }
+
+    /**
+     * 成功
+     * @param message       响应码描述
+     * @param data          响应数据
+     * @param totalElements 总条数
+     * @param totalPages    总页数
+     * @param pageSize      分页大小
+     * @param currentPage   当前页
+     * @param <C>           响应码类型
+     * @param <T>           响应数据类型
+     * @return
+     */
+    public static <C, T> ResponseEntity<C, T> success(String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
+
+        return new ResponseEntity<C, T>()
+                .setSuccess(true)
+                .setMessage(message)
+                .setData(data)
+                .setPage(
+                        new ResponsePageEntity()
+                                .setTotalElements(totalElements)
+                                .setTotalPages(totalPages)
+                                .setPageSize(pageSize)
+                                .setCurrentPage(currentPage));
+    }
+
+    /**
+     * 成功
+     * @param data          响应数据
+     * @param totalElements 总条数
+     * @param totalPages    总页数
+     * @param pageSize      分页大小
+     * @param currentPage   当前页
+     * @param <C>           响应码类型
+     * @param <T>           响应数据类型
+     * @return
+     */
+    public static <C, T> ResponseEntity<C, T> success(T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
+
+        return new ResponseEntity<C, T>()
+                .setSuccess(true)
+                .setMessage(DEFAULT_SUCCESS_MESSAGE)
+                .setData(data)
+                .setPage(
+                        new ResponsePageEntity()
+                                .setTotalElements(totalElements)
+                                .setTotalPages(totalPages)
+                                .setPageSize(pageSize)
+                                .setCurrentPage(currentPage));
+    }
+
+    /**
+     * 失败
+     * @param code      响应码
+     * @param message   响应码描述
+     * @param <C>       响应码类型
+     * @return
+     */
+    public static <C> ResponseEntity<C, Void> failure(C code, String message) {
+        return new ResponseEntity<C, Void>()
+                .setSuccess(false)
+                .setCode(code)
+                .setMessage(message);
+    }
+
+    /**
+     * 失败
+     * @param message   响应码描述
+     * @return
+     */
+    public static ResponseEntity<Void, Void> failure(String message) {
+        return new ResponseEntity<Void, Void>()
+                .setSuccess(false)
+                .setMessage(message);
+    }
+
+    /**
+     * 失败
+     * @return
+     */
+    public static ResponseEntity<Void, Void> failure() {
+        return new ResponseEntity<Void, Void>()
+                .setSuccess(false)
+                .setMessage(DEFAULT_FAILURE_MESSAGE);
+    }
+
+}

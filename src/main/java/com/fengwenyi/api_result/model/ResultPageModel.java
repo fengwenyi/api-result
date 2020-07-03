@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @author Erwin Feng
  * @see com.fengwenyi.api_result.model.ResultModel
  * @since 2019/11/20
+ * @deprecated {@link com.fengwenyi.api_result.entity.ResponseEntity}
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultPageModel<T> extends ResultModel<T> {

@@ -21,6 +21,7 @@ import com.fengwenyi.api_result.model.ResultApiModel;
  *
  * @author Erwin Feng
  * @since 2019-08-21 10:47
+ * @deprecated {@link com.fengwenyi.api_result.util.ResponseUtils}
  */
 public class ResultApiHelper {
 

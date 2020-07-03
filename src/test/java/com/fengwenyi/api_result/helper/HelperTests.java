@@ -10,6 +10,7 @@ import org.junit.Test;
  * Helper测试
  * @author Erwin Feng
  * @since 2019-08-21 10:58
+ * @deprecated 被测试的 {@code helper} 可能会在未来的版本中删除
  */
 public class HelperTests {
 

@@ -21,6 +21,7 @@ import com.fengwenyi.api_result.model.ResultPageModel;
  *
  * @author Erwin Feng[xfsy_2015@163.com]
  * @since 2019/11/20 12:13
+ * @deprecated {@link com.fengwenyi.api_result.util.ResponseUtils}
  */
 public class ResultPageHelper {
 

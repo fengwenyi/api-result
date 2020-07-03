@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * </ul>
  * @author Erwin Feng
  * @since 2.0.4
+ * @deprecated {@link com.fengwenyi.api_result.entity.ResponseEntity}
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PageModel {
