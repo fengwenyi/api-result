@@ -54,42 +54,83 @@ public class ResponsePageEntity implements Serializable {
      */
     private Long currentPage;
 
+    /**
+     * 获取属性 {@code totalElements} 的值
+     * @return 获取属性 {@code totalElements} 的值
+     */
     public Long getTotalElements() {
         return totalElements;
     }
 
+    /**
+     * 给属性 {@code totalElements} 赋值
+     * @param totalElements {@code totalElements}
+     * @return {@link ResponsePageEntity}
+     */
     public ResponsePageEntity setTotalElements(Long totalElements) {
         this.totalElements = totalElements;
         return this;
     }
 
+    /**
+     * 获取属性 {@code totalPages} 的值
+     * @return 获取属性 {@code totalPages} 的值
+     */
     public Long getTotalPages() {
         return totalPages;
     }
 
+    /**
+     * 给属性 {@code totalPages} 赋值
+     * @param totalPages {@code totalPages}
+     * @return {@link ResponsePageEntity}
+     */
     public ResponsePageEntity setTotalPages(Long totalPages) {
         this.totalPages = totalPages;
         return this;
     }
 
+    /**
+     * 获取属性 {@code pageSize} 的值
+     * @return 获取属性 {@code pageSize} 的值
+     */
     public Integer getPageSize() {
         return pageSize;
     }
 
+    /**
+     * 给属性 {@code pageSize} 赋值
+     * @param pageSize {@code pageSize}
+     * @return {@link ResponsePageEntity}
+     */
     public ResponsePageEntity setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
 
+    /**
+     * 获取属性 {@code currentPage} 的值
+     * @return 获取属性 {@code currentPage} 的值
+     */
     public Long getCurrentPage() {
         return currentPage;
     }
 
+    /**
+     * 给属性 {@code currentPage} 赋值
+     * @param currentPage {@code currentPage}
+     * @return {@link ResponsePageEntity}
+     */
     public ResponsePageEntity setCurrentPage(Long currentPage) {
         this.currentPage = currentPage;
         return this;
     }
 
+    /**
+     * 重写 {@code equals} 方法
+     * @param o 待比对的对象
+     * @return 返回两个对象是否是相等，true：相等；false：不相等
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,11 +142,19 @@ public class ResponsePageEntity implements Serializable {
                 Objects.equals(currentPage, that.currentPage);
     }
 
+    /**
+     * 重写 {@code hashCode} 方法
+     * @return 返回对象的 hash 值
+     */
     @Override
     public int hashCode() {
         return Objects.hash(totalElements, totalPages, pageSize, currentPage);
     }
 
+    /**
+     * 重写 {@code toString} 方法
+     * @return 返回由对象各个属性的值拼接的字符串
+     */
     @Override
     public String toString() {
         return "ResponsePageEntity{" +

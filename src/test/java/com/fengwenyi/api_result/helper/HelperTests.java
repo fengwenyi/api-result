@@ -18,15 +18,15 @@ public class HelperTests {
     @Test
     public void testResultHelper() {
         // 成功，无数据
-        ResultModel resultModel = ResultHelper.success("Success");
+        ResultModel<Void> resultModel = ResultHelper.success("Success");
         System.out.println(resultModel); // resultModel {"success":true, "message":"Success"}
 
         // 成功，有数据
-        ResultModel resultModel2 = ResultHelper.success("Success", "this is data");
+        ResultModel<String> resultModel2 = ResultHelper.success("Success", "this is data");
         System.out.println(resultModel2); // resultModel {"success":true, "message":"Success", "data":"this is data"}
 
         // 失败
-        ResultModel resultModel3 = ResultHelper.error("This is error info");
+        ResultModel<Void> resultModel3 = ResultHelper.error("This is error info");
         System.out.println(resultModel3); // resultModel {"success":false, "message":"This is error info"}
     }
 
@@ -34,15 +34,15 @@ public class HelperTests {
     @Test
     public void testApiResultHelper() {
         // 成功，无数据
-        ResultApiModel resultApiModel1 = ResultApiHelper.success(0, "Success");
+        ResultApiModel<Integer, Void> resultApiModel1 = ResultApiHelper.success(0, "Success");
         System.out.println(resultApiModel1); // resultModel {"code":0, "success":true, "message":"true"}
 
         // 成功，有数据
-        ResultApiModel resultApiModel2 = ResultApiHelper.success(0, "Success", "This is data");
+        ResultApiModel<Integer, String> resultApiModel2 = ResultApiHelper.success(0, "Success", "This is data");
         System.out.println(resultApiModel2); // resultModel {"code":0, "success":true, "message":"true", "data":"This is data"}
 
         // 失败
-        ResultApiModel resultApiModel3 = ResultApiHelper.success(1000000, "This is error info");
+        ResultApiModel<Integer, Void> resultApiModel3 = ResultApiHelper.success(1000000, "This is error info");
         System.out.println(resultApiModel3); // resultModel {"code":1000000, "success":true, "message":"true"}
     }
 
@@ -55,7 +55,7 @@ public class HelperTests {
         // PageResultModel {"success":true, "message":"true", "data":"[Ljava.lang.String;@6aa8ceb6", "total":60, "size":6, "pages":10, "current":1}
 
         // 出错
-        ResultPageModel error = ResultPageHelper.error("网络异常，数据获取失败");
+        ResultPageModel<Void> error = ResultPageHelper.error("网络异常，数据获取失败");
         System.out.println(error); //PageResultModel {"success":false, "message":"false"}
     }
 

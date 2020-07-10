@@ -7,7 +7,18 @@ import static com.fengwenyi.api_result.constant.ApiResultConstant.DEFAULT_FAILUR
 import static com.fengwenyi.api_result.constant.ApiResultConstant.DEFAULT_SUCCESS_MESSAGE;
 
 /**
- * 响应工具类
+ * 响应工具类</br>
+ *
+ * 关于返回属性说明：</br>
+ *
+ * <ul>
+ *     <li>success：返回结果标识。true为成功； false为失败。一定返回</li>
+ *     <li>code：响应码。可选。如果不指定，不返回</li>
+ *     <li>message：描述信息，一定返回</li>
+ *     <li>data：数据，成功并且需要返回数据时，才有该参数</li>
+ *     <li>page：分页实体类，分页时，才会返回。可选</li>
+ * </ul>
+ *
  * @author Erwin Feng
  * @since 2.1.0
  */
@@ -15,7 +26,7 @@ public class ResponseUtils {
 
     /**
      * 成功
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static ResponseEntity<Void, Void> success() {
         return new ResponseEntity<Void, Void>()
@@ -27,7 +38,7 @@ public class ResponseUtils {
      * 成功，携带数据
      * @param data 响应数据
      * @param <T>  响应数据类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <T> ResponseEntity<Void, T> success(T data) {
         return new ResponseEntity<Void, T>()
@@ -41,7 +52,7 @@ public class ResponseUtils {
      * @param message   响应码描述
      * @param data      响应数据
      * @param <T>       响应数据类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <T> ResponseEntity<Void, T> success(String message, T data) {
         return new ResponseEntity<Void, T>()
@@ -57,7 +68,7 @@ public class ResponseUtils {
      * @param data      响应数据
      * @param <C>       响应码类型
      * @param <T>       响应数据类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <C, T> ResponseEntity<C, T> success(C code, String message, T data) {
         return new ResponseEntity<C, T>()
@@ -78,7 +89,7 @@ public class ResponseUtils {
      * @param currentPage   当前页
      * @param <C>           响应码类型
      * @param <T>           响应数据类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <C, T> ResponseEntity<C, T> success(C code, String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
 
@@ -105,7 +116,7 @@ public class ResponseUtils {
      * @param currentPage   当前页
      * @param <C>           响应码类型
      * @param <T>           响应数据类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <C, T> ResponseEntity<C, T> success(String message, T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
 
@@ -130,7 +141,7 @@ public class ResponseUtils {
      * @param currentPage   当前页
      * @param <C>           响应码类型
      * @param <T>           响应数据类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <C, T> ResponseEntity<C, T> success(T data, Long totalElements, Long totalPages, Integer pageSize, Long currentPage) {
 
@@ -151,7 +162,7 @@ public class ResponseUtils {
      * @param code      响应码
      * @param message   响应码描述
      * @param <C>       响应码类型
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static <C> ResponseEntity<C, Void> failure(C code, String message) {
         return new ResponseEntity<C, Void>()
@@ -163,7 +174,7 @@ public class ResponseUtils {
     /**
      * 失败
      * @param message   响应码描述
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static ResponseEntity<Void, Void> failure(String message) {
         return new ResponseEntity<Void, Void>()
@@ -173,7 +184,7 @@ public class ResponseUtils {
 
     /**
      * 失败
-     * @return
+     * @return {@link ResponseEntity}
      */
     public static ResponseEntity<Void, Void> failure() {
         return new ResponseEntity<Void, Void>()
