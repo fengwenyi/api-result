@@ -37,6 +37,10 @@ public enum ResponseCodeEnum {
     , ERROR_ACCOUNT_EXPIRE(105004, "账户已过期")
     , ERROR_ACCOUNT_ARREARS(105005, "账户已欠费")
 
+    /* ------------------106xxx 服务调用相关的错误--------------------------- */
+    , ERROR_SERVICE_CALL_FAILURE(106001, "服务调用失败")
+    , ERROR_SERVICE_RESPONSE_EXCEPTION(106002, "服务响应异常")
+
     /* ------------------999xxx 系统错误--------------------------- */
     , ERROR_SYSTEM_EXCEPTION(999001, "系统异常")
     ;
