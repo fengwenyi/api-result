@@ -6,10 +6,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * 接口响应实体类
+ * 接口响应实体类 <br>
  *
- * <p>属性介绍：</p>
+ * <br>
  *
+ * 属性介绍：<br>
  * <ul>
  *     <li>success：返回结果标识。true为成功； false为失败</li>
  *     <li>code：响应码，可根据项目业务指定错误码，便于业务处理</li>

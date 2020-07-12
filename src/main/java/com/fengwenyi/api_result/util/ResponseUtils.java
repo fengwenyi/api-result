@@ -9,8 +9,9 @@ import static com.fengwenyi.api_result.constant.ApiResultConstant.DEFAULT_SUCCES
 /**
  * 响应工具类<br>
  *
- * 关于返回属性说明：<br>
+ * <br>
  *
+ * 关于返回属性说明：<br>
  * <ul>
  *     <li>success：返回结果标识。true为成功； false为失败。一定返回</li>
  *     <li>code：响应码。可选。如果不指定，不返回</li>
