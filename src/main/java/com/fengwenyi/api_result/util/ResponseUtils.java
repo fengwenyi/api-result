@@ -26,10 +26,12 @@ public class ResponseUtils {
 
     /**
      * 成功
+     * @param <C>       响应码类型
+     * @param <T>       响应数据类型
      * @return {@link ResponseEntity}
      */
-    public static ResponseEntity<Void, Void> success() {
-        return new ResponseEntity<Void, Void>()
+    public static <C, T> ResponseEntity<C, T> success() {
+        return new ResponseEntity<C, T>()
                 .setSuccess(true)
                 .setMessage(DEFAULT_SUCCESS_MESSAGE);
     }
@@ -37,11 +39,12 @@ public class ResponseUtils {
     /**
      * 成功，携带数据
      * @param data 响应数据
-     * @param <T>  响应数据类型
+     * @param <C>       响应码类型
+     * @param <T>       响应数据类型
      * @return {@link ResponseEntity}
      */
-    public static <T> ResponseEntity<Void, T> success(T data) {
-        return new ResponseEntity<Void, T>()
+    public static <C, T> ResponseEntity<C, T> success(T data) {
+        return new ResponseEntity<C, T>()
                 .setSuccess(true)
                 .setMessage(DEFAULT_SUCCESS_MESSAGE)
                 .setData(data);
@@ -51,11 +54,12 @@ public class ResponseUtils {
      * 成功
      * @param message   响应码描述
      * @param data      响应数据
+     * @param <C>       响应码类型
      * @param <T>       响应数据类型
      * @return {@link ResponseEntity}
      */
-    public static <T> ResponseEntity<Void, T> success(String message, T data) {
-        return new ResponseEntity<Void, T>()
+    public static <C, T> ResponseEntity<C, T> success(String message, T data) {
+        return new ResponseEntity<C, T>()
                 .setSuccess(true)
                 .setMessage(message)
                 .setData(data);
@@ -162,10 +166,11 @@ public class ResponseUtils {
      * @param code      响应码
      * @param message   响应码描述
      * @param <C>       响应码类型
+     * @param <T>       响应数据类型
      * @return {@link ResponseEntity}
      */
-    public static <C> ResponseEntity<C, Void> failure(C code, String message) {
-        return new ResponseEntity<C, Void>()
+    public static <C, T> ResponseEntity<C, T> failure(C code, String message) {
+        return new ResponseEntity<C, T>()
                 .setSuccess(false)
                 .setCode(code)
                 .setMessage(message);
@@ -174,20 +179,24 @@ public class ResponseUtils {
     /**
      * 失败
      * @param message   响应码描述
+     * @param <C>       响应码类型
+     * @param <T>       响应数据类型
      * @return {@link ResponseEntity}
      */
-    public static ResponseEntity<Void, Void> failure(String message) {
-        return new ResponseEntity<Void, Void>()
+    public static <C, T> ResponseEntity<C, T> failure(String message) {
+        return new ResponseEntity<C, T>()
                 .setSuccess(false)
                 .setMessage(message);
     }
 
     /**
      * 失败
+     * @param <C>       响应码类型
+     * @param <T>       响应数据类型
      * @return {@link ResponseEntity}
      */
-    public static ResponseEntity<Void, Void> failure() {
-        return new ResponseEntity<Void, Void>()
+    public static <C, T> ResponseEntity<C, T> failure() {
+        return new ResponseEntity<C, T>()
                 .setSuccess(false)
                 .setMessage(DEFAULT_FAILURE_MESSAGE);
     }
