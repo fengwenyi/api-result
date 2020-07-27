@@ -1,6 +1,7 @@
 package com.fengwenyi.api_result.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import javafx.embed.swt.SWTFXUtils;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -49,6 +50,12 @@ public class ResponseEntity<C, T> implements Serializable {
 
     /** 响应数据 */
     private T data;
+
+    private String traceId;
+
+    private ResponseHeader<K, V> header;
+
+    private ResponseBody body;
 
     /** 分页 */
     private ResponsePageEntity page;

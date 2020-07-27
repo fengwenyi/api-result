@@ -54,6 +54,8 @@ public class ResponsePageEntity implements Serializable {
      */
     private Long currentPage;
 
+    private T content;
+
     /**
      * 获取属性 {@code totalElements} 的值
      * @return 获取属性 {@code totalElements} 的值
