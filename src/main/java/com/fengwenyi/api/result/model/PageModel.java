@@ -1,8 +1,11 @@
-package com.fengwenyi.api_result.model;
+package com.fengwenyi.api.result.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.io.Serializable;
+
 /**
+ * 【重新改造】
  * 分页实体类
  * <p>
  *     这个类主要是存放分页的一些属性，包含一些几个字段
@@ -20,11 +23,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  *     <li>对属性进行重新命名，意思更明确</li>
  * </ul>
  * @author Erwin Feng
- * @since 2.0.4
- * @deprecated {@link com.fengwenyi.api_result.entity.ResponseEntity}
+ * @since 2.2.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PageModel {
+public class PageModel<T> implements Serializable {
+
+    private static final long serialVersionUID = 2335780119721719031L;
 
     /**
      * 总条数
@@ -49,6 +53,9 @@ public class PageModel {
      * </p>
      */
     private Long currentPage;
+
+    /** 响应数据 */
+    private T content;
 
     /**
      * 参数构造方法
