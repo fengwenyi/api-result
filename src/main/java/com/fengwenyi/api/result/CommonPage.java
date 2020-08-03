@@ -7,20 +7,14 @@ import java.io.Serializable;
 /**
  * 分页实体类
  * <p>
- * 这个类主要是存放分页的一些属性，包含一些几个字段
+ * 这个类主要是存放分页的一些属性，包含如下字段：
  * </p>
  * <ul>
- *     <li>totalElements：总条数</li>
- *     <li>totalPages：总页数</li>
- *     <li>pageSize：每页显示条数</li>
- *     <li>currentPage：当前页</li>
- *     <li>content：当前页</li>
- * </ul>
- * <p>
- *     新版变化：
- * </p>
- * <ul>
- *     <li>对属性进行重新命名，意思更明确</li>
+ *     <li>{@code currentPage}      ：当前页</li>
+ *     <li>{@code pageSize}         ：每页显示条数</li>
+ *     <li>{@code totalElements}    ：总条数</li>
+ *     <li>{@code totalPages}       ：总页数</li>
+ *     <li>{@code content}          ：数据</li>
  * </ul>
  *
  * @author Erwin Feng
@@ -32,6 +26,20 @@ public class CommonPage<T> implements Serializable {
     private static final long serialVersionUID = 2335780119721719031L;
 
     /**
+     * 当前页
+     * <p>
+     * 将Integer改为Long的原因：假如你的总页数远远大于整数的最大数，
+     * 那么这样就很难处理了。但修改之后，并不会影响我们现有的业务
+     * </p>
+     */
+    private Long currentPage;
+
+    /**
+     * 每页显示条数
+     */
+    private Integer pageSize;
+
+    /**
      * 总条数
      */
     private Long totalElements;
@@ -40,20 +48,6 @@ public class CommonPage<T> implements Serializable {
      * 总页数
      */
     private Long totalPages;
-
-    /**
-     * 每页显示条数
-     */
-    private Integer pageSize;
-
-    /**
-     * 当前页
-     * <p>
-     * 将Integer改为Long的原因：假如你的总页数远远大于整数的最大数，
-     * 那么这样就很难处理了。但修改之后，并不会影响我们现有的业务
-     * </p>
-     */
-    private Long currentPage;
 
     /**
      * 响应数据
@@ -75,11 +69,11 @@ public class CommonPage<T> implements Serializable {
      * @param currentPage   当前页
      * @param content       数据
      */
-    public CommonPage(Long totalElements, Long totalPages, Integer pageSize, Long currentPage, T content) {
+    public CommonPage(Long currentPage, Integer pageSize, Long totalElements, Long totalPages, T content) {
+        this.currentPage = currentPage;
+        this.pageSize = pageSize;
         this.totalElements = totalElements;
         this.totalPages = totalPages;
-        this.pageSize = pageSize;
-        this.currentPage = currentPage;
         this.content = content;
     }
 

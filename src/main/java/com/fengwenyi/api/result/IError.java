@@ -1,16 +1,28 @@
 package com.fengwenyi.api.result;
 
 /**
+ * 返回码及信息提示接口
  * @author Erwin Feng
  * @since 2020/8/2
  */
 public interface IError {
 
+    /**
+     * 返回码
+     * @return 返回码
+     */
     String getCode();
 
+    /**
+     * 提示信息
+     * @return 提示信息
+     */
     String getMessage();
 
-    public static enum Default implements IError {
+    /**
+     * 默认
+     */
+    enum Default implements IError {
 
         /* -----------------成功---------------------------- */
         SUCCESS("111111", "Success")
@@ -49,26 +61,42 @@ public interface IError {
         , ERROR_ACCOUNT_ARREARS("005005", "账户已欠费")
 
         /* ------------------106xxx 服务调用相关的错误--------------------------- */
-        , ERROR_SERVICE_CALL_EXCEPTION("006001", "服务调用失败")
+        , ERROR_SERVICE_CALL_EXCEPTION("006001", "服务调用异常")
+        , ERROR_SERVICE_RESPONSE_EXCEPTION("006002", "服务响应异常")
         ;
 
-        private String code;
+        /** 返回码 */
+        private final String code;
 
-        private String message;
+        /** 提示信息 */
+        private final String message;
 
+        /**
+         * 构造方法
+         * @param code 返回码
+         * @param message 提示信息
+         */
         Default(String code, String message) {
             this.code = code;
             this.message = message;
         }
 
+        /**
+         * {@code code} get方法
+         * @return 返回码
+         */
         @Override
         public String getCode() {
-            return null;
+            return code;
         }
 
+        /**
+         * {@code message} get方法
+         * @return 提示信息
+         */
         @Override
         public String getMessage() {
-            return null;
+            return message;
         }
     }
 

@@ -56,7 +56,14 @@ public class CommonResponse<T> implements Serializable {
 
     private static final long serialVersionUID = -4206473602305400988L;
 
+    /**
+     * 默认操作成功
+     */
     private static final IError DEFAULT_SUCCESS = IError.Default.SUCCESS;
+
+    /**
+     * 默认操作失败
+     */
     private static final IError DEFAULT_ERROR = IError.Default.ERROR_COMMON_EXCEPTION;
 
     /**
@@ -112,6 +119,35 @@ public class CommonResponse<T> implements Serializable {
         this.success = success;
         this.traceId = traceId;
         this.header = header;
+        this.body = body;
+    }
+
+    /**
+     * 构造方法
+     *
+     * @param code    返回码
+     * @param message 描述信息
+     * @param success 操作结果，true / false
+     * @param body    响应体
+     */
+    public CommonResponse(String code, String message, Boolean success, T body) {
+        this.code = code;
+        this.message = message;
+        this.success = success;
+        this.body = body;
+    }
+
+    /**
+     * 构造方法
+     *
+     * @param iError  {@link IError}
+     * @param success 操作结果，true / false
+     * @param body    响应体
+     */
+    public CommonResponse(IError iError, Boolean success, T body) {
+        this.code = iError.getCode();
+        this.message = iError.getMessage();
+        this.success = success;
         this.body = body;
     }
 
