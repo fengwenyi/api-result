@@ -84,7 +84,7 @@ public class CommonResponse<T> implements Serializable {
     /**
      * 追溯ID
      */
-    @JsonProperty("trace_id")
+//    @JsonProperty("trace_id")
     private String traceId;
 
     /**
