@@ -87,6 +87,9 @@ public class CommonResponse<T> implements Serializable {
 //    @JsonProperty("trace_id")
     private String traceId;
 
+    /** 请求码 */
+    private String requestId;
+
     /**
      * 响应头：可以存放请求相关的信息
      */
@@ -381,6 +384,26 @@ public class CommonResponse<T> implements Serializable {
      */
     public CommonResponse setBody(T body) {
         this.body = body;
+        return this;
+    }
+
+    /**
+     * {@code requestId} 的get方法
+     *
+     * @return {@code requestId} 的值
+     */
+    public String getRequestId() {
+        return requestId;
+    }
+
+    /**
+     * {@code requestId} 的get方法
+     *
+     * @param requestId 响应体
+     * @return {@link CommonResponse}
+     */
+    public CommonResponse setRequestId(String requestId) {
+        this.requestId = requestId;
         return this;
     }
 }
