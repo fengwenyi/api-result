@@ -9,7 +9,7 @@
     "code":"111111",
     "message":"Query Success",
     "success":true,
-    "trace_id":"edf36a73796356d5bc9b6d81f4eb83d6",
+    "traceId":"edf36a73796356d5bc9b6d81f4eb83d6",
     "body":{
         "categoryData":[
             {
