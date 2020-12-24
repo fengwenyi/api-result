@@ -7,12 +7,12 @@ package com.fengwenyi.api.result;
  */
 public class CommonResponseTests {
 
-    public CommonResponse<?> testOk() {
-        return CommonResponse.ok();
+    public ResultTemplate<?> testOk() {
+        return ResultTemplate.ok();
     }
 
-    public CommonResponse<?> testError() {
-        return CommonResponse.error();
+    public ResultTemplate<?> testError() {
+        return ResultTemplate.error();
     }
 
 }

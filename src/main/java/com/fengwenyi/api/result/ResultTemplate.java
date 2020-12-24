@@ -1,7 +1,6 @@
 package com.fengwenyi.api.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -52,7 +51,7 @@ import java.util.Map;
  * @since 2.2.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CommonResponse<T> implements Serializable {
+public class ResultTemplate<T> implements Serializable {
 
     private static final long serialVersionUID = -4206473602305400988L;
 
@@ -82,18 +81,9 @@ public class CommonResponse<T> implements Serializable {
     private Boolean success = false;
 
     /**
-     * 追溯ID
-     */
-//    @JsonProperty("trace_id")
-    private String traceId;
-
-    /** 请求码 */
-    private String requestId;
-
-    /**
      * 响应头：可以存放请求相关的信息
      */
-    private Map<String, String> header;
+    private BaseHeader header;
 
     /**
      * 响应体
@@ -103,7 +93,7 @@ public class CommonResponse<T> implements Serializable {
     /**
      * 构造方法：无参数
      */
-    public CommonResponse() {
+    public ResultTemplate() {
     }
 
     /**
@@ -112,15 +102,13 @@ public class CommonResponse<T> implements Serializable {
      * @param code    返回码
      * @param message 描述信息
      * @param success 操作结果，true / false
-     * @param traceId 追溯码
      * @param header  响应头
      * @param body    响应体
      */
-    public CommonResponse(String code, String message, Boolean success, String traceId, Map<String, String> header, T body) {
+    public ResultTemplate(String code, String message, Boolean success, BaseHeader header, T body) {
         this.code = code;
         this.message = message;
         this.success = success;
-        this.traceId = traceId;
         this.header = header;
         this.body = body;
     }
@@ -133,7 +121,7 @@ public class CommonResponse<T> implements Serializable {
      * @param success 操作结果，true / false
      * @param body    响应体
      */
-    public CommonResponse(String code, String message, Boolean success, T body) {
+    public ResultTemplate(String code, String message, Boolean success, T body) {
         this.code = code;
         this.message = message;
         this.success = success;
@@ -147,7 +135,7 @@ public class CommonResponse<T> implements Serializable {
      * @param success 操作结果，true / false
      * @param body    响应体
      */
-    public CommonResponse(IError iError, Boolean success, T body) {
+    public ResultTemplate(IError iError, Boolean success, T body) {
         this.code = iError.getCode();
         this.message = iError.getMessage();
         this.success = success;
@@ -158,10 +146,10 @@ public class CommonResponse<T> implements Serializable {
      * 操作成功
      *
      * @param <T> 响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> ok() {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> ok() {
+        return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(DEFAULT_SUCCESS.getCode())
                 .setMessage(DEFAULT_SUCCESS.getMessage());
@@ -172,10 +160,10 @@ public class CommonResponse<T> implements Serializable {
      *
      * @param body 响应体
      * @param <T>  响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> ok(T body) {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> ok(T body) {
+        return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(DEFAULT_SUCCESS.getCode())
                 .setMessage(DEFAULT_SUCCESS.getMessage())
@@ -188,10 +176,10 @@ public class CommonResponse<T> implements Serializable {
      * @param code    响应码
      * @param message 响应信息
      * @param <T>     响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> ok(String code, String message) {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> ok(String code, String message) {
+        return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(code)
                 .setMessage(message);
@@ -204,10 +192,10 @@ public class CommonResponse<T> implements Serializable {
      * @param message 响应信息
      * @param body    响应体
      * @param <T>     响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> ok(String code, String message, T body) {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> ok(String code, String message, T body) {
+        return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(code)
                 .setMessage(message)
@@ -219,10 +207,10 @@ public class CommonResponse<T> implements Serializable {
      * 操作失败
      *
      * @param <T> 响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> error() {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> error() {
+        return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getCode())
                 .setMessage(DEFAULT_ERROR.getMessage());
     }
@@ -232,10 +220,10 @@ public class CommonResponse<T> implements Serializable {
      *
      * @param message 响应信息
      * @param <T>     响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> error(String message) {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> error(String message) {
+        return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getCode())
                 .setMessage(message);
     }
@@ -246,10 +234,10 @@ public class CommonResponse<T> implements Serializable {
      * @param code    响应码
      * @param message 响应信息
      * @param <T>     响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> error(String code, String message) {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> error(String code, String message) {
+        return new ResultTemplate<T>()
                 .setCode(code)
                 .setMessage(message);
     }
@@ -259,10 +247,10 @@ public class CommonResponse<T> implements Serializable {
      *
      * @param error {@link IError}
      * @param <T>   响应体类型
-     * @return 响应封装类 {@link CommonResponse}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> CommonResponse<T> error(IError error) {
-        return new CommonResponse<T>()
+    public static <T> ResultTemplate<T> error(IError error) {
+        return new ResultTemplate<T>()
                 .setCode(error.getCode())
                 .setMessage(error.getMessage());
     }
@@ -280,9 +268,9 @@ public class CommonResponse<T> implements Serializable {
      * {@code code} 的get方法
      *
      * @param code 响应码
-     * @return {@link CommonResponse}
+     * @return {@link ResultTemplate}
      */
-    public CommonResponse setCode(String code) {
+    public ResultTemplate<T> setCode(String code) {
         this.code = code;
         return this;
     }
@@ -300,9 +288,9 @@ public class CommonResponse<T> implements Serializable {
      * {@code message} 的get方法
      *
      * @param message 响应信息
-     * @return {@link CommonResponse}
+     * @return {@link ResultTemplate}
      */
-    public CommonResponse setMessage(String message) {
+    public ResultTemplate<T> setMessage(String message) {
         this.message = message;
         return this;
     }
@@ -320,30 +308,10 @@ public class CommonResponse<T> implements Serializable {
      * {@code success} 的get方法
      *
      * @param success 操作结果
-     * @return {@link CommonResponse}
+     * @return {@link ResultTemplate}
      */
-    public CommonResponse setSuccess(Boolean success) {
+    public ResultTemplate<T> setSuccess(Boolean success) {
         this.success = success;
-        return this;
-    }
-
-    /**
-     * {@code traceId} 的get方法
-     *
-     * @return {@code traceId} 的值
-     */
-    public String getTraceId() {
-        return traceId;
-    }
-
-    /**
-     * {@code traceId} 的get方法
-     *
-     * @param traceId 追溯码
-     * @return {@link CommonResponse}
-     */
-    public CommonResponse setTraceId(String traceId) {
-        this.traceId = traceId;
         return this;
     }
 
@@ -352,7 +320,7 @@ public class CommonResponse<T> implements Serializable {
      *
      * @return {@code header} 的值
      */
-    public Map<String, String> getHeader() {
+    public BaseHeader getHeader() {
         return header;
     }
 
@@ -360,9 +328,9 @@ public class CommonResponse<T> implements Serializable {
      * {@code header} 的get方法
      *
      * @param header 响应头
-     * @return {@link CommonResponse}
+     * @return {@link ResultTemplate}
      */
-    public CommonResponse setHeader(Map<String, String> header) {
+    public ResultTemplate<T> setHeader(BaseHeader header) {
         this.header = header;
         return this;
     }
@@ -380,30 +348,10 @@ public class CommonResponse<T> implements Serializable {
      * {@code body} 的get方法
      *
      * @param body 响应体
-     * @return {@link CommonResponse}
+     * @return {@link ResultTemplate}
      */
-    public CommonResponse setBody(T body) {
+    public ResultTemplate<T> setBody(T body) {
         this.body = body;
-        return this;
-    }
-
-    /**
-     * {@code requestId} 的get方法
-     *
-     * @return {@code requestId} 的值
-     */
-    public String getRequestId() {
-        return requestId;
-    }
-
-    /**
-     * {@code requestId} 的get方法
-     *
-     * @param requestId 响应体
-     * @return {@link CommonResponse}
-     */
-    public CommonResponse setRequestId(String requestId) {
-        this.requestId = requestId;
         return this;
     }
 }

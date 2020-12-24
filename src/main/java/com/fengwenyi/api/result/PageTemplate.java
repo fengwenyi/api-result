@@ -21,7 +21,7 @@ import java.io.Serializable;
  * @since 2.2.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CommonPage<T> implements Serializable {
+public class PageTemplate<T> implements Serializable {
 
     private static final long serialVersionUID = 2335780119721719031L;
 
@@ -57,7 +57,7 @@ public class CommonPage<T> implements Serializable {
     /**
      * 构造方法：无参数
      */
-    public CommonPage() {
+    public PageTemplate() {
     }
 
     /**
@@ -69,7 +69,7 @@ public class CommonPage<T> implements Serializable {
      * @param currentPage   当前页
      * @param content       数据
      */
-    public CommonPage(Long currentPage, Integer pageSize, Long totalElements, Long totalPages, T content) {
+    public PageTemplate(Long currentPage, Integer pageSize, Long totalElements, Long totalPages, T content) {
         this.currentPage = currentPage;
         this.pageSize = pageSize;
         this.totalElements = totalElements;
@@ -116,9 +116,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code totalElements} 的Get方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setTotalElements(Long totalElements) {
+    public PageTemplate<T> setTotalElements(Long totalElements) {
         this.totalElements = totalElements;
         return this;
     }
@@ -126,9 +126,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code totalPages} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setTotalPages(Long totalPages) {
+    public PageTemplate<T> setTotalPages(Long totalPages) {
         this.totalPages = totalPages;
         return this;
     }
@@ -136,9 +136,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code pageSize} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setPageSize(Integer pageSize) {
+    public PageTemplate<T> setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
@@ -146,9 +146,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code currentPage} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setCurrentPage(Long currentPage) {
+    public PageTemplate<T> setCurrentPage(Long currentPage) {
         this.currentPage = currentPage;
         return this;
     }
@@ -165,9 +165,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code content} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setContent(T content) {
+    public PageTemplate<T> setContent(T content) {
         this.content = content;
         return this;
     }
