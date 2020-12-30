@@ -171,4 +171,15 @@ public class PageTemplate<T> implements Serializable {
         this.content = content;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "PageTemplate{" +
+                "currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
+                ", totalElements=" + totalElements +
+                ", totalPages=" + totalPages +
+                ", content=" + content +
+                '}';
+    }
 }

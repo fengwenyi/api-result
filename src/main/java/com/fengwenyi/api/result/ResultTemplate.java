@@ -58,12 +58,12 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 默认操作成功
      */
-    private static final IError DEFAULT_SUCCESS = IError.Default.SUCCESS;
+    private static final IReturnCode DEFAULT_SUCCESS = IReturnCode.Default.SUCCESS;
 
     /**
      * 默认操作失败
      */
-    private static final IError DEFAULT_ERROR = IError.Default.ERROR_COMMON_EXCEPTION;
+    private static final IReturnCode DEFAULT_ERROR = IReturnCode.Default.ERROR_COMMON_EXCEPTION;
 
     /**
      * 响应码
@@ -131,13 +131,13 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 构造方法
      *
-     * @param iError  {@link IError}
+     * @param iReturnCode  {@link IReturnCode}
      * @param success 操作结果，true / false
      * @param body    响应体
      */
-    public ResultTemplate(IError iError, Boolean success, T body) {
-        this.code = iError.getCode();
-        this.message = iError.getMessage();
+    public ResultTemplate(IReturnCode iReturnCode, Boolean success, T body) {
+        this.code = iReturnCode.getCode();
+        this.message = iReturnCode.getMessage();
         this.success = success;
         this.body = body;
     }
@@ -148,7 +148,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T> 响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> ok() {
+    public static <T> ResultTemplate<T> success() {
         return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(DEFAULT_SUCCESS.getCode())
@@ -162,7 +162,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T>  响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> ok(T body) {
+    public static <T> ResultTemplate<T> success(T body) {
         return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(DEFAULT_SUCCESS.getCode())
@@ -178,7 +178,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T>     响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> ok(String code, String message) {
+    public static <T> ResultTemplate<T> success(String code, String message) {
         return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(code)
@@ -194,7 +194,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T>     响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> ok(String code, String message, T body) {
+    public static <T> ResultTemplate<T> success(String code, String message, T body) {
         return new ResultTemplate<T>()
                 .setSuccess(true)
                 .setCode(code)
@@ -209,7 +209,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T> 响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> error() {
+    public static <T> ResultTemplate<T> fail() {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getCode())
                 .setMessage(DEFAULT_ERROR.getMessage());
@@ -222,7 +222,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T>     响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> error(String message) {
+    public static <T> ResultTemplate<T> fail(String message) {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getCode())
                 .setMessage(message);
@@ -236,7 +236,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param <T>     响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> error(String code, String message) {
+    public static <T> ResultTemplate<T> fail(String code, String message) {
         return new ResultTemplate<T>()
                 .setCode(code)
                 .setMessage(message);
@@ -245,11 +245,11 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param error {@link IError}
+     * @param error {@link IReturnCode}
      * @param <T>   响应体类型
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> error(IError error) {
+    public static <T> ResultTemplate<T> fail(IReturnCode error) {
         return new ResultTemplate<T>()
                 .setCode(error.getCode())
                 .setMessage(error.getMessage());
@@ -353,5 +353,16 @@ public class ResultTemplate<T> implements Serializable {
     public ResultTemplate<T> setBody(T body) {
         this.body = body;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultTemplate{" +
+                "code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                ", success=" + success +
+                ", header=" + header +
+                ", body=" + body +
+                '}';
     }
 }

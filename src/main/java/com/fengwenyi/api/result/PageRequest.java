@@ -8,16 +8,19 @@ import java.util.List;
  */
 public class PageRequest<T> {
 
+    /** 当前页 */
     private Long currentPage;
 
+    /** 每页显示条数 */
     private Integer pageSize;
 
+    /** 查询条件 */
     private T query;
 
-    // 升序排序字段：数组
+    /** 升序排序字段：数组 */
     private List<String> ascColumnNames;
 
-    // 降序排列字段：数组
+    /** 降序排列字段：数组 */
     private List<String> descColumnNames;
 
     public Long getCurrentPage() {

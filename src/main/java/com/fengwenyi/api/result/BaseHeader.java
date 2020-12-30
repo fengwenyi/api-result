@@ -1,5 +1,7 @@
 package com.fengwenyi.api.result;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ import java.util.Map;
  * @author Erwin Feng
  * @since 2020-12-24
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BaseHeader extends HashMap<String, Object> {
 
     /** 追溯ID */
