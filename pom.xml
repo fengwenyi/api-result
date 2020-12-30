@@ -25,12 +25,12 @@
          过滤json数据中，字段为null的
          不打包：如果使用 spring boot构建的项目，默认支持
          -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotations.version}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.fengwenyi</groupId>

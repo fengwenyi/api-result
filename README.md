@@ -6,42 +6,38 @@
 
 ```json
 {
-    "code":"111111",
-    "message":"Query Success",
-    "success":true,
-    "traceId":"edf36a73796356d5bc9b6d81f4eb83d6",
-    "body":{
-        "categoryData":[
-            {
-                "id":"1265200246055809026",
-                "categoryName":"公告"
-            },
-            {
-                "id":"1257301514647777282",
-                "categoryName":"Java"
-            },
-            {
-                "id":"1257694082590060546",
-                "categoryName":"开发"
-            },
-            {
-                "id":"1257255039406452737",
-                "categoryName":"前端"
-            },
-            {
-                "id":"1257687302015299586",
-                "categoryName":"计划"
-            },
-            {
-                "id":"1258792800529727490",
-                "categoryName":"网站更新日志"
-            },
-            {
-                "id":"1257256132635013121",
-                "categoryName":"日志"
-            }
-        ]
-    }
+  "code": "111111",
+  "message": "Success",
+  "success": true,
+  "header": {
+    "requestId": "cc15c517a91349c8b1269943e537a26d"
+  },
+  "body": {
+    "currentPage": 1,
+    "pageSize": 10,
+    "totalRows": 3,
+    "totalPages": 1,
+    "content": [
+      {
+        "gender": "女",
+        "name": "Fabiola",
+        "id": 1,
+        "age": 20
+      },
+      {
+        "gender": "女",
+        "name": "Finnguala",
+        "id": 2,
+        "age": 16
+      },
+      {
+        "gender": "男",
+        "name": "Fuller",
+        "id": 3,
+        "age": 30
+      }
+    ]
+  }
 }
 ```
 

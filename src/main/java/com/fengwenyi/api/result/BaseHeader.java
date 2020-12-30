@@ -13,24 +13,16 @@ import java.util.Map;
 public class BaseHeader extends HashMap<String, Object> {
 
     /** 追溯ID */
-    private String traceId;
+    private static final String TRACE_ID = "traceId";
 
     /** 请求ID */
-    private String requestId;
-
-    public String getTraceId() {
-        return traceId;
-    }
+    private static final String REQUEST_ID = "requestId";
 
     public void setTraceId(String traceId) {
-        this.traceId = traceId;
-    }
-
-    public String getRequestId() {
-        return requestId;
+        this.put(TRACE_ID, traceId);
     }
 
     public void setRequestId(String requestId) {
-        this.requestId = requestId;
+        this.put(REQUEST_ID, requestId);
     }
 }

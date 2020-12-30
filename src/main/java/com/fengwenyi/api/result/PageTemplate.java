@@ -12,7 +12,7 @@ import java.io.Serializable;
  * <ul>
  *     <li>{@code currentPage}      ：当前页</li>
  *     <li>{@code pageSize}         ：每页显示条数</li>
- *     <li>{@code totalElements}    ：总条数</li>
+ *     <li>{@code totalRows}        ：总条数</li>
  *     <li>{@code totalPages}       ：总页数</li>
  *     <li>{@code content}          ：数据</li>
  * </ul>
@@ -42,7 +42,7 @@ public class PageTemplate<T> implements Serializable {
     /**
      * 总条数
      */
-    private Long totalElements;
+    private Long totalRows;
 
     /**
      * 总页数
@@ -63,27 +63,27 @@ public class PageTemplate<T> implements Serializable {
     /**
      * 参数构造方法
      *
-     * @param totalElements 总条数
+     * @param totalRows 总条数
      * @param totalPages    总页数
      * @param pageSize      每页显示条数
      * @param currentPage   当前页
      * @param content       数据
      */
-    public PageTemplate(Long currentPage, Integer pageSize, Long totalElements, Long totalPages, T content) {
+    public PageTemplate(Long currentPage, Integer pageSize, Long totalRows, Long totalPages, T content) {
         this.currentPage = currentPage;
         this.pageSize = pageSize;
-        this.totalElements = totalElements;
+        this.totalRows = totalRows;
         this.totalPages = totalPages;
         this.content = content;
     }
 
     /**
-     * 参数 {@code totalElements} 的Get方法
+     * 参数 {@code totalRows} 的Get方法
      *
      * @return 总条数
      */
-    public Long getTotalElements() {
-        return totalElements;
+    public Long getTotalRows() {
+        return totalRows;
     }
 
     /**
@@ -114,12 +114,12 @@ public class PageTemplate<T> implements Serializable {
     }
 
     /**
-     * 参数 {@code totalElements} 的Get方法
+     * 参数 {@code totalRows} 的Get方法
      *
      * @return {@link PageTemplate}
      */
-    public PageTemplate<T> setTotalElements(Long totalElements) {
-        this.totalElements = totalElements;
+    public PageTemplate<T> setTotalRows(Long totalRows) {
+        this.totalRows = totalRows;
         return this;
     }
 
@@ -177,7 +177,7 @@ public class PageTemplate<T> implements Serializable {
         return "PageTemplate{" +
                 "currentPage=" + currentPage +
                 ", pageSize=" + pageSize +
-                ", totalElements=" + totalElements +
+                ", totalRows=" + totalRows +
                 ", totalPages=" + totalPages +
                 ", content=" + content +
                 '}';
