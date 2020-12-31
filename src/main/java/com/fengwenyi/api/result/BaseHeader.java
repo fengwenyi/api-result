@@ -22,7 +22,15 @@ public class BaseHeader extends HashMap<String, Object> {
         this.put(TRACE_ID, traceId);
     }
 
+    public String getTraceId() {
+        return (String) this.get(TRACE_ID);
+    }
+
     public void setRequestId(String requestId) {
         this.put(REQUEST_ID, requestId);
+    }
+
+    public String getRequestId() {
+        return (String) this.get(REQUEST_ID);
     }
 }
