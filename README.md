@@ -4,6 +4,18 @@
 
 ## 示例
 
+### 简单示例
+```json
+{
+    "code": "111111",
+    "message": "Success",
+    "success": true
+}
+```
+
+
+### 完整示例
+
 ```json
 {
   "code": "111111",

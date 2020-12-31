@@ -2,6 +2,7 @@ package com.fengwenyi.api.result;
 
 import com.fengwenyi.javalib.convert.JsonUtils;
 import com.fengwenyi.javalib.generate.IdUtils;
+import com.fengwenyi.javalib.util.PrintUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -16,7 +17,7 @@ public class ResultTemplateTests {
     @Test
     public void testSuccess() {
         ResultTemplate<Object> resultTemplate = ResultTemplate.success();
-        System.out.println(resultTemplate);
+        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
     @Test
