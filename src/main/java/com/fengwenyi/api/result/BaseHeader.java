@@ -15,22 +15,11 @@ public class BaseHeader extends HashMap<String, Object> {
     /** 追溯ID */
     private static final String TRACE_ID = "traceId";
 
-    /** 请求ID */
-    private static final String REQUEST_ID = "requestId";
-
     public void setTraceId(String traceId) {
         this.put(TRACE_ID, traceId);
     }
 
     public String getTraceId() {
         return (String) this.get(TRACE_ID);
-    }
-
-    public void setRequestId(String requestId) {
-        this.put(REQUEST_ID, requestId);
-    }
-
-    public String getRequestId() {
-        return (String) this.get(REQUEST_ID);
     }
 }

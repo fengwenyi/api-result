@@ -23,13 +23,13 @@ public class ResultTemplateTests {
     @Test
     public void testFail() {
         ResultTemplate<Object> resultTemplate = ResultTemplate.fail();
-        System.out.println(resultTemplate);
+        PrintUtils.info(resultTemplate);
     }
 
     @Test
     public void testSuccessFull() {
         BaseHeader header = new BaseHeader();
-        header.setRequestId(IdUtils.getIdByUUID());
+        header.setTraceId(IdUtils.getIdByUUID());
 
         PageTemplate<List<Map<String, Object>>> pageTemplate = new PageTemplate<>();
 
@@ -75,7 +75,7 @@ public class ResultTemplateTests {
                 .setBody(pageTemplate)
                 ;
 
-        System.out.println(JsonUtils.convertString(resultTemplate));
+        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
 }
