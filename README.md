@@ -9,7 +9,9 @@
 - 标准化。
 
 
-## Maven
+## 快速开始
+
+### Maven
 
 ```xml
 <dependency>
@@ -19,9 +21,21 @@
 </dependency>
 ```
 
-## 响应示例
+### 代码示例
 
-### 简单示例
+```java
+@RestController
+@RequestMapping("/api")
+public class ApiController {
+    
+    @RequestMapping("/demo")
+    public ResultTemplate<Void> demo() {
+        return ResultTemplate.success();
+    }
+}
+```
+
+### 响应示例
 ```json
 {
     "code": "111111",
@@ -30,8 +44,7 @@
 }
 ```
 
-
-### 完整示例
+## 完整响应示例
 
 ```json
 {
