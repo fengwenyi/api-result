@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 
 /**
- * 分页实体类
+ * 分页实体类 <br><br><br>
+ *
  * <p>
  * 这个类主要是存放分页的一些属性，包含如下字段：
  * </p>
+ *
  * <ul>
  *     <li>{@code currentPage}      ：当前页</li>
  *     <li>{@code pageSize}         ：每页显示条数</li>
@@ -18,7 +20,7 @@ import java.io.Serializable;
  * </ul>
  *
  * @author Erwin Feng
- * @since 2.2.0
+ * @since 2.3.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PageTemplate<T> implements Serializable {

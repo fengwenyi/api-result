@@ -28,7 +28,7 @@ public class ResultTemplateTests {
 
     @Test
     public void testSuccessFull() {
-        BaseHeader header = new BaseHeader();
+        ResultHeader header = new ResultHeader();
         header.setTraceId(IdUtils.getIdByUUID());
 
         PageTemplate<List<Map<String, Object>>> pageTemplate = new PageTemplate<>();

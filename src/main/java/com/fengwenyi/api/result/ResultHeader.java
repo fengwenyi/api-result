@@ -6,11 +6,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * <p>
+ *     响应头
+ * </p>
+ *
  * @author Erwin Feng
- * @since 2020-12-24
+ * @since 2.3.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BaseHeader extends HashMap<String, Object> {
+public class ResultHeader extends HashMap<String, Object> {
+
+    private static final long serialVersionUID = 6187327761077399909L;
 
     /** 追溯ID */
     private static final String TRACE_ID = "traceId";

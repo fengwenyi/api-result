@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- * 封装接口响应实体类
+ * 封装接口响应实体类 <br><br><br>
  *
  * <p>
  * 预设属性及介绍：
@@ -16,39 +16,46 @@ import java.util.Map;
  *     <li>{@code code} ：返回码</li>
  *     <li>{@code message} ：返回码描述信息</li>
  *     <li>{@code success} ：响应结果状态，{@code true} 表示成功；{@code false} 表示失败</li>
- *     <li>{@code traceId} ：追溯码，json格式返回时，字段为：{@code trace_id}</li>
  *     <li>{@code header} ：响应头</li>
  *     <li>{@code body} ：响应体</li>
  * </ul>
  *
+ * <br>
+ *
  * <p>
- *     值得注意的是，如果属性没有值，则属性的值为null，
- *     那么在返回json格式的数据中，将不会出现改属性。
+ *     值得注意的是，如果属性没有值，则属性的值为null，<br>
+ *     那么在返回json格式的数据中，将不会出现改属性。<br>
  *     这是因为这个实体类加了
  *     {@code @JsonInclude(JsonInclude.Include.NON_NULL)}
  * </p>
  *
+ * <br>
+ *
  * <p>
- *     另外，{@code success} 属性，默认是false，
- *     如果你在返回的时候没有使用给定的 {@code ok()} 方法。
- *     那么，你需要手动修改值。
- *     否则返回的值可能依旧是 {@code false}.
+ *     另外，{@code success} 属性，默认是false，<br>
+ *     如果你在返回的时候没有使用给定的 {@code ok()} 方法。<br>
+ *     那么，你需要手动修改值。<br>
+ *     否则返回的值可能依旧是 {@code false}.<br>
  *     那么在做出判断时，使用该属性，可能不准确。
  * </p>
+ *
+ * <br>
  *
  * <p>
  *     关于设计的说明：
  * </p>
  *
  * <p>
- *     这是顶层，不能再添加其他属性进行返回。
- *     如果需要，解决方案：
- *     如果是请求相关的，可以添加到 {@code header} 里面，这是一个 {@link Map}
- *     如果是数据，必须保存到body里
+ *     这是顶层，不能再添加其他属性进行返回。<br>
+ *     如果需要，解决方案：<br>
+ *     如果是请求相关的，可以添加到 {@code header} 里面，这是一个 {@link Map}<br>
+ *     如果是数据，必须保存到body里<br>
  * </p>
  *
+ * <br>
+ *
  * @author Erwin Feng
- * @since 2.2.0
+ * @since 2.3.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultTemplate<T> implements Serializable {
@@ -83,7 +90,7 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 响应头：可以存放请求相关的信息
      */
-    private BaseHeader header;
+    private ResultHeader header;
 
     /**
      * 响应体
@@ -105,7 +112,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param header  响应头
      * @param body    响应体
      */
-    public ResultTemplate(String code, String message, Boolean success, BaseHeader header, T body) {
+    public ResultTemplate(String code, String message, Boolean success, ResultHeader header, T body) {
         this.code = code;
         this.message = message;
         this.success = success;
@@ -320,7 +327,7 @@ public class ResultTemplate<T> implements Serializable {
      *
      * @return {@code header} 的值
      */
-    public BaseHeader getHeader() {
+    public ResultHeader getHeader() {
         return header;
     }
 
@@ -330,7 +337,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param header 响应头
      * @return {@link ResultTemplate}
      */
-    public ResultTemplate<T> setHeader(BaseHeader header) {
+    public ResultTemplate<T> setHeader(ResultHeader header) {
         this.header = header;
         return this;
     }

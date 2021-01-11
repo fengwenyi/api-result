@@ -3,8 +3,13 @@ package com.fengwenyi.api.result;
 import java.util.List;
 
 /**
+ *
+ * <p>
+ *     分页请求类
+ * </p>
+ *
  * @author Erwin Feng
- * @since 2020-12-24
+ * @since 2.3.0
  */
 public class PageRequest<T> {
 

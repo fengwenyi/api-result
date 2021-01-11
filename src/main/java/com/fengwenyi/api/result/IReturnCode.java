@@ -1,9 +1,12 @@
 package com.fengwenyi.api.result;
 
 /**
- * 返回码及信息提示接口
+ * <p>
+ *     返回码及信息提示接口
+ * </p>
+ *
  * @author Erwin Feng
- * @since 2020/8/2
+ * @since 2.3.0
  */
 public interface IReturnCode {
 
