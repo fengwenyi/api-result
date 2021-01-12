@@ -23,7 +23,7 @@ public class ResultTemplateTests {
     @Test
     public void testFail() {
         ResultTemplate<Object> resultTemplate = ResultTemplate.fail();
-        PrintUtils.info(resultTemplate);
+        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
     @Test
