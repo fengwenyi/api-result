@@ -5,23 +5,25 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 
 /**
- * 分页实体类
+ * 分页实体类 <br><br><br>
+ *
  * <p>
  * 这个类主要是存放分页的一些属性，包含如下字段：
  * </p>
+ *
  * <ul>
  *     <li>{@code currentPage}      ：当前页</li>
  *     <li>{@code pageSize}         ：每页显示条数</li>
- *     <li>{@code totalElements}    ：总条数</li>
+ *     <li>{@code totalRows}        ：总条数</li>
  *     <li>{@code totalPages}       ：总页数</li>
  *     <li>{@code content}          ：数据</li>
  * </ul>
  *
  * @author Erwin Feng
- * @since 2.2.0
+ * @since 2.3.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CommonPage<T> implements Serializable {
+public class PageTemplate<T> implements Serializable {
 
     private static final long serialVersionUID = 2335780119721719031L;
 
@@ -42,7 +44,7 @@ public class CommonPage<T> implements Serializable {
     /**
      * 总条数
      */
-    private Long totalElements;
+    private Long totalRows;
 
     /**
      * 总页数
@@ -57,33 +59,33 @@ public class CommonPage<T> implements Serializable {
     /**
      * 构造方法：无参数
      */
-    public CommonPage() {
+    public PageTemplate() {
     }
 
     /**
      * 参数构造方法
      *
-     * @param totalElements 总条数
+     * @param totalRows 总条数
      * @param totalPages    总页数
      * @param pageSize      每页显示条数
      * @param currentPage   当前页
      * @param content       数据
      */
-    public CommonPage(Long currentPage, Integer pageSize, Long totalElements, Long totalPages, T content) {
+    public PageTemplate(Long currentPage, Integer pageSize, Long totalRows, Long totalPages, T content) {
         this.currentPage = currentPage;
         this.pageSize = pageSize;
-        this.totalElements = totalElements;
+        this.totalRows = totalRows;
         this.totalPages = totalPages;
         this.content = content;
     }
 
     /**
-     * 参数 {@code totalElements} 的Get方法
+     * 参数 {@code totalRows} 的Get方法
      *
      * @return 总条数
      */
-    public Long getTotalElements() {
-        return totalElements;
+    public Long getTotalRows() {
+        return totalRows;
     }
 
     /**
@@ -114,21 +116,21 @@ public class CommonPage<T> implements Serializable {
     }
 
     /**
-     * 参数 {@code totalElements} 的Get方法
+     * 参数 {@code totalRows} 的Get方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setTotalElements(Long totalElements) {
-        this.totalElements = totalElements;
+    public PageTemplate<T> setTotalRows(Long totalRows) {
+        this.totalRows = totalRows;
         return this;
     }
 
     /**
      * 参数 {@code totalPages} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setTotalPages(Long totalPages) {
+    public PageTemplate<T> setTotalPages(Long totalPages) {
         this.totalPages = totalPages;
         return this;
     }
@@ -136,9 +138,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code pageSize} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setPageSize(Integer pageSize) {
+    public PageTemplate<T> setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
@@ -146,9 +148,9 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code currentPage} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setCurrentPage(Long currentPage) {
+    public PageTemplate<T> setCurrentPage(Long currentPage) {
         this.currentPage = currentPage;
         return this;
     }
@@ -165,10 +167,21 @@ public class CommonPage<T> implements Serializable {
     /**
      * 参数 {@code content} 的Set方法
      *
-     * @return {@link CommonPage}
+     * @return {@link PageTemplate}
      */
-    public CommonPage setContent(T content) {
+    public PageTemplate<T> setContent(T content) {
         this.content = content;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "PageTemplate{" +
+                "currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
+                ", totalRows=" + totalRows +
+                ", totalPages=" + totalPages +
+                ", content=" + content +
+                '}';
     }
 }
