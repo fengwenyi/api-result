@@ -85,7 +85,7 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 响应结果状态，{@code true} 表示成功；{@code false} 表示失败
      */
-    private Boolean success = false;
+    private Boolean success = Boolean.FALSE;
 
     /**
      * 响应头：可以存放请求相关的信息
@@ -157,7 +157,7 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> success() {
         return new ResultTemplate<T>()
-                .setSuccess(true)
+                .setSuccess(Boolean.TRUE)
                 .setCode(DEFAULT_SUCCESS.getCode())
                 .setMessage(DEFAULT_SUCCESS.getMessage());
     }
@@ -171,7 +171,7 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> success(T body) {
         return new ResultTemplate<T>()
-                .setSuccess(true)
+                .setSuccess(Boolean.TRUE)
                 .setCode(DEFAULT_SUCCESS.getCode())
                 .setMessage(DEFAULT_SUCCESS.getMessage())
                 .setBody(body);
@@ -187,7 +187,7 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> success(String code, String message) {
         return new ResultTemplate<T>()
-                .setSuccess(true)
+                .setSuccess(Boolean.TRUE)
                 .setCode(code)
                 .setMessage(message);
     }
@@ -203,7 +203,7 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> success(String code, String message, T body) {
         return new ResultTemplate<T>()
-                .setSuccess(true)
+                .setSuccess(Boolean.TRUE)
                 .setCode(code)
                 .setMessage(message)
                 .setBody(body)
