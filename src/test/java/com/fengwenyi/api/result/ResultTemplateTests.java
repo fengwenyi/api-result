@@ -78,4 +78,10 @@ public class ResultTemplateTests {
         PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
+    @Test
+    public void testReturnCode() {
+ResultTemplate<Object> result = ResultTemplate.fail(ReturnCode.ERROR);
+PrintUtils.info(JsonUtils.convertString(result));
+    }
+
 }
