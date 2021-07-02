@@ -14,13 +14,13 @@ public interface IReturnCode {
      * 返回码
      * @return 返回码
      */
-    String getCode();
+    String getErrCode();
 
     /**
      * 提示信息
      * @return 提示信息
      */
-    String getMessage();
+    String getMsg();
 
     /**
      * 默认
@@ -28,13 +28,13 @@ public interface IReturnCode {
     enum Default implements IReturnCode {
 
         /* -----------------成功---------------------------- */
-        SUCCESS("111111", "Success")
+        SUCCESS("1", "Success")
 
         /* ------------------888888 通用错误--------------------------- */
-        , ERROR_COMMON_EXCEPTION("888888", "通用错误")
+        , ERROR("0", "错误")
 
         /* ------------------999999 系统错误--------------------------- */
-        , ERROR_SYSTEM_EXCEPTION("999999", "系统异常")
+        , ERROR_SYSTEM_EXCEPTION("-1", "系统异常")
 
         /* ------------------101xxx 请求错误--------------------------- */
         , ERROR_REQUEST_METHOD_NOT_SUPPORT("101001", "请求方法不支持")
@@ -69,37 +69,37 @@ public interface IReturnCode {
         ;
 
         /** 返回码 */
-        private final String code;
+        private final String errCode;
 
         /** 提示信息 */
-        private final String message;
+        private final String msg;
 
         /**
          * 构造方法
          * @param code 返回码
          * @param message 提示信息
          */
-        Default(String code, String message) {
-            this.code = code;
-            this.message = message;
+        Default(String errCode, String msg) {
+            this.errCode = errCode;
+            this.msg = msg;
         }
 
         /**
-         * {@code code} get方法
-         * @return 返回码
+         * {@code errCode} get方法
+         * @return 错误码
          */
         @Override
-        public String getCode() {
-            return code;
+        public String getErrCode() {
+            return errCode;
         }
 
         /**
-         * {@code message} get方法
-         * @return 提示信息
+         * {@code msg} get方法
+         * @return 描述
          */
         @Override
-        public String getMessage() {
-            return message;
+        public String getMsg() {
+            return msg;
         }
     }
 

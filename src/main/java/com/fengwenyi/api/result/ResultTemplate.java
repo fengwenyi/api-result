@@ -9,13 +9,14 @@ import java.util.Map;
  * 封装接口响应实体类 <br><br><br>
  *
  * <p>
- * 预设属性及介绍：
+ * 属性介绍：
  * </p>
  *
  * <ul>
  *     <li>{@code code} ：返回码</li>
- *     <li>{@code message} ：返回码描述信息</li>
- *     <li>{@code success} ：响应结果状态，{@code true} 表示成功；{@code false} 表示失败</li>
+ *     <li>{@code errCode} ：错误码</li>
+ *     <li>{@code msg} ：描述</li>
+ *     <li>{@code success} ：响应结果状态</li>
  *     <li>{@code header} ：响应头</li>
  *     <li>{@code body} ：响应体</li>
  * </ul>
@@ -23,7 +24,25 @@ import java.util.Map;
  * <br>
  *
  * <p>
- *     值得注意的是，如果属性没有值，则属性的值为null，<br>
+ *     code，取值范围是 0 或者 1，其中 0-失败；1-成功。
+ * </p>
+ *
+ * <p>
+ *     errCode（错误码）和 msg（描述），可根据系统进行自定义。
+ * </p>
+ *
+ * <p>
+ *     注意：属性 {@code errCode} 会在 {@code success=false} 时，返回
+ * </p>
+ *
+ * <p>
+ *     success， {@code true}-表示成功；{@code false}-表示失败
+ * </p>
+ *
+ * <br><br><br>
+ *
+ * <p>
+ *     如果属性没有值，则属性的值为null，<br>
  *     那么在返回json格式的数据中，将不会出现改属性。<br>
  *     这是因为这个实体类加了
  *     {@code @JsonInclude(JsonInclude.Include.NON_NULL)}
@@ -32,8 +51,8 @@ import java.util.Map;
  * <br>
  *
  * <p>
- *     另外，{@code success} 属性，默认是false，<br>
- *     如果你在返回的时候没有使用给定的 {@code ok()} 方法。<br>
+ *     特注需要提醒的是，{@code success} 属性，默认是false，<br>
+ *     如果你在返回的时候没有使用给定的 {@code success(...)} 方法。<br>
  *     那么，你需要手动修改值。<br>
  *     否则返回的值可能依旧是 {@code false}.<br>
  *     那么在做出判断时，使用该属性，可能不准确。
@@ -55,7 +74,7 @@ import java.util.Map;
  * <br>
  *
  * @author Erwin Feng
- * @since 2.3.0
+ * @since 2.4.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultTemplate<T> implements Serializable {
@@ -70,7 +89,7 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 默认操作失败
      */
-    private static final IReturnCode DEFAULT_ERROR = IReturnCode.Default.ERROR_COMMON_EXCEPTION;
+    private static final IReturnCode DEFAULT_ERROR = IReturnCode.Default.ERROR;
 
     /**
      * 响应码
@@ -78,9 +97,14 @@ public class ResultTemplate<T> implements Serializable {
     private String code;
 
     /**
-     * 响应码描述信息
+     * 错误码
      */
-    private String message;
+    private String errCode;
+
+    /**
+     * 描述
+     */
+    private String msg;
 
     /**
      * 响应结果状态，{@code true} 表示成功；{@code false} 表示失败
@@ -104,62 +128,16 @@ public class ResultTemplate<T> implements Serializable {
     }
 
     /**
-     * 构造方法
-     *
-     * @param code    返回码
-     * @param message 描述信息
-     * @param success 操作结果，true / false
-     * @param header  响应头
-     * @param body    响应体
-     */
-    public ResultTemplate(String code, String message, Boolean success, ResultHeader header, T body) {
-        this.code = code;
-        this.message = message;
-        this.success = success;
-        this.header = header;
-        this.body = body;
-    }
-
-    /**
-     * 构造方法
-     *
-     * @param code    返回码
-     * @param message 描述信息
-     * @param success 操作结果，true / false
-     * @param body    响应体
-     */
-    public ResultTemplate(String code, String message, Boolean success, T body) {
-        this.code = code;
-        this.message = message;
-        this.success = success;
-        this.body = body;
-    }
-
-    /**
-     * 构造方法
-     *
-     * @param iReturnCode  {@link IReturnCode}
-     * @param success 操作结果，true / false
-     * @param body    响应体
-     */
-    public ResultTemplate(IReturnCode iReturnCode, Boolean success, T body) {
-        this.code = iReturnCode.getCode();
-        this.message = iReturnCode.getMessage();
-        this.success = success;
-        this.body = body;
-    }
-
-    /**
      * 操作成功
      *
-     * @param <T> 响应体类型
+     * @param <T> {@link Void}
      * @return 响应封装类 {@link ResultTemplate}
      */
     public static <T> ResultTemplate<T> success() {
         return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
-                .setCode(DEFAULT_SUCCESS.getCode())
-                .setMessage(DEFAULT_SUCCESS.getMessage());
+                .setCode(DEFAULT_SUCCESS.getErrCode())
+                .setMsg(DEFAULT_SUCCESS.getMsg());
     }
 
     /**
@@ -172,94 +150,83 @@ public class ResultTemplate<T> implements Serializable {
     public static <T> ResultTemplate<T> success(T body) {
         return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
-                .setCode(DEFAULT_SUCCESS.getCode())
-                .setMessage(DEFAULT_SUCCESS.getMessage())
+                .setCode(DEFAULT_SUCCESS.getErrCode())
+                .setMsg(DEFAULT_SUCCESS.getMsg())
                 .setBody(body);
     }
 
     /**
-     * 操作成功
-     *
-     * @param code    响应码
-     * @param message 响应信息
-     * @param <T>     响应体类型
-     * @return 响应封装类 {@link ResultTemplate}
-     */
-    public static <T> ResultTemplate<T> success(String code, String message) {
-        return new ResultTemplate<T>()
-                .setSuccess(Boolean.TRUE)
-                .setCode(code)
-                .setMessage(message);
-    }
-
-    /**
-     * 操作成功
-     *
-     * @param code    响应码
-     * @param message 响应信息
-     * @param body    响应体
-     * @param <T>     响应体类型
-     * @return 响应封装类 {@link ResultTemplate}
-     */
-    public static <T> ResultTemplate<T> success(String code, String message, T body) {
-        return new ResultTemplate<T>()
-                .setSuccess(Boolean.TRUE)
-                .setCode(code)
-                .setMessage(message)
-                .setBody(body)
-                ;
-    }
-
-    /**
      * 操作失败
      *
-     * @param <T> 响应体类型
+     * @param <T> {@link Void}
      * @return 响应封装类 {@link ResultTemplate}
      */
     public static <T> ResultTemplate<T> fail() {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getCode())
-                .setMessage(DEFAULT_ERROR.getMessage());
+                .setCode(DEFAULT_ERROR.getErrCode())
+                .setErrCode(DEFAULT_ERROR.getErrCode())
+                .setMsg(DEFAULT_ERROR.getMsg());
+    }
+
+
+    /**
+     * 操作失败
+     *
+     * @param msg 响应信息
+     * @param <T> {@link Void}
+     * @return 响应封装类 {@link ResultTemplate}
+     */
+    public static <T> ResultTemplate<T> fail(String msg) {
+        return new ResultTemplate<T>()
+                .setCode(DEFAULT_ERROR.getErrCode())
+                .setErrCode(DEFAULT_ERROR.getErrCode())
+                .setMsg(msg);
+    }
+
+
+    /**
+     * 操作失败
+     *
+     * @param returnCode {@link IReturnCode}
+     * @param <T>        {@link Void}
+     * @return 响应封装类 {@link ResultTemplate}
+     */
+    public static <T> ResultTemplate<T> fail(IReturnCode returnCode) {
+        return new ResultTemplate<T>()
+                .setCode(DEFAULT_ERROR.getErrCode())
+                .setErrCode(returnCode.getErrCode())
+                .setMsg(returnCode.getMsg());
     }
 
     /**
      * 操作失败
      *
-     * @param message 响应信息
-     * @param <T>     响应体类型
+     * @param returnCode {@link IReturnCode}
+     * @param msg        描述信息
+     * @param <T>        {@link Void}
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> fail(String message) {
+    public static <T> ResultTemplate<T> fail(IReturnCode returnCode, String msg) {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getCode())
-                .setMessage(message);
+                .setCode(DEFAULT_ERROR.getErrCode())
+                .setErrCode(returnCode.getErrCode())
+                .setMsg(msg);
     }
+
 
     /**
      * 操作失败
      *
-     * @param code    响应码
-     * @param message 响应信息
-     * @param <T>     响应体类型
+     * @param errCode 错误码
+     * @param msg     响应信息
+     * @param <T>     {@link Void}
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> fail(String code, String message) {
+    public static <T> ResultTemplate<T> fail(String errCode, String msg) {
         return new ResultTemplate<T>()
-                .setCode(code)
-                .setMessage(message);
-    }
-
-    /**
-     * 操作失败
-     *
-     * @param error {@link IReturnCode}
-     * @param <T>   响应体类型
-     * @return 响应封装类 {@link ResultTemplate}
-     */
-    public static <T> ResultTemplate<T> fail(IReturnCode error) {
-        return new ResultTemplate<T>()
-                .setCode(error.getCode())
-                .setMessage(error.getMessage());
+                .setCode(DEFAULT_ERROR.getErrCode())
+                .setErrCode(errCode)
+                .setMsg(msg);
     }
 
     /**
@@ -277,28 +244,28 @@ public class ResultTemplate<T> implements Serializable {
      * @param code 响应码
      * @return {@link ResultTemplate}
      */
-    public ResultTemplate<T> setCode(String code) {
+    private ResultTemplate<T> setCode(String code) {
         this.code = code;
         return this;
     }
 
     /**
-     * {@code message} 的get方法
+     * {@code msg} 的get方法
      *
-     * @return {@code message} 的值
+     * @return {@code msg} 的值
      */
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
     /**
-     * {@code message} 的get方法
+     * {@code msg} 的get方法
      *
-     * @param message 响应信息
+     * @param msg 响应信息
      * @return {@link ResultTemplate}
      */
-    public ResultTemplate<T> setMessage(String message) {
-        this.message = message;
+    public ResultTemplate<T> setMsg(String msg) {
+        this.msg = msg;
         return this;
     }
 
@@ -352,7 +319,7 @@ public class ResultTemplate<T> implements Serializable {
     }
 
     /**
-     * {@code body} 的get方法
+     * {@code body} 的set方法
      *
      * @param body 响应体
      * @return {@link ResultTemplate}
@@ -362,11 +329,32 @@ public class ResultTemplate<T> implements Serializable {
         return this;
     }
 
+    /**
+     * {@code errCode} 的get方法
+     *
+     * @return {@code errCode} 的值
+     */
+    public String getErrCode() {
+        return errCode;
+    }
+
+    /**
+     * {@code errCode} 的set方法
+     *
+     * @param errCode 错误码
+     * @return {@link ResultTemplate}
+     */
+    public ResultTemplate<T> setErrCode(String errCode) {
+        this.errCode = errCode;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ResultTemplate{" +
                 "code='" + code + '\'' +
-                ", message='" + message + '\'' +
+                ", errCode='" + errCode + '\'' +
+                ", msg='" + msg + '\'' +
                 ", success=" + success +
                 ", header=" + header +
                 ", body=" + body +
