@@ -155,14 +155,10 @@ PrintUtils.info(JsonUtils.convertString(result));
 }
 ```
 
-## Wiki
+## 文档
 
-- [中文文档](https://github.com/fengwenyi/api-result/wiki)
-
-
-## 中央仓库
-
+- [wiki](https://github.com/fengwenyi/api-result/wiki)
 - [maven.org](https://search.maven.org/search?q=g:com.fengwenyi%20AND%20a:api-result&core=gav)
-
 - [mvnrepository.com](https://mvnrepository.com/artifact/com.fengwenyi/api-result) 
+- [更新日志](LOG.md) 
 

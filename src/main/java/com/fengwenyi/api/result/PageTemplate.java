@@ -21,7 +21,9 @@ import java.io.Serializable;
  *
  * @author Erwin Feng
  * @since 2.3.0
+ * @deprecated {@link PageResponseVo}
  */
+@Deprecated
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PageTemplate<T> implements Serializable {
 

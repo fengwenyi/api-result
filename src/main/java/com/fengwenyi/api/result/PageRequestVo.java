@@ -1,19 +1,21 @@
 package com.fengwenyi.api.result;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
- * <p>
- *     分页请求类
- * </p>
+ * 分页请求类
  *
- * @author Erwin Feng
- * @since 2.3.0
- * @deprecated {@link PageRequestVo}
+ * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
+ * @since 2.4.1
  */
-@Deprecated
-public class PageRequest<T> {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PageRequestVo<T> implements Serializable {
+
+    private static final long serialVersionUID = -6056923744875775355L;
 
     /** 当前页 */
     private Long currentPage;
@@ -29,6 +31,17 @@ public class PageRequest<T> {
 
     /** 降序排列字段：数组 */
     private List<String> descColumnNames;
+
+    public PageRequestVo() {
+    }
+
+    public PageRequestVo(Long currentPage, Integer pageSize, T query, List<String> ascColumnNames, List<String> descColumnNames) {
+        this.currentPage = currentPage;
+        this.pageSize = pageSize;
+        this.query = query;
+        this.ascColumnNames = ascColumnNames;
+        this.descColumnNames = descColumnNames;
+    }
 
     public Long getCurrentPage() {
         return currentPage;
@@ -68,5 +81,16 @@ public class PageRequest<T> {
 
     public void setDescColumnNames(List<String> descColumnNames) {
         this.descColumnNames = descColumnNames;
+    }
+
+    @Override
+    public String toString() {
+        return "PageRequestVo{" +
+                "currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
+                ", query=" + query +
+                ", ascColumnNames=" + ascColumnNames +
+                ", descColumnNames=" + descColumnNames +
+                '}';
     }
 }

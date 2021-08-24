@@ -1,5 +1,15 @@
 # 版本更新日志
 
+## v2.4.1
+
+2021.08.24
+
+- 【升级】JavaLib 2.1.1 -> 2.1.4
+- 【新增】新增分页请求类：PageRequestVo
+- 【新增】新增分页响应类：PageResponseVo
+- 【过时】分页请求类：PageRequest
+- 【过时】分页请求类：PageTemplate
+
 ## v2.4.0
 
 - 【新增】返回结果增加errCode属性。
