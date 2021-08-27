@@ -63,9 +63,20 @@ public class PageResponseVo<T> implements Serializable {
     private T content;
 
 
+    /**
+     * 无参数构造方法
+     */
     public PageResponseVo() {
     }
 
+    /**
+     * 构造方法
+     * @param currentPage 当前页
+     * @param pageSize 分页大小
+     * @param totalRows 总行数
+     * @param totalPages 总页数
+     * @param content 内容
+     */
     public PageResponseVo(Long currentPage, Integer pageSize, Long totalRows, Long totalPages, T content) {
         this.currentPage = currentPage;
         this.pageSize = pageSize;
@@ -74,85 +85,166 @@ public class PageResponseVo<T> implements Serializable {
         this.content = content;
     }
 
+    /**
+     * 获取当前页
+     * @return 返回当前页
+     */
     public Long getCurrentPage() {
         return currentPage;
     }
 
+    /**
+     * 设置当前页
+     * @param currentPage 当前页
+     * @return PageResponseVo
+     */
     public PageResponseVo<T> setCurrentPage(Long currentPage) {
         this.currentPage = currentPage;
         return this;
     }
 
+    /**
+     * 获取分页大小
+     * @return 分页大小
+     */
     public Integer getPageSize() {
         return pageSize;
     }
 
+    /**
+     * 设置分页大小
+     * @param pageSize 分页大小
+     * @return PageResponseVo
+     */
     public PageResponseVo<T> setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
 
+    /**
+     * 获取总条数
+     * @return 总条数
+     */
     public Long getTotalRows() {
         return totalRows;
     }
 
+    /**
+     * 设置总条数
+     * @param totalRows 总条数
+     * @return PageResponseVo
+     */
     public PageResponseVo<T> setTotalRows(Long totalRows) {
         this.totalRows = totalRows;
         return this;
     }
 
+    /**
+     * 获取总页数
+     * @return 总页数
+     */
     public Long getTotalPages() {
         return totalPages;
     }
 
+    /**
+     * 设置总页数
+     * @param totalPages 总页数
+     * @return PageResponseVo
+     */
     public PageResponseVo<T> setTotalPages(Long totalPages) {
         this.totalPages = totalPages;
         return this;
     }
 
+    /**
+     * 获取内容
+     * @return 内容
+     */
     public T getContent() {
         return content;
     }
 
+    /**
+     * 设置内容
+     * @param content 内容
+     * @return PageResponseVo
+     */
     public PageResponseVo<T> setContent(T content) {
         this.content = content;
         return this;
     }
 
 
+    /**
+     * PageResponse构造者，可通过该类构造出PageResponseVo
+     * @param <T> 范型
+     */
     public static class Builder<T> implements IBuilder<PageResponseVo<T>> {
 
+        // PageResponseVo 对象
         private final PageResponseVo<T> pageResponseVo;
 
+        /**
+         * 无参数构造方法，new一个 PageResponseVo 对象
+         */
         public Builder() {
             pageResponseVo = new PageResponseVo<>();
         }
 
+        /**
+         * 设置当前页
+         * @param currentPage 当前页
+         * @return Builder
+         */
         public Builder<T> currentPage(long currentPage) {
             this.pageResponseVo.currentPage = currentPage;
             return this;
         }
 
+        /**
+         * 设置分页大小
+         * @param pageSize 分页大小
+         * @return Builder
+         */
         public Builder<T> pageSize(int pageSize) {
             this.pageResponseVo.pageSize = pageSize;
             return this;
         }
 
+        /**
+         * 设置总条数
+         * @param totalRows 总条数
+         * @return Builder
+         */
         public Builder<T> totalRows(long totalRows) {
             this.pageResponseVo.totalRows = totalRows;
             return this;
         }
 
+        /**
+         * 设置总页数
+         * @param totalPages 总页数
+         * @return Builder
+         */
         public Builder<T> totalPages(long totalPages) {
             this.pageResponseVo.totalPages = totalPages;
             return this;
         }
 
+        /**
+         * 给属性赋值完成，调该方法可构造出PageResponseVo的对象
+         * @return PageResponseVo
+         */
         public PageResponseVo<T> build() {
             return this.pageResponseVo;
         }
     }
 
+    /**
+     * toString方法
+     * @return 将属性及对应值拼接成字符串
+     */
     @Override
     public String toString() {
         return "PageResponseVo{" +
