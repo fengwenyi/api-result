@@ -2,9 +2,9 @@
 
 ## v2.4.1
 
-2021.08.24
+2021.08.27
 
-- 【升级】JavaLib 2.1.1 -> 2.1.4
+- 【升级】JavaLib 由2.1.1版本升级到2.1.4版本
 - 【新增】新增分页请求类：PageRequestVo
 - 【新增】新增分页响应类：PageResponseVo
 - 【过时】分页请求类：PageRequest
