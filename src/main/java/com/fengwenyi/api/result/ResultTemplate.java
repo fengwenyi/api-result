@@ -16,6 +16,7 @@ import java.util.Map;
  *     <li>{@code code} ：返回码</li>
  *     <li>{@code errCode} ：错误码</li>
  *     <li>{@code msg} ：描述</li>
+ *     <li>{@code errMsg} ：错误信息</li>
  *     <li>{@code success} ：响应结果状态</li>
  *     <li>{@code header} ：响应头</li>
  *     <li>{@code body} ：响应体</li>
@@ -107,6 +108,11 @@ public class ResultTemplate<T> implements Serializable {
     private String msg;
 
     /**
+     * 错误信息
+     */
+    private String errMsg;
+
+    /**
      * 响应结果状态，{@code true} 表示成功；{@code false} 表示失败
      */
     private Boolean success = Boolean.FALSE;
@@ -165,7 +171,8 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getErrCode())
                 .setErrCode(DEFAULT_ERROR.getErrCode())
-                .setMsg(DEFAULT_ERROR.getMsg());
+                .setMsg(DEFAULT_ERROR.getMsg())
+                .setErrMsg(DEFAULT_ERROR.getMsg());
     }
 
 
@@ -180,7 +187,8 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getErrCode())
                 .setErrCode(DEFAULT_ERROR.getErrCode())
-                .setMsg(msg);
+                .setMsg(msg)
+                .setErrMsg(msg);
     }
 
 
@@ -195,7 +203,8 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getErrCode())
                 .setErrCode(returnCode.getErrCode())
-                .setMsg(returnCode.getMsg());
+                .setMsg(returnCode.getMsg())
+                .setErrMsg(returnCode.getMsg());
     }
 
     /**
@@ -210,7 +219,8 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getErrCode())
                 .setErrCode(returnCode.getErrCode())
-                .setMsg(msg);
+                .setMsg(returnCode.getMsg())
+                .setErrMsg(msg);
     }
 
 
@@ -226,7 +236,8 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setCode(DEFAULT_ERROR.getErrCode())
                 .setErrCode(errCode)
-                .setMsg(msg);
+                .setMsg(msg)
+                .setErrMsg(msg);
     }
 
     /**
@@ -349,12 +360,31 @@ public class ResultTemplate<T> implements Serializable {
         return this;
     }
 
+    /**
+     * errMsg的get方法
+     * @return errMsg
+     */
+    public String getErrMsg() {
+        return errMsg;
+    }
+
+    /**
+     * errMsg的set方法
+     * @param errMsg 错误信息
+     * @return this
+     */
+    public ResultTemplate<T> setErrMsg(String errMsg) {
+        this.errMsg = errMsg;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ResultTemplate{" +
                 "code='" + code + '\'' +
                 ", errCode='" + errCode + '\'' +
                 ", msg='" + msg + '\'' +
+                ", errMsg='" + errMsg + '\'' +
                 ", success=" + success +
                 ", header=" + header +
                 ", body=" + body +
