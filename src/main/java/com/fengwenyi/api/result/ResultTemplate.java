@@ -14,8 +14,7 @@ import java.util.Map;
  *
  * <ul>
  *     <li>{@code code} ：返回码</li>
- *     <li>{@code errCode} ：错误码</li>
- *     <li>{@code msg} ：描述</li>
+ *     <li>{@code message} ：描述</li>
  *     <li>{@code success} ：响应结果状态</li>
  *     <li>{@code header} ：响应头</li>
  *     <li>{@code body} ：响应体</li>
@@ -24,15 +23,7 @@ import java.util.Map;
  * <br>
  *
  * <p>
- *     code，取值范围是 0 或者 1，其中 0-失败；1-成功。
- * </p>
- *
- * <p>
- *     errCode（错误码）和 msg（描述），可根据系统进行自定义。
- * </p>
- *
- * <p>
- *     注意：属性 {@code errCode} 会在 {@code success=false} 时，返回
+ *     code，返回码，当 code = 0 时，表示成功。
  * </p>
  *
  * <p>
@@ -73,8 +64,8 @@ import java.util.Map;
  *
  * <br>
  *
- * @author Erwin Feng
- * @since 2.4.0
+ * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
+ * @since 2.5.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultTemplate<T> implements Serializable {
@@ -84,27 +75,22 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 默认操作成功
      */
-    private static final IReturnCode DEFAULT_SUCCESS = IReturnCode.Default.SUCCESS;
+    private static final IReturnCode SUCCESS = IReturnCode.Default.SUCCESS;
 
     /**
      * 默认操作失败
      */
-    private static final IReturnCode DEFAULT_ERROR = IReturnCode.Default.ERROR;
+    private static final IReturnCode ERROR = IReturnCode.Default.ERROR;
 
     /**
      * 响应码
      */
-    private String code;
-
-    /**
-     * 错误码
-     */
-    private String errCode;
+    private Integer code;
 
     /**
      * 描述
      */
-    private String msg;
+    private String message;
 
     /**
      * 响应结果状态，{@code true} 表示成功；{@code false} 表示失败
@@ -136,8 +122,9 @@ public class ResultTemplate<T> implements Serializable {
     public static <T> ResultTemplate<T> success() {
         return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
-                .setCode(DEFAULT_SUCCESS.getErrCode())
-                .setMsg(DEFAULT_SUCCESS.getMsg());
+                .setCode(SUCCESS.getCode())
+                .setMessage(SUCCESS.getMessage())
+                ;
     }
 
     /**
@@ -150,9 +137,10 @@ public class ResultTemplate<T> implements Serializable {
     public static <T> ResultTemplate<T> success(T body) {
         return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
-                .setCode(DEFAULT_SUCCESS.getErrCode())
-                .setMsg(DEFAULT_SUCCESS.getMsg())
-                .setBody(body);
+                .setCode(SUCCESS.getCode())
+                .setMessage(SUCCESS.getMessage())
+                .setBody(body)
+                ;
     }
 
     /**
@@ -163,9 +151,9 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> fail() {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getErrCode())
-                .setErrCode(DEFAULT_ERROR.getErrCode())
-                .setMsg(DEFAULT_ERROR.getMsg());
+                .setCode(ERROR.getCode())
+                .setMessage(ERROR.getMessage())
+                ;
     }
 
 
@@ -178,9 +166,9 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> fail(String msg) {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getErrCode())
-                .setErrCode(DEFAULT_ERROR.getErrCode())
-                .setMsg(msg);
+                .setCode(ERROR.getCode())
+                .setMessage(ERROR.getMessage())
+                ;
     }
 
 
@@ -193,9 +181,9 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> fail(IReturnCode returnCode) {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getErrCode())
-                .setErrCode(returnCode.getErrCode())
-                .setMsg(returnCode.getMsg());
+                .setCode(ERROR.getCode())
+                .setMessage(ERROR.getMessage())
+                ;
     }
 
     /**
@@ -208,9 +196,9 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> fail(IReturnCode returnCode, String msg) {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getErrCode())
-                .setErrCode(returnCode.getErrCode())
-                .setMsg(msg);
+                .setCode(ERROR.getCode())
+                .setMessage(ERROR.getMessage())
+                ;
     }
 
 
@@ -224,9 +212,9 @@ public class ResultTemplate<T> implements Serializable {
      */
     public static <T> ResultTemplate<T> fail(String errCode, String msg) {
         return new ResultTemplate<T>()
-                .setCode(DEFAULT_ERROR.getErrCode())
-                .setErrCode(errCode)
-                .setMsg(msg);
+                .setCode(ERROR.getCode())
+                .setMessage(ERROR.getMessage())
+                ;
     }
 
     /**
@@ -234,7 +222,7 @@ public class ResultTemplate<T> implements Serializable {
      *
      * @return {@code code} 的值
      */
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
@@ -244,7 +232,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param code 响应码
      * @return {@link ResultTemplate}
      */
-    private ResultTemplate<T> setCode(String code) {
+    private ResultTemplate<T> setCode(int code) {
         this.code = code;
         return this;
     }
@@ -254,18 +242,18 @@ public class ResultTemplate<T> implements Serializable {
      *
      * @return {@code msg} 的值
      */
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
     /**
      * {@code msg} 的get方法
      *
-     * @param msg 响应信息
+     * @param message 信息
      * @return {@link ResultTemplate}
      */
-    public ResultTemplate<T> setMsg(String msg) {
-        this.msg = msg;
+    public ResultTemplate<T> setMessage(String message) {
+        this.message = message;
         return this;
     }
 
@@ -329,32 +317,11 @@ public class ResultTemplate<T> implements Serializable {
         return this;
     }
 
-    /**
-     * {@code errCode} 的get方法
-     *
-     * @return {@code errCode} 的值
-     */
-    public String getErrCode() {
-        return errCode;
-    }
-
-    /**
-     * {@code errCode} 的set方法
-     *
-     * @param errCode 错误码
-     * @return {@link ResultTemplate}
-     */
-    public ResultTemplate<T> setErrCode(String errCode) {
-        this.errCode = errCode;
-        return this;
-    }
-
     @Override
     public String toString() {
         return "ResultTemplate{" +
-                "code='" + code + '\'' +
-                ", errCode='" + errCode + '\'' +
-                ", msg='" + msg + '\'' +
+                "code=" + code +
+                ", message='" + message + '\'' +
                 ", success=" + success +
                 ", header=" + header +
                 ", body=" + body +

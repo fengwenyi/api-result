@@ -1,5 +1,21 @@
 # 版本更新日志
 
+## v2.5.0
+
+2021.10.11
+
+- 【变更】ResultTemplate，code类型改为Integer
+- 【变更】ResultTemplate，msg改为message
+- 【变更】IReturnCode，getErrCode()改为getCode()
+- 【变更】IReturnCode，getMsg()改为getMessage()
+- 【变更】IReturnCode，getErrCode()返回类型改为Integer
+- 【变更】IReturnCode，成功的返回码改为0
+- 【变更】IReturnCode，错误的返回码改为-1
+- 【变更】IReturnCode，Default，枚举错误去掉前缀ERROR
+- 【删除】ResultTemplate，删除errCode
+- 【删除】ResultTemplate，删除errMsg
+- 【删除】IReturnCode，删除ERROR_SYSTEM_EXCEPTION
+
 ## v2.4.2
 
 2021.08.27

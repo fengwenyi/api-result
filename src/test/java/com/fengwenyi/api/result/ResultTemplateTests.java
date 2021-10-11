@@ -31,7 +31,7 @@ public class ResultTemplateTests {
         ResultHeader header = new ResultHeader();
         header.setTraceId(IdUtils.getIdByUUID());
 
-        PageTemplate<List<Map<String, Object>>> pageTemplate = new PageTemplate<>();
+        PageResponseVo<List<Map<String, Object>>> pageTemplate = new PageResponseVo<>();
 
         List<Map<String, Object>> users = new ArrayList<>();
         pageTemplate.setContent(users);
@@ -80,8 +80,8 @@ public class ResultTemplateTests {
 
     @Test
     public void testReturnCode() {
-ResultTemplate<Object> result = ResultTemplate.fail(ReturnCode.ERROR);
-PrintUtils.info(JsonUtils.convertString(result));
+        ResultTemplate<Object> result = ResultTemplate.fail(ReturnCode.CUSTOM_ERROR);
+        PrintUtils.info(JsonUtils.convertString(result));
     }
 
 }

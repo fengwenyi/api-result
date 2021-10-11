@@ -6,28 +6,28 @@ package com.fengwenyi.api.result;
  */
 public enum ReturnCode implements IReturnCode {
 
-    ERROR("Error", "自定义错误")
+    CUSTOM_ERROR(-9, "自定义错误")
 
     ;
 
     /* 错误码 */
-    private final String errCode;
+    private final Integer code;
 
     /* 描述 */
-    private final String msg;
+    private final String message;
 
-    ReturnCode(String errCode, String msg) {
-        this.errCode = errCode;
-        this.msg = msg;
+    ReturnCode(int code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
     @Override
-    public String getErrCode() {
-        return errCode;
+    public Integer getCode() {
+        return code;
     }
 
     @Override
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 }
