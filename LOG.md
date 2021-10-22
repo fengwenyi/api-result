@@ -12,9 +12,12 @@
 - 【变更】IReturnCode，成功的返回码改为0
 - 【变更】IReturnCode，错误的返回码改为-1
 - 【变更】IReturnCode，Default，枚举错误去掉前缀ERROR
+- 【变更】ResultTemplate更名为ResponseTemplate
+- 【变更】ResultHeader更名为ResponseHeader
 - 【删除】ResultTemplate，删除errCode
 - 【删除】ResultTemplate，删除errMsg
 - 【删除】IReturnCode，删除ERROR_SYSTEM_EXCEPTION
+- 【删除】ResultHeader，删除默认的traceId属性
 
 ## v2.4.2
 

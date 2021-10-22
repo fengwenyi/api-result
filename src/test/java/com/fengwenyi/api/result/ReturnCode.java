@@ -11,7 +11,7 @@ public enum ReturnCode implements IReturnCode {
     ;
 
     /* 错误码 */
-    private final Integer code;
+    private final int code;
 
     /* 描述 */
     private final String message;
