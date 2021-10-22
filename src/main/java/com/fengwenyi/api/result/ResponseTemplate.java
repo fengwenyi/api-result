@@ -1,6 +1,7 @@
 package com.fengwenyi.api.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fengwenyi.javalib.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -16,7 +17,7 @@ import java.util.Map;
  *
  * <ul>
  *     <li>{@code code}     ：返回码</li>
- *     <li>{@code message}  ：描述</li>
+ *     <li>{@code message}  ：描述信息</li>
  *     <li>{@code success}  ：成功标志</li>
  *     <li>{@code header}   ：响应头</li>
  *     <li>{@code body}     ：响应体</li>
@@ -85,12 +86,12 @@ public class ResponseTemplate<T> implements Serializable {
     private static final IReturnCode ERROR = IReturnCode.Default.ERROR;
 
     /**
-     * 响应码
+     * 返回码
      */
     private Integer code;
 
     /**
-     * 描述
+     * 描述信息
      */
     private String message;
 
@@ -162,14 +163,15 @@ public class ResponseTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param msg 响应信息
+     * @param message 描述信息
      * @param <T> {@link Void}
      * @return 响应封装类 {@link ResponseTemplate}
      */
-    public static <T> ResponseTemplate<T> fail(String msg) {
+    public static <T> ResponseTemplate<T> fail(String message) {
+        message = StringUtils.isEmpty(message) ? ERROR.getMessage() : message;
         return new ResponseTemplate<T>()
                 .setCode(ERROR.getCode())
-                .setMessage(ERROR.getMessage())
+                .setMessage(message)
                 ;
     }
 
@@ -183,8 +185,8 @@ public class ResponseTemplate<T> implements Serializable {
      */
     public static <T> ResponseTemplate<T> fail(IReturnCode returnCode) {
         return new ResponseTemplate<T>()
-                .setCode(ERROR.getCode())
-                .setMessage(ERROR.getMessage())
+                .setCode(returnCode.getCode())
+                .setMessage(returnCode.getMessage())
                 ;
     }
 
@@ -192,14 +194,15 @@ public class ResponseTemplate<T> implements Serializable {
      * 操作失败
      *
      * @param returnCode {@link IReturnCode}
-     * @param msg        描述信息
+     * @param message    描述信息
      * @param <T>        {@link Void}
      * @return 响应封装类 {@link ResponseTemplate}
      */
-    public static <T> ResponseTemplate<T> fail(IReturnCode returnCode, String msg) {
+    public static <T> ResponseTemplate<T> fail(IReturnCode returnCode, String message) {
+        message = StringUtils.isEmpty(message) ? returnCode.getMessage() : message;
         return new ResponseTemplate<T>()
-                .setCode(ERROR.getCode())
-                .setMessage(ERROR.getMessage())
+                .setCode(returnCode.getCode())
+                .setMessage(message)
                 ;
     }
 
@@ -207,15 +210,15 @@ public class ResponseTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param errCode 错误码
-     * @param msg     响应信息
-     * @param <T>     {@link Void}
+     * @param code      返回码
+     * @param message   描述信息
+     * @param <T>       {@link Void}
      * @return 响应封装类 {@link ResponseTemplate}
      */
-    public static <T> ResponseTemplate<T> fail(String errCode, String msg) {
+    public static <T> ResponseTemplate<T> fail(int code, String message) {
         return new ResponseTemplate<T>()
-                .setCode(ERROR.getCode())
-                .setMessage(ERROR.getMessage())
+                .setCode(code)
+                .setMessage(message)
                 ;
     }
 

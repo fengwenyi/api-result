@@ -40,6 +40,8 @@ public interface IReturnCode {
         , PARAM_NOT_NULL(102001, "参数不能为空")
         , PARAM_EXCEPTION(102002, "参数异常")
         , PARAM_ILLEGAL(102003, "参数非法")
+        , PARAM_MISS(102004, "参数缺失")
+        , PARAM_VALIDATED(102005, "参数校验失败")
 
         /* ------------------103xxx 数据错误--------------------------- */
         , DATA_SAVE_FAILURE(103001, "数据保存失败")
