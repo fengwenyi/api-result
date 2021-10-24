@@ -4,8 +4,13 @@
 
 2021.10.23
 
+这个是一个BUG修复版本
+
 - 【新增】新增参数缺失和参数校验失败的返回码。
 - 【修复】修复ResponseTemplate中fail相关的方法，code和message参数没有被赋值的问题。
+- 【文档】README文档更新
+- 【删除】删除images目录
+- 【删除】删除version目录
 
 ## v2.5.0
 

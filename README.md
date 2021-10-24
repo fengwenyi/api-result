@@ -1,6 +1,11 @@
-# Api Result
+<h1 align="center">
+    api-result
+</h1>
 
-`api-result` ，是一套RESTful风格API接口响应参数规范化的解决方案。
+<p align="center">
+	<strong>`api-result` ，是一套RESTful风格API接口响应参数规范化的解决方案。</strong>
+</p>
+
 
 ## 特性
 
@@ -17,37 +22,37 @@
 <dependency>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>2.5.0</version>
+    <version>2.5.1</version>
 </dependency>
 ```
 
 ### 代码示例
 
 ```java
-package com.fengwenyi.api.demo.controller;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.fengwenyi.api.result.ResponseTemplate;
-
 @RestController
 @RequestMapping("/api")
 public class ApiController {
-    
+
     @RequestMapping("/demo")
     public ResponseTemplate<Void> demo() {
         return ResponseTemplate.success();
     }
+
 }
+```
+
+### 请求
+
+```shell
+curl http://localhost:8080/api/demo
 ```
 
 ### 响应示例
 ```json
 {
-    "code": "0",
-    "message": "Success",
-    "success": true
+  "code":0,
+  "message":"Success",
+  "success":true
 }
 ```
 
