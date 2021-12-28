@@ -1,5 +1,15 @@
 # 版本更新日志
 
+## v2.5.2
+
+2021.12.28
+
+- 【修复】修复在没有引入 `JavaLib` 的情况下，会报错的问题 [#I4OBC8](https://gitee.com/fengwenyi/api-result/issues/I4OBC8)
+- 【依赖】新增依赖 jackson-annotations 2.13.1
+- 【新增】新增字符串工具类 StringUtils
+- 【新增】新增构建者接口 IBuilder
+- 【删除】删除依赖 JavaLib
+
 ## v2.5.1
 
 2021.10.23

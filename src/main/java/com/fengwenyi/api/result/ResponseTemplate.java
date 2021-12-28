@@ -1,7 +1,7 @@
 package com.fengwenyi.api.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fengwenyi.javalib.util.StringUtils;
+import com.fengwenyi.api.result.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -168,7 +168,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @return 响应封装类 {@link ResponseTemplate}
      */
     public static <T> ResponseTemplate<T> fail(String message) {
-        message = StringUtils.isEmpty(message) ? ERROR.getMessage() : message;
+        message = StringUtils.isBlank(message) ? ERROR.getMessage() : message;
         return new ResponseTemplate<T>()
                 .setCode(ERROR.getCode())
                 .setMessage(message)
@@ -199,7 +199,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @return 响应封装类 {@link ResponseTemplate}
      */
     public static <T> ResponseTemplate<T> fail(IReturnCode returnCode, String message) {
-        message = StringUtils.isEmpty(message) ? returnCode.getMessage() : message;
+        message = StringUtils.isBlank(message) ? returnCode.getMessage() : message;
         return new ResponseTemplate<T>()
                 .setCode(returnCode.getCode())
                 .setMessage(message)

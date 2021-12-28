@@ -1,4 +1,6 @@
 #!/bin/bash
+version=`awk '/<version>[^<]+<\/version>/{gsub(/<version>|<\/version>/,"",$1);print $1;exit;}' pom.xml`
+echo $version
 mvn clean deploy -P sonatype-oss-release -DskipTests
-git tag -a 2.5.1 -m 'v2.5.1'
-git push origin 2.5.1
+git tag -a $version -m "v$version"
+git push origin $version

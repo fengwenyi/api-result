@@ -1,8 +1,5 @@
 package com.fengwenyi.api.result;
 
-import com.fengwenyi.javalib.convert.JsonUtils;
-import com.fengwenyi.javalib.generate.IdUtils;
-import com.fengwenyi.javalib.util.PrintUtils;
 import org.junit.Test;
 
 import java.util.*;
@@ -17,19 +14,19 @@ public class ResponseTemplateTests {
     @Test
     public void testSuccess() {
         ResponseTemplate<Object> resultTemplate = ResponseTemplate.success();
-        PrintUtils.info(JsonUtils.convertString(resultTemplate));
+//        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
     @Test
     public void testFail() {
         ResponseTemplate<Object> resultTemplate = ResponseTemplate.fail();
-        PrintUtils.info(JsonUtils.convertString(resultTemplate));
+//        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
     @Test
     public void testSuccessFull() {
         ResponseHeader header = new ResponseHeader();
-        header.put("traceId", IdUtils.getIdByUUID());
+        header.put("traceId", UUID.randomUUID().toString());
 
         PageResponseVo<List<Map<String, Object>>> pageResponseVo = new PageResponseVo<>();
 
@@ -75,13 +72,13 @@ public class ResponseTemplateTests {
                 .setBody(pageResponseVo)
                 ;
 
-        PrintUtils.info(JsonUtils.convertString(response));
+//        PrintUtils.info(JsonUtils.convertString(response));
     }
 
     @Test
     public void testCustomReturnCode() {
         ResponseTemplate<Object> response = ResponseTemplate.fail(ReturnCode.CUSTOM_ERROR);
-        PrintUtils.info(JsonUtils.convertString(response));
+//        PrintUtils.info(JsonUtils.convertString(response));
     }
 
 }

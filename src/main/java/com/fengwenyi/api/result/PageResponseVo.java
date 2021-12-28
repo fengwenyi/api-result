@@ -1,7 +1,7 @@
 package com.fengwenyi.api.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fengwenyi.javalib.jk.IBuilder;
+import com.fengwenyi.api.result.jk.IBuilder;
 
 import java.io.Serializable;
 
