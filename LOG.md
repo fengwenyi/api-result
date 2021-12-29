@@ -8,6 +8,7 @@
 - 【依赖】新增依赖 jackson-annotations 2.13.1
 - 【新增】新增字符串工具类 StringUtils
 - 【新增】新增构建者接口 IBuilder
+- 【优化】PageResponse set 方法参数类型改用基本数据类型，不使用包装类
 - 【删除】删除依赖 JavaLib
 
 ## v2.5.1

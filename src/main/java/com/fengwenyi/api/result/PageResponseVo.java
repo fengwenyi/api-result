@@ -98,7 +98,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param currentPage 当前页
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setCurrentPage(Long currentPage) {
+    public PageResponseVo<T> setCurrentPage(long currentPage) {
         this.currentPage = currentPage;
         return this;
     }
@@ -116,7 +116,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param pageSize 分页大小
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setPageSize(Integer pageSize) {
+    public PageResponseVo<T> setPageSize(int pageSize) {
         this.pageSize = pageSize;
         return this;
     }
@@ -134,7 +134,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param totalRows 总条数
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setTotalRows(Long totalRows) {
+    public PageResponseVo<T> setTotalRows(long totalRows) {
         this.totalRows = totalRows;
         return this;
     }
@@ -152,7 +152,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param totalPages 总页数
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setTotalPages(Long totalPages) {
+    public PageResponseVo<T> setTotalPages(long totalPages) {
         this.totalPages = totalPages;
         return this;
     }
@@ -192,6 +192,10 @@ public class PageResponseVo<T> implements Serializable {
             pageResponseVo = new PageResponseVo<>();
         }
 
+        /*public static <T> Builder<T> newBuilder() {
+            return new Builder<>();
+        }*/
+
         /**
          * 设置当前页
          * @param currentPage 当前页
@@ -229,6 +233,16 @@ public class PageResponseVo<T> implements Serializable {
          */
         public Builder<T> totalPages(long totalPages) {
             this.pageResponseVo.totalPages = totalPages;
+            return this;
+        }
+
+        /**
+         * 设置内容
+         * @param content 内容
+         * @return Builder
+         */
+        public Builder<T> content(T content) {
+            this.pageResponseVo.content = content;
             return this;
         }
 
