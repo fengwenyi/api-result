@@ -1,6 +1,5 @@
 package com.fengwenyi.api.result;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fengwenyi.api.result.jk.IBuilder;
 
 import java.io.Serializable;
@@ -28,7 +27,6 @@ import java.io.Serializable;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.4.1
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PageResponseVo<T> implements Serializable {
 
     private static final long serialVersionUID = 7772247147295029134L;

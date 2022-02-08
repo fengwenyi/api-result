@@ -1,6 +1,5 @@
 package com.fengwenyi.api.result;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fengwenyi.api.result.util.StringUtils;
 
 import java.io.Serializable;
@@ -35,12 +34,15 @@ import java.util.Map;
  *
  * <br><br><br>
  *
- * <p>
+ * <p><s>
  *     如果属性没有值，则属性的值为null，<br>
  *     那么在返回json格式的数据中，将不会出现改属性。<br>
  *     这是因为这个实体类加了
  *     {@code @JsonInclude(JsonInclude.Include.NON_NULL)}
+ * </s>
  * </p>
+ *
+ * <p> since 2.5.3 版本开始，交由业务服务自行处理</p>
  *
  * <br>
  *
@@ -70,7 +72,6 @@ import java.util.Map;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.5.0
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseTemplate<T> implements Serializable {
 
     private static final long serialVersionUID = -4206473602305400988L;
@@ -113,7 +114,7 @@ public class ResponseTemplate<T> implements Serializable {
     /**
      * 构造方法：无参数
      */
-    private ResponseTemplate() {
+    public ResponseTemplate() {
     }
 
     /**

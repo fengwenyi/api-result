@@ -1,7 +1,5 @@
 package com.fengwenyi.api.result;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,7 +10,6 @@ import java.util.List;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.4.1
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PageRequestVo<T> implements Serializable {
 
     private static final long serialVersionUID = -6056923744875775355L;
