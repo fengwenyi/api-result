@@ -34,12 +34,11 @@ import java.util.Map;
  *
  * <br><br><br>
  *
- * <p><s>
+ * <p>
  *     如果属性没有值，则属性的值为null，<br>
  *     那么在返回json格式的数据中，将不会出现改属性。<br>
  *     这是因为这个实体类加了
  *     {@code @JsonInclude(JsonInclude.Include.NON_NULL)}
- * </s>
  * </p>
  *
  * <p> since 2.5.3 版本开始，交由业务服务自行处理</p>
