@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<strong>`api-result` ，是一套RESTful风格API接口响应参数规范化的解决方案。</strong>
+	<strong>一套RESTful风格API接口响应参数规范化的解决方案。</strong>
 </p>
 
 
