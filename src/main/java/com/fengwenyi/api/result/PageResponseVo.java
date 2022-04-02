@@ -27,6 +27,7 @@ import java.io.Serializable;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.4.1
  */
+@SuppressWarnings("all")
 public class PageResponseVo<T> implements Serializable {
 
     private static final long serialVersionUID = 7772247147295029134L;

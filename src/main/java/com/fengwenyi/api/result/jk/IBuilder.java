@@ -12,6 +12,7 @@ public interface IBuilder<T> {
      * 构建一个对象
      * @return 构建对象
      */
+    @SuppressWarnings("all")
     T build();
 
 }

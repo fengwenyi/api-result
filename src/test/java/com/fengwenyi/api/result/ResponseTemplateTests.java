@@ -9,6 +9,7 @@ import java.util.*;
  * @author Erwin Feng
  * @since 2021-10-22
  */
+@SuppressWarnings("all")
 public class ResponseTemplateTests {
 
     @Test

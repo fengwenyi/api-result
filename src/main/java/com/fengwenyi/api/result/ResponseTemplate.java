@@ -25,12 +25,14 @@ import java.util.Map;
  * <br>
  *
  * <p>
- *     当 code（返回码）为 0 时，表示成功。此时 success（成功标志）为 {@code true}，表示成功。
+ *     当 code（返回码）为 SUCCESS 时，表示成功。此时 success（成功标志）为 {@code true}，表示成功。
  * </p>
  *
  * <p>
- *     反之，当 code（返回码）不为 0 时，表示失败。此时 success（成功标志）为 {@code false}，表示失败。
+ *     反之，当 code（返回码）不为 SUCCESS 时，表示失败。此时 success（成功标志）为 {@code false}，表示失败。
  * </p>
+ *
+ * <p> since 2.6.1 版本开始，类型变为String，SUCCESS 表示成功</p>
  *
  * <br><br><br>
  *
@@ -88,8 +90,9 @@ public class ResponseTemplate<T> implements Serializable {
 
     /**
      * 返回码
+     * @since 2.6.1
      */
-    private Integer code;
+    private String code;
 
     /**
      * 描述信息
@@ -138,6 +141,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @param <T>  响应体类型
      * @return 响应封装类 {@link ResponseTemplate}
      */
+    @SuppressWarnings("all")
     public static <T> ResponseTemplate<T> success(T body) {
         return new ResponseTemplate<T>()
                 .setSuccess(Boolean.TRUE)
@@ -168,6 +172,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @param <T> {@link Void}
      * @return 响应封装类 {@link ResponseTemplate}
      */
+    @SuppressWarnings("all")
     public static <T> ResponseTemplate<T> fail(String message) {
         message = StringUtils.isBlank(message) ? ERROR.getMessage() : message;
         return new ResponseTemplate<T>()
@@ -199,6 +204,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @param <T>        {@link Void}
      * @return 响应封装类 {@link ResponseTemplate}
      */
+    @SuppressWarnings("all")
     public static <T> ResponseTemplate<T> fail(IReturnCode returnCode, String message) {
         message = StringUtils.isBlank(message) ? returnCode.getMessage() : message;
         return new ResponseTemplate<T>()
@@ -216,7 +222,8 @@ public class ResponseTemplate<T> implements Serializable {
      * @param <T>       {@link Void}
      * @return 响应封装类 {@link ResponseTemplate}
      */
-    public static <T> ResponseTemplate<T> fail(int code, String message) {
+    @SuppressWarnings("all")
+    public static <T> ResponseTemplate<T> fail(String code, String message) {
         return new ResponseTemplate<T>()
                 .setCode(code)
                 .setMessage(message)
@@ -228,7 +235,8 @@ public class ResponseTemplate<T> implements Serializable {
      *
      * @return {@code code} 的值
      */
-    public int getCode() {
+    @SuppressWarnings("all")
+    public String getCode() {
         return code;
     }
 
@@ -238,7 +246,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @param code 响应码
      * @return {@link ResponseTemplate}
      */
-    private ResponseTemplate<T> setCode(int code) {
+    private ResponseTemplate<T> setCode(String code) {
         this.code = code;
         return this;
     }
@@ -248,6 +256,7 @@ public class ResponseTemplate<T> implements Serializable {
      *
      * @return {@code message} 的值
      */
+    @SuppressWarnings("all")
     public String getMessage() {
         return message;
     }
@@ -268,6 +277,7 @@ public class ResponseTemplate<T> implements Serializable {
      *
      * @return {@code success} 的值
      */
+    @SuppressWarnings("all")
     public Boolean getSuccess() {
         return success;
     }
@@ -288,6 +298,7 @@ public class ResponseTemplate<T> implements Serializable {
      *
      * @return {@code header} 的值
      */
+    @SuppressWarnings("all")
     public ResponseHeader getHeader() {
         return header;
     }
@@ -308,6 +319,7 @@ public class ResponseTemplate<T> implements Serializable {
      *
      * @return {@code body} 的值
      */
+    @SuppressWarnings("all")
     public T getBody() {
         return body;
     }
