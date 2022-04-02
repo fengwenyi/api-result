@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>2.5.3</version>
+    <version>2.6.1</version>
 </dependency>
 ```
 
@@ -50,7 +50,7 @@ curl http://localhost:8080/api/demo
 ### 响应示例
 ```json
 {
-  "code":0,
+  "code":"SUCCESS",
   "message":"Success",
   "success":true
 }

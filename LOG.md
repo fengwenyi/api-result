@@ -9,6 +9,7 @@
 - 【变更】IReturnCode.Default 中的返回码也做了变更
 - 【变更】PageRequestVo 希望被继承，所以只保留 currentPage 和 pageSize
 - 【优化】有些方法没有被使用，为避免编辑器警告提示，增加 @SuppressWarnings("all")
+- 【优化】优化文案描述
 
 ## v2.5.3
 
