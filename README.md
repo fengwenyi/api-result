@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<strong>`api-result` ，是一套RESTful风格API接口响应参数规范化的解决方案。</strong>
+	<strong>一套RESTful风格API接口响应参数规范化的解决方案。</strong>
 </p>
 
 
@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>2.5.3</version>
+    <version>2.6.0</version>
 </dependency>
 ```
 
@@ -50,7 +50,7 @@ curl http://localhost:8080/api/demo
 ### 响应示例
 ```json
 {
-  "code":0,
+  "code":"SUCCESS",
   "message":"Success",
   "success":true
 }

@@ -1,5 +1,16 @@
 # 版本更新日志
 
+## v2.6.0
+
+2022.04.03 ~ 2022.04.09
+
+- 【变更】ResponseTemplate 属性 code 类型变由 Integer 变更为 String
+- 【变更】IReturnCode 方法 getCode() 返回类型变由 Integer 变更为 String
+- 【变更】IReturnCode.Default 中的返回码也做了变更
+- 【变更】PageRequestVo 希望被继承，所以只保留 currentPage 和 pageSize
+- 【优化】有些方法没有被使用，为避免编辑器警告提示，增加 @SuppressWarnings("all")
+- 【优化】优化文案描述
+
 ## v2.5.3
 
 2022.02.08 ~ 2022.04.03

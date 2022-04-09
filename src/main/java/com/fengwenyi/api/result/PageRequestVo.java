@@ -1,7 +1,6 @@
 package com.fengwenyi.api.result;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
@@ -10,7 +9,8 @@ import java.util.List;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.4.1
  */
-public class PageRequestVo<T> implements Serializable {
+@SuppressWarnings("all")
+public class PageRequestVo implements Serializable {
 
     private static final long serialVersionUID = -6056923744875775355L;
 
@@ -20,24 +20,12 @@ public class PageRequestVo<T> implements Serializable {
     /** 每页显示条数 */
     private Integer pageSize;
 
-    /** 查询条件 */
-    private T query;
-
-    /** 升序排序字段：数组 */
-    private List<String> ascColumnNames;
-
-    /** 降序排列字段：数组 */
-    private List<String> descColumnNames;
-
     public PageRequestVo() {
     }
 
-    public PageRequestVo(Long currentPage, Integer pageSize, T query, List<String> ascColumnNames, List<String> descColumnNames) {
+    public PageRequestVo(Long currentPage, Integer pageSize) {
         this.currentPage = currentPage;
         this.pageSize = pageSize;
-        this.query = query;
-        this.ascColumnNames = ascColumnNames;
-        this.descColumnNames = descColumnNames;
     }
 
     public Long getCurrentPage() {
@@ -56,38 +44,11 @@ public class PageRequestVo<T> implements Serializable {
         this.pageSize = pageSize;
     }
 
-    public T getQuery() {
-        return query;
-    }
-
-    public void setQuery(T query) {
-        this.query = query;
-    }
-
-    public List<String> getAscColumnNames() {
-        return ascColumnNames;
-    }
-
-    public void setAscColumnNames(List<String> ascColumnNames) {
-        this.ascColumnNames = ascColumnNames;
-    }
-
-    public List<String> getDescColumnNames() {
-        return descColumnNames;
-    }
-
-    public void setDescColumnNames(List<String> descColumnNames) {
-        this.descColumnNames = descColumnNames;
-    }
-
     @Override
     public String toString() {
         return "PageRequestVo{" +
                 "currentPage=" + currentPage +
                 ", pageSize=" + pageSize +
-                ", query=" + query +
-                ", ascColumnNames=" + ascColumnNames +
-                ", descColumnNames=" + descColumnNames +
                 '}';
     }
 }
