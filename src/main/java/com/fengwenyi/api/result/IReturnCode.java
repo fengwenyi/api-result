@@ -13,7 +13,7 @@ public interface IReturnCode {
     /**
      * 返回码
      * @return 返回码
-     * @since 2.6.1
+     * @since 2.6.0
      */
     String getCode();
 

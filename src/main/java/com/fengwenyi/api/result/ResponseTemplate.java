@@ -32,7 +32,7 @@ import java.util.Map;
  *     反之，当 code（返回码）不为 SUCCESS 时，表示失败。此时 success（成功标志）为 {@code false}，表示失败。
  * </p>
  *
- * <p> since 2.6.1 版本开始，类型变为 String，SUCCESS 表示成功</p>
+ * <p> since 2.6.0 版本开始，类型变为 String，SUCCESS 表示成功</p>
  *
  * <br><br><br>
  *
@@ -89,7 +89,7 @@ public class ResponseTemplate<T> implements Serializable {
 
     /**
      * 返回码
-     * @since 2.6.1
+     * @since 2.6.0
      */
     private String code;
 

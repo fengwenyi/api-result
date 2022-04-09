@@ -1,8 +1,8 @@
 # 版本更新日志
 
-## v2.6.1
+## v2.6.0
 
-2022.04.03
+2022.04.03 ~ 2022.04.09
 
 - 【变更】ResponseTemplate 属性 code 类型变由 Integer 变更为 String
 - 【变更】IReturnCode 方法 getCode() 返回类型变由 Integer 变更为 String
