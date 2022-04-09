@@ -32,16 +32,15 @@ import java.util.Map;
  *     反之，当 code（返回码）不为 SUCCESS 时，表示失败。此时 success（成功标志）为 {@code false}，表示失败。
  * </p>
  *
- * <p> since 2.6.1 版本开始，类型变为String，SUCCESS 表示成功</p>
+ * <p> since 2.6.1 版本开始，类型变为 String，SUCCESS 表示成功</p>
  *
  * <br><br><br>
  *
- * <p><s>
+ * <p>
  *     如果属性没有值，则属性的值为null，<br>
  *     那么在返回json格式的数据中，将不会出现改属性。<br>
  *     这是因为这个实体类加了
  *     {@code @JsonInclude(JsonInclude.Include.NON_NULL)}
- * </s>
  * </p>
  *
  * <p> since 2.5.3 版本开始，交由业务服务自行处理</p>
