@@ -3,6 +3,7 @@ package com.fengwenyi.api.result;
 import com.fengwenyi.api.result.jk.IBuilder;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -58,8 +59,12 @@ public class PageResponseVo<T> implements Serializable {
 
     /**
      * 响应数据
+     *
+     * <p>2.7.0: ? -> List</p>
+     *
+     * @since 2.7.0
      */
-    private T content;
+    private List<T> content;
 
 
     /**
@@ -76,7 +81,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param totalPages 总页数
      * @param content 内容
      */
-    public PageResponseVo(Long currentPage, Integer pageSize, Long totalRows, Long totalPages, T content) {
+    public PageResponseVo(Long currentPage, Integer pageSize, Long totalRows, Long totalPages, List<T> content) {
         this.currentPage = currentPage;
         this.pageSize = pageSize;
         this.totalRows = totalRows;
@@ -160,7 +165,7 @@ public class PageResponseVo<T> implements Serializable {
      * 获取内容
      * @return 内容
      */
-    public T getContent() {
+    public List<T> getContent() {
         return content;
     }
 
@@ -169,7 +174,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param content 内容
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setContent(T content) {
+    public PageResponseVo<T> setContent(List<T> content) {
         this.content = content;
         return this;
     }
@@ -240,7 +245,7 @@ public class PageResponseVo<T> implements Serializable {
          * @param content 内容
          * @return Builder
          */
-        public Builder<T> content(T content) {
+        public Builder<T> content(List<T> content) {
             this.pageResponseVo.content = content;
             return this;
         }
