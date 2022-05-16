@@ -45,10 +45,11 @@ public interface IReturnCode {
         , PARAM_MISS("PARAM_MISS", "参数缺失")
         , PARAM_VALIDATED("PARAM_VALIDATED", "参数校验失败")
 
-        /* ------------------103xxx 数据错误--------------------------- */
-        , DATA_SAVE_FAILURE("DATA_SAVE_FAILURE", "数据保存失败")
-        , DATA_UPDATE_FAILURE("DATA_UPDATE_FAILURE", "数据修改失败")
-        , DATA_DELETE_FAILURE("DATA_DELETE_FAILURE", "数据删除失败")
+        /* ------------------操作异常--------------------------- */
+        , OPERATION_SAVE_FAILURE("SAVE_FAILURE", "保存失败")
+        , OPERATION_ADD_FAILURE("ADD_FAILURE", "添加失败")
+        , OPERATION_UPDATE_FAILURE("UPDATE_FAILURE", "更新失败")
+        , OPERATION_DELETE_FAILURE("DELETE_FAILURE", "删除失败")
 
         /* ------------------104xxx 用户相关的错误--------------------------- */
         , USER_NOT_EXIST("USER_NOT_EXIST", "用户不存在")
@@ -67,6 +68,12 @@ public interface IReturnCode {
         /* ------------------106xxx 服务调用相关的错误--------------------------- */
         , SERVICE_CALL_EXCEPTION("SERVICE_CALL_EXCEPTION", "服务调用异常")
         , SERVICE_RESPONSE_EXCEPTION("SERVICE_RESPONSE_EXCEPTION", "服务响应异常")
+
+        /* ------------------数据异常--------------------------- */
+        , DATA_NOT_EXIST("DATA_NOT_EXIST", "数据不存在")
+        , DATA_EXIST("DATA_EXIST", "数据已存在")
+        , DATA_REPEAT("DATA_REPEAT", "数据重复")
+        , DATA_EXCEPTION("DATA_EXCEPTION", "数据异常")
         ;
 
         /** 返回码 */

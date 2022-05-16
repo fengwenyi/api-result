@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>2.6.0</version>
+    <version>2.6.1</version>
 </dependency>
 ```
 

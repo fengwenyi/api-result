@@ -6,7 +6,7 @@
 
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>2.6.0</version>
+    <version>2.6.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>api-result</name>
     <description>一套RESTful风格API接口响应参数规范化的解决方案</description>
