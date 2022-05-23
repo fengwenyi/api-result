@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- * 接口响应模板类
+ * 结果模板
  *
  * <br><br><br>
  *
@@ -15,8 +15,8 @@ import java.util.Map;
  * </p>
  *
  * <ul>
- *     <li>{@code code}     ：返回码</li>
- *     <li>{@code message}  ：描述信息</li>
+ *     <li>{@code code}     ：结果码</li>
+ *     <li>{@code msg}      ：描述</li>
  *     <li>{@code success}  ：成功标志</li>
  *     <li>{@code header}   ：响应头</li>
  *     <li>{@code body}     ：响应体</li>
@@ -25,25 +25,14 @@ import java.util.Map;
  * <br>
  *
  * <p>
- *     当 code（返回码）为 SUCCESS 时，表示成功。此时 success（成功标志）为 {@code true}，表示成功。
+ *     当 code（结果码）为 SUCCESS 时，表示成功。此时 success（成功标志）为 {@code true}，表示成功。
  * </p>
  *
  * <p>
- *     反之，当 code（返回码）不为 SUCCESS 时，表示失败。此时 success（成功标志）为 {@code false}，表示失败。
+ *     反之，当 code（结果码）不为 SUCCESS 时，表示失败。此时 success（成功标志）为 {@code false}，表示失败。
  * </p>
- *
- * <p> since 2.6.0 版本开始，类型变为 String，SUCCESS 表示成功</p>
  *
  * <br><br><br>
- *
- * <p>
- *     如果属性没有值，则属性的值为null，<br>
- *     那么在返回json格式的数据中，将不会出现改属性。<br>
- *     这是因为这个实体类加了
- *     {@code @JsonInclude(JsonInclude.Include.NON_NULL)}
- * </p>
- *
- * <p> since 2.5.3 版本开始，交由业务服务自行处理</p>
  *
  * <br>
  *
@@ -70,66 +59,65 @@ import java.util.Map;
  *
  * <br>
  *
- * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
- * @since 2.5.0
+ * @author <a href="https://fengwenyi.com">Erwin Feng</a>
+ * @since 2.7.0
  */
-public class ResponseTemplate<T> implements Serializable {
+public class ResultTemplate<T> implements Serializable {
 
-    private static final long serialVersionUID = -4206473602305400988L;
-
-    /**
-     * 默认操作成功
-     */
-    private static final IReturnCode SUCCESS = IReturnCode.Default.SUCCESS;
+    private static final long serialVersionUID = 2694678370842576448L;
 
     /**
-     * 默认操作失败
-     */
-    private static final IReturnCode ERROR = IReturnCode.Default.ERROR;
-
-    /**
-     * 返回码
-     * @since 2.6.0
+     * 结果码
      */
     private String code;
 
     /**
-     * 描述信息
+     * 描述
      */
-    private String message;
+    private String msg;
 
     /**
-     * 响应结果状态，{@code true} 表示成功；{@code false} 表示失败
+     * 结果状态，{@code true}-成功；{@code false}-失败
      */
     private Boolean success = Boolean.FALSE;
 
     /**
-     * 响应头：可以存放请求相关的信息
+     * 结果头
      */
-    private ResponseHeader header;
+    private ResultHeader header;
 
     /**
-     * 响应体
+     * 结果体
      */
     private T body;
 
     /**
+     * 默认操作成功
+     */
+    private static final IResult SUCCESS = IResult.Default.SUCCESS;
+
+    /**
+     * 默认操作失败
+     */
+    private static final IResult ERROR = IResult.Default.ERROR;
+
+    /**
      * 构造方法：无参数
      */
-    public ResponseTemplate() {
+    public ResultTemplate() {
     }
 
     /**
      * 操作成功
      *
      * @param <T> {@link Void}
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResponseTemplate<T> success() {
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> success() {
+        return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
                 .setCode(SUCCESS.getCode())
-                .setMessage(SUCCESS.getMessage())
+                .setmsg(SUCCESS.getMsg())
                 ;
     }
 
@@ -138,14 +126,14 @@ public class ResponseTemplate<T> implements Serializable {
      *
      * @param body 响应体
      * @param <T>  响应体类型
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
     @SuppressWarnings("all")
-    public static <T> ResponseTemplate<T> success(T body) {
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> success(T body) {
+        return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
                 .setCode(SUCCESS.getCode())
-                .setMessage(SUCCESS.getMessage())
+                .setmsg(SUCCESS.getMsg())
                 .setBody(body)
                 ;
     }
@@ -154,12 +142,12 @@ public class ResponseTemplate<T> implements Serializable {
      * 操作失败
      *
      * @param <T> {@link Void}
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResponseTemplate<T> fail() {
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> fail() {
+        return new ResultTemplate<T>()
                 .setCode(ERROR.getCode())
-                .setMessage(ERROR.getMessage())
+                .setmsg(ERROR.getMsg())
                 ;
     }
 
@@ -167,16 +155,16 @@ public class ResponseTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param message 描述信息
+     * @param msg 描述信息
      * @param <T> {@link Void}
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
     @SuppressWarnings("all")
-    public static <T> ResponseTemplate<T> fail(String message) {
-        message = StringUtils.isBlank(message) ? ERROR.getMessage() : message;
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> fail(String msg) {
+        msg = StringUtils.isBlank(msg) ? ERROR.getMsg() : msg;
+        return new ResultTemplate<T>()
                 .setCode(ERROR.getCode())
-                .setMessage(message)
+                .setmsg(msg)
                 ;
     }
 
@@ -184,31 +172,31 @@ public class ResponseTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param returnCode {@link IReturnCode}
+     * @param returnCode {@link IResult}
      * @param <T>        {@link Void}
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResponseTemplate<T> fail(IReturnCode returnCode) {
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> fail(IResult returnCode) {
+        return new ResultTemplate<T>()
                 .setCode(returnCode.getCode())
-                .setMessage(returnCode.getMessage())
+                .setmsg(returnCode.getMsg())
                 ;
     }
 
     /**
      * 操作失败
      *
-     * @param returnCode {@link IReturnCode}
-     * @param message    描述信息
+     * @param returnCode {@link IResult}
+     * @param msg    描述信息
      * @param <T>        {@link Void}
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
     @SuppressWarnings("all")
-    public static <T> ResponseTemplate<T> fail(IReturnCode returnCode, String message) {
-        message = StringUtils.isBlank(message) ? returnCode.getMessage() : message;
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> fail(IResult returnCode, String msg) {
+        msg = StringUtils.isBlank(msg) ? returnCode.getMsg() : msg;
+        return new ResultTemplate<T>()
                 .setCode(returnCode.getCode())
-                .setMessage(message)
+                .setmsg(msg)
                 ;
     }
 
@@ -217,15 +205,15 @@ public class ResponseTemplate<T> implements Serializable {
      * 操作失败
      *
      * @param code      返回码
-     * @param message   描述信息
+     * @param msg   描述信息
      * @param <T>       {@link Void}
-     * @return 响应封装类 {@link ResponseTemplate}
+     * @return 响应封装类 {@link ResultTemplate}
      */
     @SuppressWarnings("all")
-    public static <T> ResponseTemplate<T> fail(String code, String message) {
-        return new ResponseTemplate<T>()
+    public static <T> ResultTemplate<T> fail(String code, String msg) {
+        return new ResultTemplate<T>()
                 .setCode(code)
-                .setMessage(message)
+                .setmsg(msg)
                 ;
     }
 
@@ -243,31 +231,31 @@ public class ResponseTemplate<T> implements Serializable {
      * {@code code} 的get方法
      *
      * @param code 响应码
-     * @return {@link ResponseTemplate}
+     * @return {@link ResultTemplate}
      */
-    private ResponseTemplate<T> setCode(String code) {
+    private ResultTemplate<T> setCode(String code) {
         this.code = code;
         return this;
     }
 
     /**
-     * {@code message} 的get方法
+     * {@code msg} 的get方法
      *
-     * @return {@code message} 的值
+     * @return {@code msg} 的值
      */
     @SuppressWarnings("all")
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
     /**
      * {@code msg} 的get方法
      *
-     * @param message 信息
-     * @return {@link ResponseTemplate}
+     * @param msg 信息
+     * @return {@link ResultTemplate}
      */
-    public ResponseTemplate<T> setMessage(String message) {
-        this.message = message;
+    public ResultTemplate<T> setmsg(String msg) {
+        this.msg = msg;
         return this;
     }
 
@@ -285,9 +273,9 @@ public class ResponseTemplate<T> implements Serializable {
      * {@code success} 的get方法
      *
      * @param success 操作结果
-     * @return {@link ResponseTemplate}
+     * @return {@link ResultTemplate}
      */
-    public ResponseTemplate<T> setSuccess(Boolean success) {
+    public ResultTemplate<T> setSuccess(Boolean success) {
         this.success = success;
         return this;
     }
@@ -298,7 +286,7 @@ public class ResponseTemplate<T> implements Serializable {
      * @return {@code header} 的值
      */
     @SuppressWarnings("all")
-    public ResponseHeader getHeader() {
+    public ResultHeader getHeader() {
         return header;
     }
 
@@ -306,9 +294,9 @@ public class ResponseTemplate<T> implements Serializable {
      * {@code header} 的get方法
      *
      * @param header 响应头
-     * @return {@link ResponseTemplate}
+     * @return {@link ResultTemplate}
      */
-    public ResponseTemplate<T> setHeader(ResponseHeader header) {
+    public ResultTemplate<T> setHeader(ResultHeader header) {
         this.header = header;
         return this;
     }
@@ -327,9 +315,9 @@ public class ResponseTemplate<T> implements Serializable {
      * {@code body} 的set方法
      *
      * @param body 响应体
-     * @return {@link ResponseTemplate}
+     * @return {@link ResultTemplate}
      */
-    public ResponseTemplate<T> setBody(T body) {
+    public ResultTemplate<T> setBody(T body) {
         this.body = body;
         return this;
     }
@@ -337,8 +325,8 @@ public class ResponseTemplate<T> implements Serializable {
     @Override
     public String toString() {
         return "ResultTemplate{" +
-                "code=" + code +
-                ", message='" + message + '\'' +
+                "code='" + code + '\'' +
+                ", msg='" + msg + '\'' +
                 ", success=" + success +
                 ", header=" + header +
                 ", body=" + body +

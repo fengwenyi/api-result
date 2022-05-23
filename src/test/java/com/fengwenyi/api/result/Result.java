@@ -4,7 +4,7 @@ package com.fengwenyi.api.result;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2021-07-02
  */
-public enum ReturnCode implements IReturnCode {
+public enum Result implements IResult {
 
     CUSTOM_ERROR("CUSTOM_ERROR", "自定义错误")
 
@@ -14,11 +14,11 @@ public enum ReturnCode implements IReturnCode {
     private final String code;
 
     /* 描述 */
-    private final String message;
+    private final String msg;
 
-    ReturnCode(String code, String message) {
+    Result(String code, String msg) {
         this.code = code;
-        this.message = message;
+        this.msg = msg;
     }
 
     @Override
@@ -27,7 +27,7 @@ public enum ReturnCode implements IReturnCode {
     }
 
     @Override
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 }

@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @author Erwin Feng
  * @since 2.5.0
  */
-public class ResponseHeader extends HashMap<String, Object> {
+public class ResultHeader extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 6187327761077399909L;
 

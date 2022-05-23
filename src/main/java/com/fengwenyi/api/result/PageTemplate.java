@@ -14,11 +14,11 @@ import java.util.List;
  * </p>
  *
  * <ul>
- *     <li>{@code currentPage}      ：当前页</li>
+ *     <li>{@code current}      ：当前页</li>
  *     <li>{@code pageSize}         ：每页显示条数</li>
- *     <li>{@code totalRows}        ：总条数</li>
- *     <li>{@code totalPages}       ：总页数</li>
- *     <li>{@code content}          ：数据</li>
+ *     <li>{@code totalRows}        ：总条数 rows</li>
+ *     <li>{@code totalPages}       ：总页数 - pages</li>
+ *     <li>{@code rows}          ：数据 - records</li>
  * </ul>
  *
  * <p>
@@ -26,21 +26,16 @@ import java.util.List;
  * </p>
  *
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
- * @since 2.4.1
+ * @since 2.7.0
  */
-@SuppressWarnings("all")
-public class PageResponseVo<T> implements Serializable {
+public class PageTemplate<T> implements Serializable {
 
-    private static final long serialVersionUID = 7772247147295029134L;
+    private static final long serialVersionUID = -4253922988693797927L;
 
     /**
      * 当前页
-     * <p>
-     * 将Integer改为Long的原因：假如你的总页数远远大于整数的最大数，
-     * 那么这样就很难处理了。但修改之后，并不会影响我们现有的业务
-     * </p>
      */
-    private Long currentPage;
+    private Long current;
 
     /**
      * 每页显示条数
@@ -58,52 +53,48 @@ public class PageResponseVo<T> implements Serializable {
     private Long totalPages;
 
     /**
-     * 响应数据
-     *
-     * <p>2.7.0: ? -> List</p>
-     *
-     * @since 2.7.0
+     * 数据
      */
-    private List<T> content;
+    private List<T> rows;
 
 
     /**
      * 无参数构造方法
      */
-    public PageResponseVo() {
+    public PageTemplate() {
     }
 
     /**
      * 构造方法
-     * @param currentPage 当前页
+     * @param current 当前页
      * @param pageSize 分页大小
      * @param totalRows 总行数
      * @param totalPages 总页数
-     * @param content 内容
+     * @param rows 数据
      */
-    public PageResponseVo(Long currentPage, Integer pageSize, Long totalRows, Long totalPages, List<T> content) {
-        this.currentPage = currentPage;
+    public PageTemplate(Long current, Integer pageSize, Long totalRows, Long totalPages, List<T> rows) {
+        this.current = current;
         this.pageSize = pageSize;
         this.totalRows = totalRows;
         this.totalPages = totalPages;
-        this.content = content;
+        this.rows = rows;
     }
 
     /**
      * 获取当前页
      * @return 返回当前页
      */
-    public Long getCurrentPage() {
-        return currentPage;
+    public Long getCurrent() {
+        return current;
     }
 
     /**
      * 设置当前页
-     * @param currentPage 当前页
+     * @param current 当前页
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setCurrentPage(long currentPage) {
-        this.currentPage = currentPage;
+    public PageTemplate<T> setCurrent(long current) {
+        this.current = current;
         return this;
     }
 
@@ -120,7 +111,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param pageSize 分页大小
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setPageSize(int pageSize) {
+    public PageTemplate<T> setPageSize(int pageSize) {
         this.pageSize = pageSize;
         return this;
     }
@@ -138,7 +129,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param totalRows 总条数
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setTotalRows(long totalRows) {
+    public PageTemplate<T> setTotalRows(long totalRows) {
         this.totalRows = totalRows;
         return this;
     }
@@ -156,7 +147,7 @@ public class PageResponseVo<T> implements Serializable {
      * @param totalPages 总页数
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setTotalPages(long totalPages) {
+    public PageTemplate<T> setTotalPages(long totalPages) {
         this.totalPages = totalPages;
         return this;
     }
@@ -165,17 +156,17 @@ public class PageResponseVo<T> implements Serializable {
      * 获取内容
      * @return 内容
      */
-    public List<T> getContent() {
-        return content;
+    public List<T> getRows() {
+        return rows;
     }
 
     /**
      * 设置内容
-     * @param content 内容
+     * @param rows 内容
      * @return PageResponseVo
      */
-    public PageResponseVo<T> setContent(List<T> content) {
-        this.content = content;
+    public PageTemplate<T> setRows(List<T> rows) {
+        this.rows = rows;
         return this;
     }
 
@@ -184,16 +175,16 @@ public class PageResponseVo<T> implements Serializable {
      * PageResponse构造者，可通过该类构造出PageResponseVo
      * @param <T> 范型
      */
-    public static class Builder<T> implements IBuilder<PageResponseVo<T>> {
+    public static class Builder<T> implements IBuilder<PageTemplate<T>> {
 
         // PageResponseVo 对象
-        private final PageResponseVo<T> pageResponseVo;
+        private final PageTemplate<T> pageTemplate;
 
         /**
          * 无参数构造方法，new一个 PageResponseVo 对象
          */
         public Builder() {
-            pageResponseVo = new PageResponseVo<>();
+            pageTemplate = new PageTemplate<>();
         }
 
         /*public static <T> Builder<T> newBuilder() {
@@ -202,11 +193,11 @@ public class PageResponseVo<T> implements Serializable {
 
         /**
          * 设置当前页
-         * @param currentPage 当前页
+         * @param current 当前页
          * @return Builder
          */
-        public Builder<T> currentPage(long currentPage) {
-            this.pageResponseVo.currentPage = currentPage;
+        public Builder<T> current(long current) {
+            this.pageTemplate.current = current;
             return this;
         }
 
@@ -216,7 +207,7 @@ public class PageResponseVo<T> implements Serializable {
          * @return Builder
          */
         public Builder<T> pageSize(int pageSize) {
-            this.pageResponseVo.pageSize = pageSize;
+            this.pageTemplate.pageSize = pageSize;
             return this;
         }
 
@@ -226,7 +217,7 @@ public class PageResponseVo<T> implements Serializable {
          * @return Builder
          */
         public Builder<T> totalRows(long totalRows) {
-            this.pageResponseVo.totalRows = totalRows;
+            this.pageTemplate.totalRows = totalRows;
             return this;
         }
 
@@ -236,17 +227,17 @@ public class PageResponseVo<T> implements Serializable {
          * @return Builder
          */
         public Builder<T> totalPages(long totalPages) {
-            this.pageResponseVo.totalPages = totalPages;
+            this.pageTemplate.totalPages = totalPages;
             return this;
         }
 
         /**
          * 设置内容
-         * @param content 内容
+         * @param rows 内容
          * @return Builder
          */
-        public Builder<T> content(List<T> content) {
-            this.pageResponseVo.content = content;
+        public Builder<T> rows(List<T> rows) {
+            this.pageTemplate.rows = rows;
             return this;
         }
 
@@ -254,8 +245,9 @@ public class PageResponseVo<T> implements Serializable {
          * 给属性赋值完成，调该方法可构造出PageResponseVo的对象
          * @return PageResponseVo
          */
-        public PageResponseVo<T> build() {
-            return this.pageResponseVo;
+        @Override
+        public PageTemplate<T> build() {
+            return this.pageTemplate;
         }
     }
 
@@ -265,12 +257,12 @@ public class PageResponseVo<T> implements Serializable {
      */
     @Override
     public String toString() {
-        return "PageResponseVo{" +
-                "currentPage=" + currentPage +
+        return "PageTemplate{" +
+                "current=" + current +
                 ", pageSize=" + pageSize +
                 ", totalRows=" + totalRows +
                 ", totalPages=" + totalPages +
-                ", content=" + content +
+                ", rows=" + rows +
                 '}';
     }
 }

@@ -7,15 +7,14 @@ import java.io.Serializable;
  * 分页请求类
  *
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
- * @since 2.4.1
+ * @since 2.7.0
  */
-@SuppressWarnings("all")
 public class PageRequestVo implements Serializable {
 
     private static final long serialVersionUID = -6056923744875775355L;
 
     /** 当前页 */
-    private Long currentPage;
+    private Long current;
 
     /** 每页显示条数 */
     private Integer pageSize;
@@ -23,17 +22,17 @@ public class PageRequestVo implements Serializable {
     public PageRequestVo() {
     }
 
-    public PageRequestVo(Long currentPage, Integer pageSize) {
-        this.currentPage = currentPage;
+    public PageRequestVo(Long current, Integer pageSize) {
+        this.current = current;
         this.pageSize = pageSize;
     }
 
-    public Long getCurrentPage() {
-        return currentPage;
+    public Long getCurrent() {
+        return current;
     }
 
-    public void setCurrentPage(Long currentPage) {
-        this.currentPage = currentPage;
+    public void setCurrent(Long current) {
+        this.current = current;
     }
 
     public Integer getPageSize() {
@@ -47,7 +46,7 @@ public class PageRequestVo implements Serializable {
     @Override
     public String toString() {
         return "PageRequestVo{" +
-                "currentPage=" + currentPage +
+                "current=" + current +
                 ", pageSize=" + pageSize +
                 '}';
     }

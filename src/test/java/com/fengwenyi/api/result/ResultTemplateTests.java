@@ -10,29 +10,29 @@ import java.util.*;
  * @since 2021-10-22
  */
 @SuppressWarnings("all")
-public class ResponseTemplateTests {
+public class ResultTemplateTests {
 
     @Test
     public void testSuccess() {
-        ResponseTemplate<Object> resultTemplate = ResponseTemplate.success();
+        ResultTemplate<Object> resultTemplate = ResultTemplate.success();
 //        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
     @Test
     public void testFail() {
-        ResponseTemplate<Object> resultTemplate = ResponseTemplate.fail();
+        ResultTemplate<Object> resultTemplate = ResultTemplate.fail();
 //        PrintUtils.info(JsonUtils.convertString(resultTemplate));
     }
 
     @Test
     public void testSuccessFull() {
-        ResponseHeader header = new ResponseHeader();
+        ResultHeader header = new ResultHeader();
         header.put("traceId", UUID.randomUUID().toString());
 
-        PageResponseVo<Map<String, Object>> pageResponseVo = new PageResponseVo<>();
+        PageTemplate<Map<String, Object>> pageTemplate = new PageTemplate<>();
 
         List<Map<String, Object>> users = new ArrayList<>();
-        pageResponseVo.setContent(users);
+        pageTemplate.setContent(users);
 
         Map<String, Object> user1 = new HashMap<>();
         users.add(user1);
@@ -63,14 +63,14 @@ public class ResponseTemplateTests {
         long totalRows = users.size();
         long totalPages = (totalRows + pageSize - 1) / pageSize;
 
-        pageResponseVo.setCurrentPage(currentPage);
-        pageResponseVo.setPageSize(pageSize);
-        pageResponseVo.setTotalPages(totalPages);
-        pageResponseVo.setTotalRows(totalRows);
+        pageTemplate.setCurrentPage(currentPage);
+        pageTemplate.setPageSize(pageSize);
+        pageTemplate.setTotalPages(totalPages);
+        pageTemplate.setTotalRows(totalRows);
 
-        ResponseTemplate<Object> response = ResponseTemplate.success()
+        ResultTemplate<Object> response = ResultTemplate.success()
                 .setHeader(header)
-                .setBody(pageResponseVo)
+                .setBody(pageTemplate)
                 ;
 
 //        PrintUtils.info(JsonUtils.convertString(response));
@@ -78,7 +78,7 @@ public class ResponseTemplateTests {
 
     @Test
     public void testCustomReturnCode() {
-        ResponseTemplate<Object> response = ResponseTemplate.fail(ReturnCode.CUSTOM_ERROR);
+        ResultTemplate<Object> response = ResultTemplate.fail(Result.CUSTOM_ERROR);
 //        PrintUtils.info(JsonUtils.convertString(response));
     }
 
