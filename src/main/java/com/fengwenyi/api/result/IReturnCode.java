@@ -34,46 +34,6 @@ public interface IReturnCode {
 
         /* ------------------错误--------------------------- */
         , ERROR("ERROR", "错误")
-
-        /* ------------------101xxx 请求错误--------------------------- */
-        , REQUEST_METHOD_NOT_SUPPORT("REQUEST_METHOD_NOT_SUPPORT", "请求方法不支持")
-
-        /* ------------------102xxx 参数错误--------------------------- */
-        , PARAM_NOT_NULL("PARAM_NOT_NULL", "参数不能为空")
-        , PARAM_EXCEPTION("PARAM_EXCEPTION", "参数异常")
-        , PARAM_ILLEGAL("PARAM_ILLEGAL", "参数非法")
-        , PARAM_MISS("PARAM_MISS", "参数缺失")
-        , PARAM_VALIDATED("PARAM_VALIDATED", "参数校验失败")
-
-        /* ------------------操作异常--------------------------- */
-        , OPERATION_SAVE_FAILURE("SAVE_FAILURE", "保存失败")
-        , OPERATION_ADD_FAILURE("ADD_FAILURE", "添加失败")
-        , OPERATION_UPDATE_FAILURE("UPDATE_FAILURE", "更新失败")
-        , OPERATION_DELETE_FAILURE("DELETE_FAILURE", "删除失败")
-
-        /* ------------------104xxx 用户相关的错误--------------------------- */
-        , USER_NOT_EXIST("USER_NOT_EXIST", "用户不存在")
-        , USER_PASSWORD_INCORRECT("USER_PASSWORD_INCORRECT", "用户密码不正确")
-        , USER_LOCKED("USER_LOCKED", "用户被锁定")
-        , USER_EXPIRE("USER_EXPIRE", "用户已过期")
-        , USER_ARREARS("USER_ARREARS", "用户已欠费")
-
-        /* ------------------105xxx 账户相关的错误--------------------------- */
-        , ACCOUNT_NOT_EXIST("ACCOUNT_NOT_EXIST", "账户不存在")
-        , ACCOUNT_PASSWORD_INCORRECT("ACCOUNT_PASSWORD_INCORRECT", "账户密码不正确")
-        , ACCOUNT_LOCKED("ACCOUNT_LOCKED", "账户被锁定")
-        , ACCOUNT_EXPIRE("ACCOUNT_EXPIRE", "账户已过期")
-        , ACCOUNT_ARREARS("ACCOUNT_ARREARS", "账户已欠费")
-
-        /* ------------------106xxx 服务调用相关的错误--------------------------- */
-        , SERVICE_CALL_EXCEPTION("SERVICE_CALL_EXCEPTION", "服务调用异常")
-        , SERVICE_RESPONSE_EXCEPTION("SERVICE_RESPONSE_EXCEPTION", "服务响应异常")
-
-        /* ------------------数据异常--------------------------- */
-        , DATA_NOT_EXIST("DATA_NOT_EXIST", "数据不存在")
-        , DATA_EXIST("DATA_EXIST", "数据已存在")
-        , DATA_REPEAT("DATA_REPEAT", "数据重复")
-        , DATA_EXCEPTION("DATA_EXCEPTION", "数据异常")
         ;
 
         /** 返回码 */

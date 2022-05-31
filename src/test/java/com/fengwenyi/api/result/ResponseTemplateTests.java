@@ -29,7 +29,7 @@ public class ResponseTemplateTests {
         ResponseHeader header = new ResponseHeader();
         header.put("traceId", UUID.randomUUID().toString());
 
-        PageResponseVo<List<Map<String, Object>>> pageResponseVo = new PageResponseVo<>();
+        PageResponseVo<Map<String, Object>> pageResponseVo = new PageResponseVo<>();
 
         List<Map<String, Object>> users = new ArrayList<>();
         pageResponseVo.setContent(users);
