@@ -45,17 +45,17 @@ public class PageTemplate<T> implements Serializable {
     /**
      * 总条数
      */
-    private Long totalRows;
+    private Long totalRow;
 
     /**
      * 总页数
      */
-    private Long totalPages;
+    private Long totalPage;
 
     /**
      * 数据
      */
-    private List<T> rows;
+    private List<T> content;
 
 
     /**
