@@ -4,7 +4,6 @@
 
 2022.05.16 ~ 
 
-- 【变更】ResponseTemplate 中 `T` 表示对象
 - 【移除】移除 IReturnCode.Default 多余的枚举，仅保留成功和失败
 
 ## v2.6.0
