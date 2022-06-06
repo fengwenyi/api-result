@@ -1,4 +1,4 @@
-package com.fengwenyi.api.result.jk;
+package com.fengwenyi.api.result;
 
 /**
  * 构造者模式接口
@@ -6,7 +6,7 @@ package com.fengwenyi.api.result.jk;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.5.2
  */
-public interface IBuilder<T> {
+public interface Builder<T> {
 
     /**
      * 构建一个对象

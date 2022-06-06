@@ -4,7 +4,10 @@
 
 2022.05.16 ~ 
 
-new
+:star: New Features
+
+- 概念变更，响应改为结果，即 Response -> Result
+- 对分页返回参数进行调整
 
 ## v2.6.0
 

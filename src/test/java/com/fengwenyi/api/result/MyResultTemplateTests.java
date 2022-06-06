@@ -10,7 +10,7 @@ import java.util.*;
  * @since 2021-10-22
  */
 @SuppressWarnings("all")
-public class ResultTemplateTests {
+public class MyResultTemplateTests {
 
     @Test
     public void testSuccess() {
@@ -63,10 +63,10 @@ public class ResultTemplateTests {
         long totalRows = users.size();
         long totalPages = (totalRows + pageSize - 1) / pageSize;
 
-        pageTemplate.setCurrentPage(currentPage);
+        pageTemplate.setCurrent(currentPage);
         pageTemplate.setPageSize(pageSize);
-        pageTemplate.setTotalPages(totalPages);
-        pageTemplate.setTotalRows(totalRows);
+        pageTemplate.setTotalPage(totalPages);
+        pageTemplate.setTotalRow(totalRows);
 
         ResultTemplate<Object> response = ResultTemplate.success()
                 .setHeader(header)
@@ -78,7 +78,7 @@ public class ResultTemplateTests {
 
     @Test
     public void testCustomReturnCode() {
-        ResultTemplate<Object> response = ResultTemplate.fail(Result.CUSTOM_ERROR);
+        ResultTemplate<Object> response = ResultTemplate.fail(MyResult.CUSTOM_ERROR);
 //        PrintUtils.info(JsonUtils.convertString(response));
     }
 

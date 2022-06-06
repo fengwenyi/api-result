@@ -1,7 +1,5 @@
 package com.fengwenyi.api.result;
 
-import com.fengwenyi.api.result.jk.IBuilder;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -68,16 +66,16 @@ public class PageTemplate<T> implements Serializable {
      * 构造方法
      * @param current 当前页
      * @param pageSize 分页大小
-     * @param totalRows 总行数
-     * @param totalPages 总页数
-     * @param rows 数据
+     * @param totalRow 总行数
+     * @param totalPage 总页数
+     * @param content 数据
      */
-    public PageTemplate(Long current, Integer pageSize, Long totalRows, Long totalPages, List<T> rows) {
+    public PageTemplate(Long current, Integer pageSize, Long totalRow, Long totalPage, List<T> content) {
         this.current = current;
         this.pageSize = pageSize;
-        this.totalRows = totalRows;
-        this.totalPages = totalPages;
-        this.rows = rows;
+        this.totalRow = totalRow;
+        this.totalPage = totalPage;
+        this.content = content;
     }
 
     /**
@@ -120,17 +118,17 @@ public class PageTemplate<T> implements Serializable {
      * 获取总条数
      * @return 总条数
      */
-    public Long getTotalRows() {
-        return totalRows;
+    public Long getTotalRow() {
+        return totalRow;
     }
 
     /**
      * 设置总条数
-     * @param totalRows 总条数
+     * @param totalRow 总条数
      * @return PageResponseVo
      */
-    public PageTemplate<T> setTotalRows(long totalRows) {
-        this.totalRows = totalRows;
+    public PageTemplate<T> setTotalRow(long totalRow) {
+        this.totalRow = totalRow;
         return this;
     }
 
@@ -139,16 +137,16 @@ public class PageTemplate<T> implements Serializable {
      * @return 总页数
      */
     public Long getTotalPages() {
-        return totalPages;
+        return totalPage;
     }
 
     /**
      * 设置总页数
-     * @param totalPages 总页数
+     * @param totalPage 总页数
      * @return PageResponseVo
      */
-    public PageTemplate<T> setTotalPages(long totalPages) {
-        this.totalPages = totalPages;
+    public PageTemplate<T> setTotalPage(long totalPage) {
+        this.totalPage = totalPage;
         return this;
     }
 
@@ -156,17 +154,17 @@ public class PageTemplate<T> implements Serializable {
      * 获取内容
      * @return 内容
      */
-    public List<T> getRows() {
-        return rows;
+    public List<T> getContent() {
+        return content;
     }
 
     /**
      * 设置内容
-     * @param rows 内容
+     * @param content 内容
      * @return PageResponseVo
      */
-    public PageTemplate<T> setRows(List<T> rows) {
-        this.rows = rows;
+    public PageTemplate<T> setContent(List<T> content) {
+        this.content = content;
         return this;
     }
 
@@ -175,7 +173,7 @@ public class PageTemplate<T> implements Serializable {
      * PageResponse构造者，可通过该类构造出PageResponseVo
      * @param <T> 范型
      */
-    public static class Builder<T> implements IBuilder<PageTemplate<T>> {
+    public static class Builder<T> implements com.fengwenyi.api.result.Builder<PageTemplate<T>> {
 
         // PageResponseVo 对象
         private final PageTemplate<T> pageTemplate;
@@ -213,31 +211,31 @@ public class PageTemplate<T> implements Serializable {
 
         /**
          * 设置总条数
-         * @param totalRows 总条数
+         * @param totalRow 总条数
          * @return Builder
          */
-        public Builder<T> totalRows(long totalRows) {
-            this.pageTemplate.totalRows = totalRows;
+        public Builder<T> totalRow(long totalRow) {
+            this.pageTemplate.totalRow = totalRow;
             return this;
         }
 
         /**
          * 设置总页数
-         * @param totalPages 总页数
+         * @param totalPage 总页数
          * @return Builder
          */
-        public Builder<T> totalPages(long totalPages) {
-            this.pageTemplate.totalPages = totalPages;
+        public Builder<T> totalPage(long totalPage) {
+            this.pageTemplate.totalPage = totalPage;
             return this;
         }
 
         /**
          * 设置内容
-         * @param rows 内容
+         * @param content 内容
          * @return Builder
          */
-        public Builder<T> rows(List<T> rows) {
-            this.pageTemplate.rows = rows;
+        public Builder<T> content(List<T> content) {
+            this.pageTemplate.content = content;
             return this;
         }
 
@@ -260,9 +258,9 @@ public class PageTemplate<T> implements Serializable {
         return "PageTemplate{" +
                 "current=" + current +
                 ", pageSize=" + pageSize +
-                ", totalRows=" + totalRows +
-                ", totalPages=" + totalPages +
-                ", rows=" + rows +
+                ", totalRow=" + totalRow +
+                ", totalPage=" + totalPage +
+                ", content=" + content +
                 '}';
     }
 }

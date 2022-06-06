@@ -8,7 +8,7 @@ package com.fengwenyi.api.result;
  * @author Erwin Feng
  * @since 2.7.0
  */
-public interface IResult {
+public interface Result {
 
     /**
      * 结果码
@@ -25,7 +25,7 @@ public interface IResult {
     /**
      * 默认
      */
-    enum Default implements IResult {
+    enum Default implements Result {
 
         /* -----------------成功---------------------------- */
         SUCCESS("SUCCESS", "Success")

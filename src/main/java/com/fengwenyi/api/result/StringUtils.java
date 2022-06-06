@@ -1,4 +1,4 @@
-package com.fengwenyi.api.result.util;
+package com.fengwenyi.api.result;
 
 /**
  * 字符串工具类

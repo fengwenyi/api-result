@@ -1,5 +1,6 @@
 package com.fengwenyi.api.result.util;
 
+import com.fengwenyi.api.result.StringUtils;
 import org.junit.Test;
 
 /**
