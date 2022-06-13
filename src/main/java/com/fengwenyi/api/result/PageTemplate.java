@@ -1,22 +1,21 @@
 package com.fengwenyi.api.result;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  *
- * 分页响应 VO 类 <br><br><br>
+ * 分页响应类 <br><br><br>
  *
  * <p>
  * 这个类主要是存放分页的一些属性，包含如下字段：
  * </p>
  *
  * <ul>
- *     <li>{@code current}      ：当前页</li>
+ *     <li>{@code current}          ：当前页</li>
  *     <li>{@code pageSize}         ：每页显示条数</li>
- *     <li>{@code totalRows}        ：总条数 rows</li>
- *     <li>{@code totalPages}       ：总页数 - pages</li>
- *     <li>{@code rows}          ：数据 - records</li>
+ *     <li>{@code totalRow}         ：总条数 rows</li>
+ *     <li>{@code totalPage}        ：总页数</li>
+ *     <li>{@code content}          ：数据</li>
  * </ul>
  *
  * <p>
@@ -26,7 +25,7 @@ import java.util.List;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.7.0
  */
-public class PageTemplate<T> implements Serializable {
+public class PageTemplate<T> extends ListTemplate<T> {
 
     private static final long serialVersionUID = -4253922988693797927L;
 
@@ -50,11 +49,6 @@ public class PageTemplate<T> implements Serializable {
      */
     private Long totalPage;
 
-    /**
-     * 数据
-     */
-    private List<T> content;
-
 
     /**
      * 无参数构造方法
@@ -75,7 +69,7 @@ public class PageTemplate<T> implements Serializable {
         this.pageSize = pageSize;
         this.totalRow = totalRow;
         this.totalPage = totalPage;
-        this.content = content;
+        super.setContent(content);
     }
 
     /**
@@ -150,24 +144,6 @@ public class PageTemplate<T> implements Serializable {
         return this;
     }
 
-    /**
-     * 获取内容
-     * @return 内容
-     */
-    public List<T> getContent() {
-        return content;
-    }
-
-    /**
-     * 设置内容
-     * @param content 内容
-     * @return PageResponseVo
-     */
-    public PageTemplate<T> setContent(List<T> content) {
-        this.content = content;
-        return this;
-    }
-
 
     /**
      * PageResponse构造者，可通过该类构造出PageResponseVo
@@ -235,7 +211,7 @@ public class PageTemplate<T> implements Serializable {
          * @return Builder
          */
         public Builder<T> content(List<T> content) {
-            this.pageTemplate.content = content;
+            this.pageTemplate.setContent(content);
             return this;
         }
 
@@ -260,7 +236,7 @@ public class PageTemplate<T> implements Serializable {
                 ", pageSize=" + pageSize +
                 ", totalRow=" + totalRow +
                 ", totalPage=" + totalPage +
-                ", content=" + content +
+                ", content=" + getContent() +
                 '}';
     }
 }

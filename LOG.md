@@ -8,6 +8,7 @@
 
 - 概念变更，响应改为结果，即 Response -> Result
 - 对分页返回参数进行调整
+- 新增列表模板类 `ListTemplate`
 
 ## v2.6.0
 
