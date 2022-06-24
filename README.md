@@ -58,7 +58,7 @@ curl http://localhost:8080/api/demo
 
 ## 其他
 
-- [文档](https://github.com/fengwenyi/api-result/wiki)
+- [文档](https://www.yuque.com/fengwenyi/api-result)
 - [Maven仓库](https://mvnrepository.com/artifact/com.fengwenyi/api-result) 
 - [更新日志](LOG.md) 
 
