@@ -1,6 +1,7 @@
 package com.fengwenyi.api.result;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
@@ -90,6 +91,11 @@ public class ResultTemplate<T> implements Serializable {
     private T body;
 
     /**
+     * 时间
+     */
+    private LocalDateTime date = LocalDateTime.now();
+
+    /**
      * 默认操作成功
      */
     private static final Result SUCCESS = Result.Default.SUCCESS;
@@ -115,7 +121,7 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
                 .setCode(SUCCESS.getCode())
-                .setmsg(SUCCESS.getMsg())
+                .setMsg(SUCCESS.getMsg())
                 ;
     }
 
@@ -131,7 +137,7 @@ public class ResultTemplate<T> implements Serializable {
         return new ResultTemplate<T>()
                 .setSuccess(Boolean.TRUE)
                 .setCode(SUCCESS.getCode())
-                .setmsg(SUCCESS.getMsg())
+                .setMsg(SUCCESS.getMsg())
                 .setBody(body)
                 ;
     }
@@ -145,7 +151,7 @@ public class ResultTemplate<T> implements Serializable {
     public static <T> ResultTemplate<T> fail() {
         return new ResultTemplate<T>()
                 .setCode(ERROR.getCode())
-                .setmsg(ERROR.getMsg())
+                .setMsg(ERROR.getMsg())
                 ;
     }
 
@@ -162,7 +168,7 @@ public class ResultTemplate<T> implements Serializable {
         msg = StringUtils.isBlank(msg) ? ERROR.getMsg() : msg;
         return new ResultTemplate<T>()
                 .setCode(ERROR.getCode())
-                .setmsg(msg)
+                .setMsg(msg)
                 ;
     }
 
@@ -177,7 +183,7 @@ public class ResultTemplate<T> implements Serializable {
     public static <T> ResultTemplate<T> fail(Result returnCode) {
         return new ResultTemplate<T>()
                 .setCode(returnCode.getCode())
-                .setmsg(returnCode.getMsg())
+                .setMsg(returnCode.getMsg())
                 ;
     }
 
@@ -194,7 +200,7 @@ public class ResultTemplate<T> implements Serializable {
         msg = StringUtils.isBlank(msg) ? returnCode.getMsg() : msg;
         return new ResultTemplate<T>()
                 .setCode(returnCode.getCode())
-                .setmsg(msg)
+                .setMsg(msg)
                 ;
     }
 
@@ -211,7 +217,7 @@ public class ResultTemplate<T> implements Serializable {
     public static <T> ResultTemplate<T> fail(String code, String msg) {
         return new ResultTemplate<T>()
                 .setCode(code)
-                .setmsg(msg)
+                .setMsg(msg)
                 ;
     }
 
@@ -252,7 +258,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param msg 信息
      * @return {@link ResultTemplate}
      */
-    public ResultTemplate<T> setmsg(String msg) {
+    public ResultTemplate<T> setMsg(String msg) {
         this.msg = msg;
         return this;
     }
@@ -320,6 +326,15 @@ public class ResultTemplate<T> implements Serializable {
         return this;
     }
 
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public ResultTemplate<T> setDate(LocalDateTime date) {
+        this.date = date;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ResultTemplate{" +
@@ -328,6 +343,7 @@ public class ResultTemplate<T> implements Serializable {
                 ", success=" + success +
                 ", header=" + header +
                 ", body=" + body +
+                ", date=" + date +
                 '}';
     }
 }

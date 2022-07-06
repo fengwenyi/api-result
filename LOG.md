@@ -1,5 +1,20 @@
 # 版本更新日志
 
+## v2.7.1
+
+2022.07.06 ~ 
+
+:star: New Features
+
+- ResultTemplate 新增 `date(时间)` 字段
+- ListTemplate 新增 `timeCost(用时)` 字段
+
+:bug: Bug Fixes
+
+- 修复 ResultTemplate 中 `msg` 字段 set 方法命名不规范的问题
+
+
+
 ## v2.7.0
 
 2022.05.16 ~ 2022.06.24
