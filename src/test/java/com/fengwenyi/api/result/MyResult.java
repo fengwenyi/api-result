@@ -1,33 +1,21 @@
 package com.fengwenyi.api.result;
 
 /**
- * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
- * @since 2021-07-02
+ * @author <a href="https://fengwenyi.com">Erwin Feng</a>
+ * @since 2022-07-14
  */
-public enum MyResult implements Result {
+public class MyResult extends Result.Default {
 
-    CUSTOM_ERROR("CUSTOM_ERROR", "自定义错误")
-
-    ;
-
-    /* 错误码 */
-    private final String code;
-
-    /* 描述 */
-    private final String msg;
-
+    /**
+     * 构造方法
+     *
+     * @param code 返回码
+     * @param msg  提示信息
+     */
     MyResult(String code, String msg) {
-        this.code = code;
-        this.msg = msg;
+        super(code, msg);
     }
 
-    @Override
-    public String getCode() {
-        return code;
-    }
+    public static final Result BIZ_ERROR = new MyResult("BIZ_ERROR", "业务异常");
 
-    @Override
-    public String getMsg() {
-        return msg;
-    }
 }

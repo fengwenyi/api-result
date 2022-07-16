@@ -52,7 +52,10 @@ curl http://localhost:8080/api/demo
 {
   "code":"SUCCESS",
   "message":"Success",
-  "success":true
+  "success":true,
+  "header":null, 
+  "body":null, 
+  "date":"2022-07-16T20:21:23.017"
 }
 ```
 

@@ -2,12 +2,13 @@
 
 ## v2.7.1
 
-2022.07.06 ~ 
+2022.07.06 ~ 2022.07.16
 
 :star: New Features
 
 - ResultTemplate 新增 `date(时间)` 字段
 - ListTemplate 新增 `timeCost(用时)` 字段
+- Result.Default 由枚举类改成 类，支持继承
 
 :bug: Bug Fixes
 

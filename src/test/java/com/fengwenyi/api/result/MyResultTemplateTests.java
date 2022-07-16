@@ -16,6 +16,7 @@ public class MyResultTemplateTests {
     public void testSuccess() {
         ResultTemplate<Object> resultTemplate = ResultTemplate.success();
 //        PrintUtils.info(JsonUtils.convertString(resultTemplate));
+        System.out.println(resultTemplate);
     }
 
     @Test
@@ -78,8 +79,9 @@ public class MyResultTemplateTests {
 
     @Test
     public void testCustomReturnCode() {
-        ResultTemplate<Object> response = ResultTemplate.fail(MyResult.CUSTOM_ERROR);
+        ResultTemplate<Object> response = ResultTemplate.fail(ResultEnum.CUSTOM_ERROR);
 //        PrintUtils.info(JsonUtils.convertString(response));
+        response = ResultTemplate.fail(MyResult.BIZ_ERROR);
     }
 
 }
