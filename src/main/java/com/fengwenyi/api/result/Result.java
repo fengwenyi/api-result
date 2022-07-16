@@ -44,7 +44,7 @@ public interface Result {
          * @param code 返回码
          * @param msg 提示信息
          */
-        Default(String code, String msg) {
+        public Default(String code, String msg) {
             this.code = code;
             this.msg = msg;
         }
