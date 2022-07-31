@@ -22,7 +22,7 @@
 <dependency>
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>2.7.2</version>
+    <version>2.7.3</version>
 </dependency>
 ```
 
@@ -34,8 +34,8 @@
 public class ApiController {
 
     @RequestMapping("/demo")
-    public ResponseTemplate<Void> demo() {
-        return ResponseTemplate.success();
+    public ResultTemplate<Void> demo() {
+        return ResultTemplate.success();
     }
 
 }

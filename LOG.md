@@ -1,5 +1,19 @@
 # 版本更新日志
 
+
+## v2.7.3
+
+2022.07.31 ~
+
+:star: New Features
+
+- 新增 Boolean 结果类型响应类：`BooleanResponse`
+
+:memo: Document
+
+- 修复文档示例代码不正确的问题
+
+
 ## v2.7.2
 
 2022.07.16 ~ 2022.07.17
