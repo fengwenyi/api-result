@@ -5,14 +5,14 @@ package com.fengwenyi.api.result;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.5.2
  */
-public class StringUtils {
+class StringUtils {
 
     /**
      * 字符串判空
      * @param str 待判断的字符串
      * @return 判断结果
      */
-    public static boolean isBlank(String str) {
+    static boolean isBlank(String str) {
         if (null == str) {
             return true;
         }

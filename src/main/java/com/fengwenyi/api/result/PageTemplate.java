@@ -149,7 +149,7 @@ public class PageTemplate<T> extends ListTemplate<T> {
      * PageResponse构造者，可通过该类构造出PageResponseVo
      * @param <T> 范型
      */
-    public static class Builder<T> implements com.fengwenyi.api.result.Builder<PageTemplate<T>> {
+    public static class Builder<T> implements IBuilder<PageTemplate<T>> {
 
         // PageResponseVo 对象
         private final PageTemplate<T> pageTemplate;

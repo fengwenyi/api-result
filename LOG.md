@@ -8,6 +8,9 @@
 :star: New Features
 
 - 新增 Boolean 结果类型响应类：`BooleanResponse`
+- `com.fengwenyi.api.result.StringUtils` 改为只为本包使用
+- `Builder` -> `IBuilder`
+- `Result` -> `IResult`
 
 :memo: Document
 

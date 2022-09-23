@@ -4,7 +4,7 @@ package com.fengwenyi.api.result;
  * @author <a href="https://fengwenyi.com">Erwin Feng</a>
  * @since 2022-07-14
  */
-public class MyResult extends Result.Default {
+public class MyResult extends IResult.Default {
 
     /**
      * 构造方法
@@ -16,6 +16,6 @@ public class MyResult extends Result.Default {
         super(code, msg);
     }
 
-    public static final Result BIZ_ERROR = new MyResult("BIZ_ERROR", "业务异常");
+    public static final IResult BIZ_ERROR = new MyResult("BIZ_ERROR", "业务异常");
 
 }

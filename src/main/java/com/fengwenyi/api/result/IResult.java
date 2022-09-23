@@ -8,7 +8,7 @@ package com.fengwenyi.api.result;
  * @author Erwin Feng
  * @since 2.7.0
  */
-public interface Result {
+public interface IResult {
 
     /**
      * 结果码
@@ -25,13 +25,13 @@ public interface Result {
     /**
      * 默认
      */
-    class Default implements Result {
+    class Default implements IResult {
 
         /* -----------------成功---------------------------- */
-        public static final Result SUCCESS = new Default("SUCCESS", "Success");
+        public static final IResult SUCCESS = new Default("SUCCESS", "Success");
 
         /* ------------------错误--------------------------- */
-        public static final Result ERROR = new Default("ERROR", "错误");
+        public static final IResult ERROR = new Default("ERROR", "错误");
 
         /** 结果码 */
         private final String code;

@@ -6,7 +6,7 @@ package com.fengwenyi.api.result;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2.5.2
  */
-public interface Builder<T> {
+public interface IBuilder<T> {
 
     /**
      * 构建一个对象

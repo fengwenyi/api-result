@@ -98,12 +98,12 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 默认操作成功
      */
-    private static final Result SUCCESS = Result.Default.SUCCESS;
+    private static final IResult SUCCESS = IResult.Default.SUCCESS;
 
     /**
      * 默认操作失败
      */
-    private static final Result ERROR = Result.Default.ERROR;
+    private static final IResult ERROR = IResult.Default.ERROR;
 
     /**
      * 构造方法：无参数
@@ -176,11 +176,11 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param returnCode {@link Result}
+     * @param returnCode {@link IResult}
      * @param <T>        {@link Void}
      * @return 响应封装类 {@link ResultTemplate}
      */
-    public static <T> ResultTemplate<T> fail(Result returnCode) {
+    public static <T> ResultTemplate<T> fail(IResult returnCode) {
         return new ResultTemplate<T>()
                 .setCode(returnCode.getCode())
                 .setMsg(returnCode.getMsg())
@@ -190,13 +190,13 @@ public class ResultTemplate<T> implements Serializable {
     /**
      * 操作失败
      *
-     * @param returnCode {@link Result}
+     * @param returnCode {@link IResult}
      * @param msg    描述信息
      * @param <T>        {@link Void}
      * @return 响应封装类 {@link ResultTemplate}
      */
     @SuppressWarnings("all")
-    public static <T> ResultTemplate<T> fail(Result returnCode, String msg) {
+    public static <T> ResultTemplate<T> fail(IResult returnCode, String msg) {
         msg = StringUtils.isBlank(msg) ? returnCode.getMsg() : msg;
         return new ResultTemplate<T>()
                 .setCode(returnCode.getCode())

@@ -4,7 +4,7 @@ package com.fengwenyi.api.result;
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
  * @since 2021-07-02
  */
-public enum ResultEnum implements Result {
+public enum ResultEnum implements IResult {
 
     CUSTOM_ERROR("CUSTOM_ERROR", "自定义错误")
 
