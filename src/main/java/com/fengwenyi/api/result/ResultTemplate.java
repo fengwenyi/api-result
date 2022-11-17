@@ -3,6 +3,7 @@ package com.fengwenyi.api.result;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 结果模板
@@ -92,8 +93,10 @@ public class ResultTemplate<T> implements Serializable {
 
     /**
      * 时间
+     *
+     * <p>格式示例：2022-11-17T22:11:33.436</p>
      */
-    private LocalDateTime date = LocalDateTime.now();
+    private String date = LocalDateTime.now().toString();
 
     /**
      * 默认操作成功
@@ -326,12 +329,24 @@ public class ResultTemplate<T> implements Serializable {
         return this;
     }
 
-    public LocalDateTime getDate() {
+    /**
+     * {@code date} 的get方法
+     * @return {@code date} 的值
+     */
+    public String getDate() {
         return date;
     }
 
+    /**
+     * {@code date} 的set方法
+     *
+     * @param date 日期，注意类型为 {@link LocalDateTime}
+     * @return {@link ResultTemplate}
+     */
     public ResultTemplate<T> setDate(LocalDateTime date) {
-        this.date = date;
+        if (Objects.nonNull(date)) {
+            this.date = date.toString();
+        }
         return this;
     }
 

@@ -3,7 +3,7 @@
 
 ## v2.7.3
 
-2022.07.31 ~
+2022.07.31 ~ 2022.11.17
 
 :star: New Features
 
@@ -11,6 +11,10 @@
 - `com.fengwenyi.api.result.StringUtils` 改为只为本包使用
 - `Builder` -> `IBuilder`
 - `Result` -> `IResult`
+
+:bug: Bug Fixes
+
+- 修复 ResultTemplate.date 转json，可能出现无法被序列化的问题
 
 :memo: Document
 
