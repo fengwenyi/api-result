@@ -350,6 +350,17 @@ public class ResultTemplate<T> implements Serializable {
         return this;
     }
 
+    /**
+     * {@code date} 的set方法
+     *
+     * @param date 日期，日期格式建议为：{@code uuuu-MM-dd'T'HH:mm:ss.SSS}
+     * @return {@link ResultTemplate}
+     */
+    public ResultTemplate<T> setDate(String date) {
+        this.date = date;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ResultTemplate{" +
