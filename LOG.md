@@ -1,5 +1,11 @@
 # 版本更新日志
 
+## v2.7.5
+
+:bug: Bug Fixes
+
+- 修复 ResultTemplate#setCode 属性为 private 错误 ([#3](https://github.com/fengwenyi/api-result/issues/3))
+
 
 ## v2.7.4
 

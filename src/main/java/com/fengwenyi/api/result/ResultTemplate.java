@@ -240,7 +240,7 @@ public class ResultTemplate<T> implements Serializable {
      * @param code 响应码
      * @return {@link ResultTemplate}
      */
-    private ResultTemplate<T> setCode(String code) {
+    public ResultTemplate<T> setCode(String code) {
         this.code = code;
         return this;
     }
