@@ -1,6 +1,6 @@
 package com.fengwenyi.api.result;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
