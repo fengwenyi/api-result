@@ -1,5 +1,7 @@
 package com.fengwenyi.api.result;
 
+import java.util.Objects;
+
 /**
  * 字符串工具类
  * @author <a href="https://www.fengwenyi.com">Erwin Feng</a>
@@ -13,13 +15,13 @@ class StringUtils {
      * @return 判断结果
      */
     static boolean isBlank(String str) {
-        if (null == str) {
+        if (Objects.isNull(str)) {
             return true;
         }
         if (str.isEmpty()) {
             return true;
         }
-        if ("".equals(str.trim())) {
+        if (str.trim().isEmpty()) {
             return true;
         }
         if ("null".equalsIgnoreCase(str.trim())) {

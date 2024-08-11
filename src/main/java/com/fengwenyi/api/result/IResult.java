@@ -31,7 +31,7 @@ public interface IResult {
         public static final IResult SUCCESS = new Default("SUCCESS", "Success");
 
         /* ------------------错误--------------------------- */
-        public static final IResult ERROR = new Default("ERROR", "错误");
+        public static final IResult ERROR = new Default("ERROR", "Error");
 
         /** 结果码 */
         private final String code;
