@@ -6,7 +6,7 @@
 
     <groupId>com.fengwenyi</groupId>
     <artifactId>api-result</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>api-result</name>
     <description>一套RESTful风格API接口响应参数规范化的解决方案</description>
@@ -66,11 +66,11 @@
         </developer>
     </developers>
 
-    <parent>
+    <!--<parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
-    </parent>
+    </parent>-->
 
     <build>
         <plugins>
